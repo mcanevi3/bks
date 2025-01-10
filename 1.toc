@@ -1,5 +1,4 @@
 \babel@toc {turkish}{}\relax 
-\beamer@sectionintoc {1}{Örnek}{3}{0}{1}
-\beamer@sectionintoc {2}{Kod yazma}{4}{0}{2}
-\beamer@sectionintoc {3}{Değişken tanımlama ve veri tipleri}{5}{0}{3}
-\beamer@sectionintoc {4}{Operatörler}{10}{0}{4}
+\beamer@sectionintoc {1}{Kod yazma}{3}{0}{1}
+\beamer@sectionintoc {2}{Değişken tanımlama ve veri tipleri}{10}{0}{2}
+\beamer@sectionintoc {3}{Operatörler}{15}{0}{3}
