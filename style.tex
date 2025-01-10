@@ -1,4 +1,4 @@
-\documentclass[17pt]{beamer}
+\documentclass[12pt]{beamer}
 
 \usepackage[utf8]{inputenc}
 \usepackage[turkish]{babel}
@@ -11,6 +11,8 @@
 \usepackage{tikz}
 \usepackage{transparent}
 \usepackage{xcolor}
+\usepackage{listings}
+\usepackage{verbatim}
 
 \usetheme{Warsaw}
 \usecolortheme{default}
@@ -29,4 +31,31 @@
 \date[2025] {Ders Notları, Ocak 2025}
     
 \logo{\transparent{0.4}\includegraphics[width = 20mm]{logo}}
-    
+
+\definecolor{mGreen}{rgb}{0,0.6,0}
+\definecolor{mGray}{rgb}{0.5,0.5,0.5}
+\definecolor{mPurple}{rgb}{0.58,0,0.82}
+\definecolor{backgroundColour}{rgb}{0.95,0.95,0.92}
+
+\lstloadlanguages{C}
+\lstdefinestyle{CStyle}{
+    backgroundcolor=\color{backgroundColour},   
+    commentstyle=\color{mGreen},
+    keywordstyle=\color{red},
+    numberstyle=\tiny\color{mGray},
+    stringstyle=\color{mGreen},
+    basicstyle=\footnotesize,
+    breakatwhitespace=false,         
+    breaklines=true,                 
+    captionpos=b,                    
+    keepspaces=true,                 
+    numbers=left,                    
+    numbersep=2pt,                  
+    showspaces=false,                
+    showstringspaces=false,
+    showtabs=false,                  
+    tabsize=1,
+    language=C
+}
+\lstset{style=CStyle}
+\AtBeginDocument{\shorthandoff{=}}

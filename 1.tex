@@ -1,8 +1,43 @@
 \input{style.tex}
-\title[Ders 1] {Programlamaya Giriş}
+\title[Ders 1] {Kod yazma, Kod derleme. Değişken tanımlama, veri tipleri. Operatörler.}
 \begin{document}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \frame{\titlepage}
-\begin{frame}
-
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}[fragile]{Değişken isimleri}
+    Değişkenler şu şekilde tanımlanmaktadır:
+    \begin{lstlisting}
+        veri_tipi degisken_adi;\end{lstlisting}
+    Buradaki \lstinline{veri_tipi};
+    \begin{itemize}
+        \item \lstinline{int} 
+        \item \lstinline{float}
+        \item \lstinline{double}
+        \item \lstinline{char}
+    \end{itemize}
+     olabilmektedir. \lstinline{degisken_adi} ise 
+    \begin{itemize}
+     \item türkçe karakter içermemelidir
+     \item sadece harf veya alttire ile başlamalıdır
+     \item özel karakterler(!,?,vb.) ve boşluk içermemelidir
+     \item \lstinline{veri_tipi} anahtar kelimeleri olmamalıdır
+    \end{itemize}
+    kurallarına uymalıdır.
 \end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}[fragile]{Değişken tiplerinin anlamı}
+    Değişkenler
+    \begin{itemize}
+     \item \lstinline{int} ingilizce \verb|integer| yani tam sayıdan gelmektedir \lstinline{-10,4} gibi
+     \item \lstinline{float} ingilizcede kayan noktalı sayı anlamındadır \lstinline{3.14f} gibi
+     \item \lstinline{double} ingilizcede iki kat hassasiyet anlamındadır \lstinline{3.14} gibi
+     \item \lstinline{char} ingilizce \verb|character|'den gelir \lstinline{'c','x'} gibi
+    \end{itemize}
+    veri tipleri ile tanımlanabilmektedir.
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}[fragile]
+    \lstinputlisting{lec1/main.c}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \end{document}
