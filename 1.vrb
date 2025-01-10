@@ -1,1 +1,8 @@
-\lstinputlisting{lec1/main.c}
+\frametitle{Mantıksal operatörleri}
+Mantıksal operatörler
+    \begin{itemize}
+        \item \lstinline{sart1 && sart2} VE
+        \item \lstinline{sart1 || sart2} VEYA
+        \item \lstinline{!sart} DEĞİLDİR
+    \end{itemize}
+    olarak verilmiştir.

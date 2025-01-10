@@ -3,11 +3,26 @@
 \begin{document}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \frame{\titlepage}
+\begin{frame}[fragile]{İçidekiler}
+    \tableofcontents
+\end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Örnek}
+\begin{frame}[fragile]
+    \lstinputlisting{lec1/main.c}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Kod yazma}
+\begin{frame}[fragile]{Kod nedir?}
+    Bilgisayar tanımı kapsamına giren cihazlara meramımızı anlatmak için yazılan şeye \textbf{kod} diyebiliriz.
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Değişken tanımlama ve veri tipleri}
 \begin{frame}[fragile]{Değişken isimleri}
     Değişkenler şu şekilde tanımlanmaktadır:
     \begin{lstlisting}
-        veri_tipi degisken_adi;\end{lstlisting}
+        veri_tipi degisken_adi;
+        veri_tipi degisken_adi=ilk_deger;\end{lstlisting}
     Buradaki \lstinline{veri_tipi};
     \begin{itemize}
         \item \lstinline{int} 
@@ -29,15 +44,105 @@
     Değişkenler
     \begin{itemize}
      \item \lstinline{int} ingilizce \verb|integer| yani tam sayıdan gelmektedir \lstinline{-10,4} gibi
-     \item \lstinline{float} ingilizcede kayan noktalı sayı anlamındadır \lstinline{3.14f} gibi
-     \item \lstinline{double} ingilizcede iki kat hassasiyet anlamındadır \lstinline{3.14} gibi
+     \item \lstinline{float} ingilizcede kayan noktalı sayı(6-7 basamak) anlamındadır \lstinline{3.14f} gibi
+     \item \lstinline{double} ingilizcede iki kat hassasiyet(15 basamak) anlamındadır \lstinline{3.14} gibi
      \item \lstinline{char} ingilizce \verb|character|'den gelir \lstinline{'c','x'} gibi
     \end{itemize}
-    veri tipleri ile tanımlanabilmektedir.
+    veri tipleri ile tanımlanabilmektedir ve 
+    \begin{itemize}
+        \item \lstinline{int var1=-10;} 
+        \item \lstinline{float var2=3.14f;} 
+        \item \lstinline{double var3=3.14;} 
+        \item \lstinline{char var4='x';} 
+    \end{itemize}
+    olarak örneklendirilebilir.
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}[fragile]
-    \lstinputlisting{lec1/main.c}
+\begin{frame}[fragile]{Çoklu değişken tanımlama}
+    Birden fazla değişken
+    \begin{itemize}
+        \item \lstinline{int a,b,c=-10;} 
+        \item \lstinline{float a=2.2,b,c=3.14f;} 
+        \item \lstinline{double a,b,c=3.14;} 
+        \item \lstinline{char a,b,c;a=b=c='x';}
+    \end{itemize}
+    şeklinde tanımlanabilir.
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}[fragile]{Değişkenlerin yazdırılması}
+    Değişkenler
+    \begin{itemize}
+        \item \lstinline{int var1=-10;printf("%d",var1);} 
+        \item \lstinline{float var2=3.14f;printf("%f",var2);} 
+        \item \lstinline{double var3=3.14;printf("%lf",var3);} 
+        \item \lstinline{char var4='x';printf("%c",var4);}
+        \item \lstinline{printf("%s","Bu bir cumledir.");}
+    \end{itemize}
+    ile ekrana yazdırılır.
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}[fragile]{Sabit değerli değişkenler}
+    Değeri değişmemesi gereken değişkenler
+    \begin{itemize}
+        \item \lstinline{const int SAAT_DK=60;} 
+        \item \lstinline{const float PI_SAYISI=3.14;} 
+    \end{itemize}
+    şeklinde tanımlanır ve büyük harflerin kullanımı bir gelenektir. Dolayısıyla,
+    \begin{itemize}
+        \item \lstinline{SAAT_DK=120;} 
+        \item \lstinline{PI_SAYISI=5.5;} 
+    \end{itemize}
+    hata verir.
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Operatörler}
+\begin{frame}[fragile]{Matematiksel operatörler}
+    Toplama ve çıkarma işlemi
+    \begin{itemize}
+        \item \lstinline{int a=4+5;int c=a-2;int d=a+c;} 
+    \end{itemize}
+    ile örneklendirilebilir. Matematiksel operatörler
+    \begin{itemize}
+        \item \lstinline{+,-} toplama, çıkarma 
+        \item \lstinline{*,/} çarpma, bölme
+        \item \lstinline{++,--} arttırma, azaltma 
+        \item \lstinline{%} \verb|mod| operatörü (bölümden kalan)
+        \item \lstinline{=} atama operatörü
+    \end{itemize}
+    şeklindedir.
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}[fragile]{Matematiksel operatörler(devam)}
+    Aşağıdaki operatörler tanımlıdır.
+    \begin{itemize}
+        \item \lstinline{x+=3;} \lstinline{x=x+3;} 
+        \item \lstinline{x-=3;} \lstinline{x=x-3;} 
+        \item \lstinline{x*=3;} \lstinline{x=x*3;} 
+        \item \lstinline{x/=3;} \lstinline{x=x/3;} 
+        \item \lstinline{x%=3;} \lstinline{x=x%3;} 
+    \end{itemize}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}[fragile]{Karşılaştırma operatörleri}
+    Aşağıdaki operatörler ile karşılaştırma başarılı ise 1 değilse sıfır değerini alır.
+    \begin{itemize}
+        \item \lstinline{x>y} Büyüktür
+        \item \lstinline{x>=y} Büyük eşittir
+        \item \lstinline{x<y} Küçüktür
+        \item \lstinline{x<=y} Küçük eşittir
+        \item \lstinline{x==y} Eşittir
+        \item \lstinline{x!=y} Eşit değildir
+    \end{itemize}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}[fragile]{Mantıksal operatörleri}
+    Mantıksal operatörler
+    \begin{itemize}
+        \item \lstinline{sart1 && sart2} VE
+        \item \lstinline{sart1 || sart2} VEYA 
+        \item \lstinline{!sart} DEĞİLDİR 
+    \end{itemize}
+    olarak verilmiştir.
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \end{document}
