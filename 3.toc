@@ -1,0 +1,3 @@
+\babel@toc {turkish}{}\relax 
+\beamer@sectionintoc {1}{Karar yapıları}{3}{0}{1}
+\beamer@sectionintoc {2}{Döngüler}{9}{0}{2}
