@@ -1,4 +1,18 @@
 \frametitle{Sorular}
-\begin{alertblock}{Soru-1}
-        Soru
+\begin{alertblock}{Soru-5}
+        \begin{equation}
+            L=\begin{bmatrix}
+                1&2&3&1
+            \end{bmatrix}
+        \end{equation}
+        olmak üzere $L^TL$ işlemini bir diziye kaydediniz.
+    \end{alertblock}
+    \begin{alertblock}{Soru-6}
+        \begin{tabular}{cc|c}\\\hline
+            \textbf{Vize}& \textbf{Final}& \textbf{Ortalama}\\\hline
+            30& 60& 0\\
+            90& 40& 0\\
+            45& 55& 0\\\hline
+        \end{tabular}
+        tablosunu dolduran kodu yazınız. Ortalama $\%40$ vize ile $\%60$ final ile hesaplanır.
     \end{alertblock}
