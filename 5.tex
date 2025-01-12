@@ -1,0 +1,46 @@
+\input{style.tex}
+\title[Ders 5] {Diziler II}
+\begin{document}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\frame{\titlepage}
+\begin{frame}[fragile]{İçidekiler}
+    \tableofcontents
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Diziler yeniden}
+
+\begin{frame}[fragile]{Dizi tanımlama}
+    \begin{lstlisting}
+        int len=8176*1024-10*1024;
+        printf("len:%d\n",len);
+        char dizi[len];
+        int i=0;
+        for(i=0;i<len;i++)
+        {
+            dizi[i]='x';
+        }\end{lstlisting}
+    ve
+    \begin{lstlisting}
+        int len=8176*1024;
+        printf("len:%d\n",len);
+        char dizi[len];
+        int i=0;
+        for(i=0;i<len;i++)
+        {
+            dizi[i]='x';
+        }\end{lstlisting}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}[fragile]{Pointer(İşaretçi)}
+    Bellek adresi için kullanılan veri tipine \textbf{pointer} denir.
+    \begin{lstlisting}
+    veri_tipi* degisken;    
+    veri_tipi* degisken[];\end{lstlisting}
+    ile tanımlanabilirler. Aynı zamanda
+    \begin{lstlisting}
+        veri_tipi degisken;    
+        veri_tipi* adres=&degisken;\end{lstlisting}
+    ile de kullanılabilir.
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\end{document}

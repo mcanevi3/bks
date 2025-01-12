@@ -5,3 +5,8 @@ rm *.gnuplot
 rm *.table
 rm *.aux
 rm *.log
+rm *.vrb
+rm *.nav
+rm *.out
+rm *.snm
+rm *.toc
