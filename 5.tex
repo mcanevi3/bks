@@ -8,7 +8,6 @@
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Diziler yeniden}
-
 \begin{frame}[fragile]{Dizi tanımlama}
     \begin{lstlisting}
         int len=8176*1024-10*1024;
@@ -42,5 +41,80 @@
         veri_tipi* adres=&degisken;\end{lstlisting}
     ile de kullanılabilir.
 \end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}[fragile]{Pointer ve diziler}
+    \begin{lstlisting}
+        char dizi[3]={'a','b','c'};
+        char* adres=&dizi[0];
+        int i;
+        for(i=0;i<3;i++)
+        {
+            printf("address:%p\n",adres+i);
+        }
+    \end{lstlisting}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}[fragile]{Pointer ile dizi tanımlama}
+    \begin{lstlisting}
+        char* dizi=malloc(3);
+        dizi[0]='a';
+        dizi[1]='b';
+        dizi[2]='c';\end{lstlisting}
+    Dizi tanımlarken
+    \begin{lstlisting}
+        veri_tipi* dizi=malloc(3*sizeof(veri_tipi));\end{lstlisting}
+        şablonu kullanılabilir.
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}[fragile]{Dizileri tanımladıktan sonrası}
+    \begin{lstlisting}
+        char* dizi=malloc(3);
+        dizi[0]='a';
+        dizi[1]='b';
+        dizi[2]='c';
+        free(dizi);\end{lstlisting}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}[fragile]{Pointer kullanma}
+    \begin{lstlisting}
+        char* dizi=malloc(3);
+        *dizi='a';
+        *(dizi+1)='b';
+        *(dizi+2)='c';
+        free(dizi);\end{lstlisting}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}[fragile]{Pointer ve fonksiyonlar}
+    \begin{lstlisting}
+    int* fibbonacci_dizisi(int n)
+    {
+        int* fib=malloc(n);
+        fib[0]=1;
+        fib[1]=1;
+        for(i=2;i<=n;i++)
+        {
+            fib[i]=fib[i-1]+fib[i-2];
+        }
+        return fib;
+    }
+    \end{lstlisting}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Uygulama}
+\begin{frame}[fragile]{Sorular}
+    \begin{alertblock}{Soru-1}
+        Bir metni alfabetik sıralayan fonksiyonu yazınız.
+    \end{alertblock}
+    \begin{alertblock}{Soru-2}
+        İki dizinin toplamını hesaplayan fonksiyonu yazınız.
+    \end{alertblock}
+    \begin{alertblock}{Soru-3}
+        Bir vektörün türevini hesaplayan fonksiyonu yazınız.
+    \end{alertblock}
+    \begin{alertblock}{Soru-4}
+        Bir metinde verilen bir kelimenin kaç defa geçtiğini hesaplayan fonksiyonu yazınız.
+    \end{alertblock}
+\end{frame}
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \end{document}
