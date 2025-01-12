@@ -17,10 +17,10 @@ Diziler I.
 Diziler II.
 
 # Ders 6
-Kütüphane yazma.
+Struct yapılar ve Makrolar.
 
 # Ders 7
-Struct yapılar ve Makrolar.
+Kütüphane yazma.
 
 # Ders 8
 Dosyalar ile çalışma.

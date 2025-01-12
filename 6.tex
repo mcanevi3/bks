@@ -1,0 +1,84 @@
+\input{style.tex}
+\title[Ders 6] {Struct Yapılar ve Makrolar}
+\begin{document}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\frame{\titlepage}
+\begin{frame}[fragile]{İçidekiler}
+    \tableofcontents
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Struct yapısı}
+\begin{frame}[fragile]{Struct(Yapı) nedir?}
+    \begin{lstlisting}
+        void fonksiyon(char* isim,char* soyisim,int yas,int cinsiyet);
+    \end{lstlisting}
+    fonksiyonu
+    \begin{lstlisting}
+        struct kisi{
+            char* isim;
+            char* soyisim;
+            int yas;
+            int cinsiyet;
+        };
+        void fonksiyon(struct kisi k);\end{lstlisting}
+    olarak da yazılabilir.
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}[fragile]{Struct(Yapı) nedir?}
+    Böylece
+    \begin{lstlisting}
+        struct kisi{
+            char* isim;
+            char* soyisim;
+            int yas;
+            int cinsiyet;
+        };
+        struct kisi fonksiyon();\end{lstlisting}
+    yazılabilir.
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}[fragile]{Struct(Yapı) nedir?}
+    Basit yapı taşlarından oluşturulan karmaşık veri tipine \lstinline{struct} denir.
+    \begin{lstlisting}
+        struct yapi_adi{
+            yapi_tasi1;
+            yapi_tasi2;
+            ...
+        };
+        struct yapi_adi degisken_adi;\end{lstlisting}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Makrolar}
+\begin{frame}[fragile]{define}
+    Kodları kontrol etmek için kullanılır. Programın içeriğine etki etmezler.
+    \begin{lstlisting}
+        #define DEGISKEN\end{lstlisting}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}[fragile]{ifndef}
+    \begin{lstlisting}
+        #ifndef 1
+            float a;
+        #else
+            double a;
+        #endif\end{lstlisting}
+    \lstinline{if-else} yapısının makro karşılığıdır.
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}[fragile]{Makro fonksiyon}
+    \begin{lstlisting}
+        #define yazdir(str) printf(str)\end{lstlisting}
+    ile fonksiyon tanımı yapılabilmektedir.
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Uygulama}
+\begin{frame}[fragile]{Soru}
+    \begin{alertblock}{Soru-1}
+        Vertex struct'ı iki boyutta koordinat verisi içermektedir. Üçgen yapısı oluşturunuz. Üçgenin çevresini hesaplayan fonksiyonu yazınız.
+    \end{alertblock}
+    \begin{alertblock}{Soru-2}
+        Matris yapısı yazınız.
+    \end{alertblock}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\end{document}
