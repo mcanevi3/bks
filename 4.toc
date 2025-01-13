@@ -1,3 +1,0 @@
-\babel@toc {turkish}{}\relax 
-\beamer@sectionintoc {1}{Dizileri tanıyalım}{3}{0}{1}
-\beamer@sectionintoc {2}{Alıştırmalar}{9}{0}{2}

@@ -1,4 +1,0 @@
-\babel@toc {turkish}{}\relax 
-\beamer@sectionintoc {1}{Kod yazma}{3}{0}{1}
-\beamer@sectionintoc {2}{Değişken tanımlama ve veri tipleri}{10}{0}{2}
-\beamer@sectionintoc {3}{Operatörler}{15}{0}{3}

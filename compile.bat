@@ -6,3 +6,7 @@ del *.gnuplot
 del *.table
 del *.aux
 del *.log
+del *.nav
+del *.toc
+del *.vrb
+del *.snm
