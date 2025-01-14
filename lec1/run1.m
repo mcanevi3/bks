@@ -18,7 +18,7 @@ plot(tc,yc,'k','LineWidth',2);
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% ZOH
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-Gz=(1-exp(-T))*z/(z-exp(-T));
+% Gz=(1-exp(-T))*z/(z-exp(-T));
 u1=ones(1,length(t));
 y1=zeros(1,length(t));
 
@@ -27,17 +27,25 @@ for i=2:length(t)
 end
 stairs(t,y1,'b','LineWidth',2);
 
-
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% FOH
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-Gz=c2d(tf([1 2],[1 1 0 0]),0.5)*tf([1 -1],1,0.5)^2
+T=0.5;
 
-return;
+temp=Gss*(T*s+1)/(T*s^2);
+temp=partfrac(temp);
+
+temp2=inv(1-exp(-T)*inv(z))-inv(1-inv(z))+2*T*inv(z)/(1-inv(z))^2;
+temp3=(1-inv(z))^2*temp2;
+[num,den]=numden(temp3);
+Gz=tf(double(coeffs(num,z,'all')),double(coeffs(den,z,'all')),T);
+Gz=tf(zpk(Gz));
+Gz
+
 u2=ones(1,length(t));
 y2=zeros(1,length(t));
 
-for i=4:length(t)
-    y2(i)=(u2(i-1)-u2(i-2))/T;
+for i=3:length(t)
+    y2(i)=0.6065*y2(i-1)+0.6065*u2(i-1)+-0.2131*u2(i-2);
 end
 stairs(t,y2,'m','LineWidth',2);
