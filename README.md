@@ -3,31 +3,34 @@ Bilgisayarlı Kontrol Sistemleri
 MKT2002
 
 # Ders 1
-Ayrıklaştırma (ZOH,Bilineer,Trapezoid,Tustin)
+z-domeni <=> s-domeni
 
 # Ders 2
-Fark Denklemleri(Benzetim)
+Ayrıklaştırma (ZOH,Bilineer,Trapezoid,Tustin)
 
 # Ders 3
-Zaman Domeni Kriterler
+Fark Denklemleri(Benzetim)
 
 # Ders 4
-P kontrolör 
+Zaman Domeni Kriterler
 
 # Ders 5
-PD kontrolör 
+P kontrolör 
 
 # Ders 6
-PI kontrolör 
+PD kontrolör 
 
 # Ders 7
-PID kontrolör 
+PI kontrolör 
 
 # Ders 8
-Durum uzayı(kuram ve benzetim)
+PID kontrolör 
 
 # Ders 9
-Durum uzayı durum geri besleme
+Durum uzayı(kuram ve benzetim)
 
 # Ders 10
+Durum uzayı durum geri besleme
+
+# Ders 11
 Durum uzayı durum gözleyici tasarımı
