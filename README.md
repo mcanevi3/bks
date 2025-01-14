@@ -1,38 +1,33 @@
 # BKS
-Bilgisayarlı Kontrol Sistemleri Ders Notları
+Bilgisayarlı Kontrol Sistemleri
+MKT2002
 
 # Ders 1
-Kod yazma, Kod derleme. Değişken tanımlama, veri tipleri. Operatörler.
+Ayrıklaştırma (ZOH,Bilineer,Trapezoid,Tustin)
 
 # Ders 2
-Fonksiyonlar. Tanımlama ve çağırma. Fonksiyon argümanları. Fonksiyonun döndürdüğü değer.
+Fark Denklemleri(Benzetim)
 
 # Ders 3
-Karar verme yapıları ve döngüler.
+Zaman Domeni Kriterler
 
 # Ders 4
-Diziler I.
+P kontrolör 
 
 # Ders 5
-Diziler II.
+PD kontrolör 
 
 # Ders 6
-Struct yapılar ve Makrolar.
+PI kontrolör 
 
 # Ders 7
-Kütüphane yazma.
+PID kontrolör 
 
 # Ders 8
-Dosyalar ile çalışma.
+Durum uzayı(kuram ve benzetim)
 
 # Ders 9
-P-tipi kontrolör I (Kuram)
+Durum uzayı durum geri besleme
 
 # Ders 10
-P-tipi kontrolör II (Uygulama)
-
-# Ders 11
-PID-tipi kontrolör III (Kuram)
-
-# Ders 12
-PID-tipi kontrolör IV (Uygulama)
+Durum uzayı durum gözleyici tasarımı
