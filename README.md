@@ -6,7 +6,7 @@ MKT2002
 z-domeni <=> s-domeni
 
 # Ders 2
-Ayrıklaştırma (ZOH,Bilineer,Trapezoid,Tustin)
+Ayrıklaştırma (ZOH,FOH)
 
 # Ders 3
 Fark Denklemleri(Benzetim)
