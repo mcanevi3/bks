@@ -3,7 +3,7 @@ Zaman tanım bölgesinden S tanım gölgesine dönüşüm
 \begin{equation}
 \begin{split}
     F(s)&=\mathcal{L}\{f(t)\}=\sum_{k=0}^{\infty}f(kT)e^{-kTs}\\
-    &=f(0)+f(T)e^{-Ts}+f(2T)e^{-2Ts}+\cdots\\
+    &=f(0)+f(T)e^{-Ts}+f(2T)e^{-2Ts}+\cdots
 \end{split}
 \end{equation}
 olarak verilmiştir. Zaman tanım bölgesinden Z tanım bölgesine geçiş ise
@@ -17,7 +17,7 @@ olarak verilmiştir. Zaman tanım bölgesinden Z tanım bölgesine geçiş ise
 \begin{equation}
     \begin{split}
         \mathcal{L}\{f(t)\}&=\sum_{k=0}^{\infty}f(kT)(e^{Ts})^{-k}\\
-        \mathcal{Z}\{f(t)\}&=\sum_{k=0}^{\infty}f(kT)z^{-k}\\
+        \mathcal{Z}\{f(t)\}&=\sum_{k=0}^{\infty}f(kT)z^{-k}
 \end{split}
 \end{equation}
 ifadelerinden
@@ -25,12 +25,20 @@ ifadelerinden
     z=e^{sT}
 \end{equation}
 ilişkisi elde edilir.
-
 Z dönüşümü için tablo Tablo~\ref{tbl:ztransform1} ile verilmiştir.
 \input{chapter/ztable1}
-
-\begin{equation}
-    \int_{0}^{\infty}udv=uv-\int_{0}^{\infty} vdu
+\begin{enumerate}
+\item \begin{equation}
+    \begin{split}
+        \mathcal{L}\{1\}&=\int_{t=0}^{\infty}e^{-st}dt\\
+        &=\frac{e^{-st}}{-s}\Bigg|_{t=0}^{\infty}\\
+        &=\frac{e^{-s\infty}}{-s}-\frac{1}{-s}\\
+        &=-\frac{1}{-s}\\
+        &=\frac{1}{s}
+    \end{split}
+\end{equation}
+\item \begin{equation}
+    \int udv=uv-\int vdu
 \end{equation}
 kullanarak $u=t$ ve $dv=e^{-st}dt$ olmak üzere
 \begin{equation}
@@ -43,11 +51,31 @@ kullanarak $u=t$ ve $dv=e^{-st}dt$ olmak üzere
 ve dolayısıyla
 \begin{equation}
     \begin{split}
-        L\{t\}&=\int_{t=0}^{\infty}t e^{-st}dt\\
+        \mathcal{L}\{t\}&=\int_{t=0}^{\infty}t e^{-st}dt\\
         &=t\frac{e^{-st}}{-s}\Bigg|_{t=0}^{\infty}-\int_{t=0}^{\infty}\frac{e^{-st}}{-s}dt\\
         &=t\frac{e^{-st}}{-s}\Bigg|_{t=0}^{\infty}+\frac{1}{s}e^{-st}\Bigg|_{t=0}^{\infty}\\
         &=t\frac{e^{-st}}{-s}\Bigg|_{t=0}^{\infty}+\frac{1}{s^2}\\
         &=\frac{1}{s^2}
     \end{split}
 \end{equation}
-
+elde edilir. Z dönüşümü ise
+\begin{equation}
+    \begin{split}
+        \sum_{t=0}^{\infty}t z^{t-1}&=1+2z+3z^2+4z^3+\cdots\\
+        &=\frac{1}{(1-z)^2},\quad |z|<1
+    \end{split}
+\end{equation}
+yardımıyla
+\begin{equation}
+    \begin{split}
+        \mathcal{Z}\{t\}&=\sum_{t=0}^{\infty}tT (z^{-1})^{t}\\
+        &=Tz^{-1}\sum_{t=0}^{\infty}t (z^{-1})^{t-1}\\
+        &=T\frac{z^{-1}}{(1-z^{-1})^2},\quad |z|<1\\
+        &=T\frac{\frac{1}{z}}{(1-\frac{1}{z})^2},\quad |z|<1\\
+        &=T\frac{\frac{1}{z}}{\frac{(z-1)^2}{z^2}},\quad |z|<1\\
+        &=T\frac{z^2}{z(z-1)^2},\quad |z|<1\\
+        &=\frac{Tz}{(z-1)^2},\quad |z|<1
+    \end{split}
+\end{equation}
+olarak elde edilir.
+\end{enumerate}
