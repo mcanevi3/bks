@@ -28,3 +28,26 @@ ilişkisi elde edilir.
 
 Z dönüşümü için tablo Tablo~\ref{tbl:ztransform1} ile verilmiştir.
 \input{chapter/ztable1}
+
+\begin{equation}
+    \int_{0}^{\infty}udv=uv-\int_{0}^{\infty} vdu
+\end{equation}
+kullanarak $u=t$ ve $dv=e^{-st}dt$ olmak üzere
+\begin{equation}
+    \begin{split}
+        dv&=e^{-st}dt\\
+        \int dv&=\int e^{-st}dt\\
+        v&=\frac{e^{-st}}{-s}
+    \end{split}
+\end{equation}
+ve dolayısıyla
+\begin{equation}
+    \begin{split}
+        L\{t\}&=\int_{t=0}^{\infty}t e^{-st}dt\\
+        &=t\frac{e^{-st}}{-s}\Bigg|_{t=0}^{\infty}-\int_{t=0}^{\infty}\frac{e^{-st}}{-s}dt\\
+        &=t\frac{e^{-st}}{-s}\Bigg|_{t=0}^{\infty}+\frac{1}{s}e^{-st}\Bigg|_{t=0}^{\infty}\\
+        &=t\frac{e^{-st}}{-s}\Bigg|_{t=0}^{\infty}+\frac{1}{s^2}\\
+        &=\frac{1}{s^2}
+    \end{split}
+\end{equation}
+
