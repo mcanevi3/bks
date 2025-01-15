@@ -28,7 +28,8 @@ ilişkisi elde edilir.
 Z dönüşümü için tablo Tablo~\ref{tbl:ztransform1} ile verilmiştir.
 \input{chapter/ztable1}
 \begin{enumerate}
-\item \begin{equation}
+\item S dönüşümü
+\begin{equation}
     \begin{split}
         \mathcal{L}\{1\}&=\int_{t=0}^{\infty}e^{-st}dt\\
         &=\frac{e^{-st}}{-s}\Bigg|_{t=0}^{\infty}\\
@@ -37,6 +38,16 @@ Z dönüşümü için tablo Tablo~\ref{tbl:ztransform1} ile verilmiştir.
         &=\frac{1}{s}
     \end{split}
 \end{equation}
+olarak elde edilir. Z dönüşümü ise
+\begin{equation}
+    \begin{split}
+        \mathcal{Z}\{1\}&=\sum_{t=0}^{\infty}z^{-t}\\
+        &=1+z^{-1}+z^{-2}+z^{-3}+\cdots\\
+        &=\frac{1}{1-z^{-1}},\quad |z|>1\\
+        &=\frac{z}{z-1},\quad |z|>1\\
+    \end{split}
+\end{equation}
+elde edilir.
 \item \begin{equation}
     \int udv=uv-\int vdu
 \end{equation}
