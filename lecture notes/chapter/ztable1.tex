@@ -1,0 +1,16 @@
+\begin{table}[!htb]
+    \centering
+    \caption{S ve Z dönüşümü tablosu}
+    \label{tbl:ztransform1}
+    \begin{tabular}{ccc}\hline
+        Zaman domeni& $F(s)$& $F(z)$\\\hline
+        $\delta(t)$& $1$& $1$\\
+        $\delta(t-kT)$& $e^{-kTs}$& $z^{-k}$\\
+        $u(t)=1$& $\frac{1}{s}$& $\frac{z}{z-1}$\\
+        $t$& $\frac{1}{s^2}$& $\frac{Tz}{(z-1)^2}$\\
+        $e^{-at}$& $\frac{1}{s+a}$& $\frac{z}{z-e^{-aT}}$\\
+        $1-e^{-at}$& $\frac{a}{s(s+a)}$& $\frac{z(1-e^{-aT})}{(z-1)(z-e^{-aT})}$\\
+        $sin(wt)$& $\frac{w}{s^2+w^2}$& $\frac{zsin(wT)}{(z-1)(z^2-2zcos(wT)+1)}$\\
+        $cos(wt)$& $\frac{s}{s^2+w^2}$& $\frac{z(z-cos(wT))}{(z-1)(z^2-2zcos(wT)+1)}$\\\hline
+    \end{tabular}
+\end{table}

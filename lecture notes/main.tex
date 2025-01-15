@@ -1,0 +1,88 @@
+\documentclass[12pt,twoside]{book}
+
+\usepackage[utf8]{inputenc}
+\usepackage[turkish]{babel}
+\usepackage[T1]{fontenc}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{enumerate}
+\usepackage[most]{tcolorbox}
+
+\usepackage{circuitikz}
+\usepackage{cancel}
+\usepackage{bodegraph}
+\usepackage{gensymb}
+
+\usepackage{verbatim}
+\usepackage{listings}
+\usepackage{matlab-prettifier}
+
+\usepackage{pgfplots}
+\pgfplotsset{compat=newest}
+\usepackage{pgffor}
+\usepackage{xcolor}
+
+\usepackage{tikz}
+\usetikzlibrary{patterns}
+\usetikzlibrary{babel}
+
+\usetikzlibrary{shapes.misc}
+\tikzset{cross/.style={cross out, draw=black, minimum size=2*(#1-\pgflinewidth), inner sep=0pt, outer sep=0pt},
+%default radius will be 3pt. 
+cross/.default={3pt}}
+\usetikzlibrary{arrows}
+\tikzset{
+  arrow/.pic={\path[tips,every arrow/.try,->,>=#1] (0,0) -- +(.1pt,0);},
+  pics/arrow/.default={triangle 90}
+}
+
+\usepackage{siunitx}
+\usepackage{textcomp}
+
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue,
+    filecolor=magenta,      
+    urlcolor=cyan,
+    pdftitle={Kitap},
+    pdfpagemode=FullScreen,
+    }
+
+\urlstyle{same}
+
+\usepackage{graphicx}
+\graphicspath{{svg-inkscape/}}
+\usepackage{geometry}
+\usepackage{subcaption}
+\usepackage{tabularray}
+\DefTblrTemplate{contfoot-text}{default}{Bir sonraki sayfada devam ediyor.} % Uzun Tablolar için alt kısım
+\DefTblrTemplate{conthead-text}{default}{(Devam)} % Uzun Tablolar için üst kısım
+
+\usepackage{lscape}
+
+\usepackage{pgfplotstable}
+\usepackage{booktabs}
+
+\renewcommand{\chaptername}{Bölüm}
+\renewcommand{\contentsname}{İçindekiler}
+\renewcommand{\figurename}{Şekil}
+\renewcommand{\tablename}{Tablo}
+\renewcommand{\bibname}{Kaynaklar}
+\renewcommand{\listfigurename}{Şekiller}
+\renewcommand{\listtablename}{Tablolar}
+\renewcommand{\appendixname}{Ek}
+\renewcommand{\indexname}{Dizin}
+\renewcommand{\partname}{Bölüm}
+\renewcommand{\proofname}{İspat}
+
+\begin{document}
+\shorthandoff{=} % babel paketi hatasını gidermek için gerekli
+
+\tableofcontents
+
+\input{chapter/1}
+
+\end{document}

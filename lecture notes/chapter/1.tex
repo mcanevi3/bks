@@ -1,0 +1,30 @@
+\chapter{Z ve S tanım bölgesi}
+Zaman tanım bölgesinden S tanım gölgesine dönüşüm
+\begin{equation}
+\begin{split}
+    F(s)&=\mathcal{L}\{f(t)\}=\sum_{k=0}^{\infty}f(kT)e^{-kTs}\\
+    &=f(0)+f(T)e^{-Ts}+f(2T)e^{-2Ts}+\cdots\\
+\end{split}
+\end{equation}
+olarak verilmiştir. Zaman tanım bölgesinden Z tanım bölgesine geçiş ise
+\begin{equation}
+    \begin{split}
+        F(z)&=\mathcal{Z}\{f(t)\}=\sum_{k=0}^{\infty}f(kT)z^{-k}\\
+        &=f(0)+f(T)z^{-1}+f(2T)z^{-2}+\cdots
+    \end{split}
+\end{equation}
+şeklindedir. S ve Z tanım bölgesi dönüşümlerine dikkat edilirse
+\begin{equation}
+    \begin{split}
+        \mathcal{L}\{f(t)\}&=\sum_{k=0}^{\infty}f(kT)(e^{Ts})^{-k}\\
+        \mathcal{Z}\{f(t)\}&=\sum_{k=0}^{\infty}f(kT)z^{-k}\\
+\end{split}
+\end{equation}
+ifadelerinden
+\begin{equation}
+    z=e^{sT}
+\end{equation}
+ilişkisi elde edilir.
+
+Z dönüşümü için tablo Tablo~\ref{tbl:ztransform1} ile verilmiştir.
+\input{chapter/ztable1}
