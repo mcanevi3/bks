@@ -145,6 +145,23 @@ elde edilir. FOH için transfer fonksiyonu
         &=G_{ZOH}^2(s)\frac{Ts+1}{T}
 \end{split}
 \end{equation}
-şeklindedir.
-
-%örnek eklenecek
+şeklindedir. Örneğin daha önce Denklem~\ref{eqn:ornek_sistem} ile verilen sistemi FOH yöntemi ve yine aynı örnekleme zamanı ile ayrıklaştırmak gerekirse
+\begin{equation}
+\begin{split}
+    L(s)&=\frac{1}{s+1}G_{FOH}(s)\\
+    &=\frac{1}{s+1}\frac{(1-e^{-s})^2}{T^2s^2}\frac{Ts+1}{T}\\
+    &=\frac{1}{s+1}\frac{(1-e^{-s})^2}{s^2}(s+1)\\
+    &=\frac{(1-e^{-s})^2}{s^2}
+\end{split}
+\end{equation}
+ifadesi Z dönüşümüne tabi tutulmalıdır. Dolayısıyla,
+\begin{equation}
+    \begin{split}
+        G(z)&=\mathcal{Z}\left\{\frac{(1-e^{-s})^2}{s^2}\right\}\\
+        &=\mathcal{Z}\{(1-e^{-s})^2\}\mathcal{Z}\left\{\frac{1}{s^2}\right\}\\
+        &=\left(1-z^{-1}\right)^2\frac{Tz}{(z-1)^2}\\
+        &=\left(\frac{z-1}{z}\right)^2\frac{z}{(z-1)^2}\\
+        &=\frac{1}{z}
+    \end{split}
+\end{equation}
+elde edilir.
