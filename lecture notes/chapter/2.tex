@@ -56,7 +56,36 @@ ifadesi bulunur. Ayrık zamanda integral birikimli toplama karşılık gelmekted
 \begin{equation}
     x(t)=x(kT),\quad kT\leq t\leq (k+1)T
 \end{equation}
-ile ifade edilebilir.
+ile ifade edilebilir. ZOH için transfer fonksiyonu elde etmek amacıyla girişe $\delta(t)$ birim darbe fonksiyonu uygulanırsa çıkışında $u(t)-u(t-T)$ elde edilir. Bu durumda S tanım bölgesinde çıkış ifadesi
+\begin{equation}
+\begin{split}
+    \mathcal{L}\{u(t)-u(t-T)\}&=\mathcal{L}\{u(t)\}-\mathcal{L}\{u(t-T)\}\\
+    &=\mathcal{L}\{u(t)\}-e^{-sT}\mathcal{L}\{u(t)\}\\
+    &=\frac{1}{s}-e^{-sT}\frac{1}{s}\\
+    &=(1-e^{-sT})\frac{1}{s}
+\end{split}
+\end{equation}
+şeklindedir. ZOH transfer fonksiyonu ile bir $G(s)$ sistemi birlikte Z dönüşümü yapılmalıdır. Örneğin,
+\begin{equation}
+    G(s)=\frac{1}{s+1}
+\end{equation}
+sistemi ayrıklaştırılmak istensin. Bu durumda $G_{ZOH}(s)G(s)$ ayrıklaştırılmalıdır. Bu sebeple,
+\begin{equation}
+    L(s)=G_{ZOH}(s)G(s)=\frac{1-e^{-sT}}{s(s+1)}
+\end{equation}
+ifadesi Z tanım bölgesine
+\begin{equation}
+\begin{split}
+    \mathcal{Z}\{L(s)\}&=\mathcal{Z}\left\{\frac{1-e^{-sT}}{s(s+1)}\right\}\\
+    &=\mathcal{Z}\{1-e^{-sT}\} \mathcal{Z}\left\{\frac{1}{s(s+1)} \right\}\\
+    &=(1-z^{-1}) \left(\mathcal{Z}\left\{\frac{1}{s}-\frac{1}{s+1} \right\}\right)\\
+    &=\left(1-\frac{1}{z}\right) \left(\mathcal{Z}\left\{\frac{1}{s}\right\}-\mathcal{Z}\left\{\frac{1}{s+1} \right\}\right)\\
+    &=\frac{z-1}{z} \left(\frac{z}{z-1}-\frac{z}{z-e^{-1}}\right)\\
+    &=\left(1-\frac{z-1}{z-e^{-1}}\right)\\
+    &=\frac{1-e^{-1}}{z-e^{-1}}
+\end{split}
+\end{equation}
+olarak dönüştürülür.
 
 First Order Hold(FOH) yöntemi ise
 \begin{equation}
@@ -81,4 +110,41 @@ ve $t=(k+1)T$ için ise
         x(t)&=x((k+1)T)
     \end{split}
 \end{equation}
-elde edilir. Görüldüğü üzere ZOH yönteminin aksine $T$ süre boyunca değerler değişmektedir.
+olarak elde edilir. Görüldüğü üzere ZOH yönteminin aksine $T$ süre boyunca değerler değişmektedir. FOH için birim darbe yanıtı
+\begin{equation}
+    x(t)=\begin{cases}
+        t+\frac{1}{T} & 0\leq t\leq \frac{1}{T}\\
+        -t+\frac{1}{T} & \frac{1}{T}\leq t\leq \frac{2}{T}\\
+        0 & t>\frac{2}{T}
+    \end{cases}
+\end{equation}
+ve işlem kolaylığı açısından $T=1$ alınırsa 
+\begin{equation}
+    x(t)=(1-t)u(2-t)+2tu(1-t)
+\end{equation}
+şeklindedir. S dönüşümü sonucu
+\begin{equation}
+\begin{split}
+    \mathcal{L}\{x(t)\}&=\mathcal{L}\{(1-t)u(2-t)\}+\mathcal{L}\{2tu(1-t)\}\\
+    &=\mathcal{L}\{(1-t)(1-u(t-2))\}+\mathcal{L}\{2t(1-u(t-1))\}\\
+    &=\mathcal{L}\{(1-t)\}-\mathcal{L}\{(1-t)u(t-2)\}+\mathcal{L}\{2t\}-\mathcal{L}\{2tu(t-1)\}\\
+    &=\mathcal{L}\{(1+t)\}+\mathcal{L}\{(t-1)u(t-2)\}-\mathcal{L}\{2tu(t-1)\}\\
+    &=\mathcal{L}\{(1+t)\}+\mathcal{L}\{(t-1)u(t-2)\}-\mathcal{L}\{(2t-2+2)u(t-1)\}\\
+    &=\mathcal{L}\{(1+t)\}+\mathcal{L}\{(t-1-1+1)u(t-2)\}-\mathcal{L}\{(2t-2+2)u(t-1)\}\\
+    &=\mathcal{L}\{(1+t)\}+\mathcal{L}\{(t-2)u(t-2)+u(t-2)\}-\mathcal{L}\{(2t-2)u(t-1)+2u(t-1)\}\\
+    &=\frac{1}{s}+\frac{1}{s^2}+\frac{e^{-2s}}{s^2}+\frac{e^{-2s}}{s}-2\frac{e^{-s}}{s^2}-\frac{2e^{-s}}{s}\\
+    &=\frac{1-2e^{-s}+e^{-2s}}{s}+\frac{1-2e^{-s}+e^{-2s}}{s^2}\\
+    &=\frac{(1-e^{-s})^2}{s}+\frac{(1-e^{-s})^2}{s^2}\\
+    &=\frac{(1-e^{-s})^2}{s^2}(s+1)\\
+\end{split}
+\end{equation}
+elde edilir. FOH için transfer fonksiyonu
+\begin{equation}
+    \begin{split}
+        G_{FOH}(s)&=\frac{(1-e^{-s})^2}{T^2s^2}\frac{Ts+1}{T}\\
+        &=G_{ZOH}^2(s)\frac{Ts+1}{T}
+\end{split}
+\end{equation}
+şeklindedir.
+
+%örnek eklenecek
