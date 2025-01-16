@@ -1,0 +1,84 @@
+\chapter{Ayrıklaştırma}
+Türevin geometrik yorumu 
+\begin{equation}
+    \frac{dy(t)}{dt}\approx\frac{\Delta y}{\Delta t}
+\end{equation}
+olmak üzere
+\begin{equation}
+\begin{split}
+    \frac{dy(t)}{dt}&\approx\frac{\Delta y}{\Delta t}\\
+    &\approx\frac{y((k+1)T)-y(kT)}{(k+1)T-kT}\\
+    &\approx\frac{y((k+1)T)-y(kT)}{T}
+\end{split}
+\end{equation}
+elde edilir. Ayrık bir sinyalin türevi ardışık değerler farkının örnekleme zamanına oranı ile hesaplanabilmektedir. Örneğin, $y(kT)=\sin(kT)$ ve $T=0.1$ olmak üzere
+\begin{equation}
+    \frac{y((k+1)T)-y(kT)}{T}=10(\sin((k+1)0.1)-\sin(0.1k))
+\end{equation}
+ve dolayısıyla
+\begin{equation}
+\begin{split}
+    \{10\sin(0.1),10(\sin(0.2)-\sin(0.1)),10(\sin(0.3)-\sin(0.2)),\cdots\}\\
+    \{0.9983,0.9884, 0.9685,\cdots\}
+\end{split}
+\end{equation}
+elde edilir. $y(kT)=\sin(kT)$ sinyalinin türevinin $\frac{d\sin(t)}{dt}=\cos(t)$ olduğu bilindiğinden
+\begin{equation}
+    \begin{split}
+        \{cos(0.1),cos(0.2),cos(0.3),\cdots\}\\
+        \{ 0.9950,0.9801,0.9553,\cdots\}
+    \end{split}
+\end{equation}
+elde edilir ve ayrık türev ile benzer değerler olduğu görülmektedir. Bu yaklaşıklığın türeve yakınsaması için örnekleme zamanı $T$ daha küçük seçilmelidir. 
+\begin{equation}
+    \frac{dq(t)}{dt}=x
+\end{equation}
+olmak üzere
+\begin{equation}
+\begin{split}
+    \frac{dq(t)}{dt}&=x\\
+    dq(t)&=xdt\\
+    \int dq(t)&=\int xdt\\
+    q(t)&=\int xdt
+\end{split}
+\end{equation}
+elde edilir. Buradan hareketle,
+\begin{equation}
+    \begin{split}
+        \frac{\Delta q}{\Delta t}&=x\\
+        \frac{q((k+1)T)-q(kT)}{(k+1)T-kT}&=x\\
+        \frac{q((k+1)T)-q(kT)}{T}&=x\\
+        q((k+1)T)-q(kT)&=xT\\
+        q((k+1)T)&=q(kT)+xT
+    \end{split}
+\end{equation}
+ifadesi bulunur. Ayrık zamanda integral birikimli toplama karşılık gelmektedir. Bu karşılıklar Zero Order Hold(ZOH) ile elde edilmiştir. ZOH örnekleme zamanı boyunca değerlerin sabit olduğu varsayımına dayanmaktadır. Bu durum
+\begin{equation}
+    x(t)=x(kT),\quad kT\leq t\leq (k+1)T
+\end{equation}
+ile ifade edilebilir.
+
+First Order Hold(FOH) yöntemi ise
+\begin{equation}
+    x(t)=x(kT)+\frac{t-kT}{T}(x((k+1)T)-x(kT)),\quad kT\leq t\leq (k+1)T
+\end{equation}
+olarak tanımlanır. Eşitliğin sağ tarafı $t=kT$ için $x(kT)$, $t=(k+0.5)T$ için 
+\begin{equation}
+\begin{split}
+    x(t)&=x(kT)+\frac{t-kT}{T}(x((k+1)T)-x(kT)),\quad kT\leq t\leq (k+1)T\\
+    &=x(kT)+\frac{kT+0.5T-kT}{T}(x((k+1)T)-x(kT))\\
+    &=x(kT)+0.5(x((k+1)T)-x(kT))\\
+    &=x(kT)+0.5x((k+1)T)-0.5x(kT)\\
+    &=0.5x((k+1)T)+0.5x(kT)
+\end{split}
+\end{equation}
+ve $t=(k+1)T$ için ise 
+\begin{equation}
+    \begin{split}
+        x(t)&=x(kT)+\frac{t-kT}{T}(x((k+1)T)-x(kT)),\quad kT\leq t\leq (k+1)T\\
+        x(t)&=x(kT)+\frac{(k+1)T-kT}{T}(x((k+1)T)-x(kT))\\
+        x(t)&=x(kT)+x((k+1)T)-x(kT)\\
+        x(t)&=x((k+1)T)
+    \end{split}
+\end{equation}
+elde edilir. Görüldüğü üzere ZOH yönteminin aksine $T$ süre boyunca değerler değişmektedir.
