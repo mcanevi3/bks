@@ -68,4 +68,4 @@ end
 figure(2);clf;hold on;grid on;
 xlabel("p");ylabel("t_s");legend("show");
 plot(zetavec,osvec,'k','LineWidth',2,'DisplayName','stepinfo');
-plot(zetavec,100*exp(-pi*zetavec./sqrt(1-zetavec.^2)),'b','LineWidth',2,'DisplayName','4/a');
+plot(zetavec,100*exp(-pi*zetavec./sqrt(1-zetavec.^2)),'b','LineWidth',2,'DisplayName','100e^{-pi\\zeta/\\sqrt{1-\\zeta^2}}');
