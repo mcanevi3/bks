@@ -1,3 +1,30 @@
 \chapter{Fark Denklemleri}
+Örnek sistemin ZOH yöntemi ile elde edilen ve Denklem~\ref{eqn:ornek_sistem_zoh} ile verilen sistem için
+\begin{equation}
+\begin{split}
+    G_{ZOH}(z)&=\frac{1-e^{-1}}{z-e^{-1}}\\
+    &=\frac{(1-e^{-1})z^{-1}}{1-e^{-1}z^{-1}}\\
+    \frac{y(z)}{u(z)}&=\frac{(1-e^{-1})z^{-1}}{1-e^{-1}z^{-1}}\\
+    y(z)(1-e^{-1}z^{-1})&=\frac{(1-e^{-1})z^{-1}u(z)}{1-e^{-1}z^{-1}}\\
+    y(z)-y(z-1)e^{-1}&=(1-e^{-1})u(z-1)\\
+    y(z)&=y(z-1)e^{-1}+(1-e^{-1})u(z-1)\\
+    y(z)&=0.3679y(z-1)+0.6321u(z-1)
+\end{split}
+\end{equation}
+elde edilir. Z tanım bölgesinde tanımlı transfer fonksiyonundan fark denklemine geçişe örnektir. Fark denklemleri programlama dilleri ile kolaylıkla gerçeklenebilmektedir.
+\begin{lstlisting}
+u=ones(1,length(t));
+y=zeros(1,length(t));
 
-
+for i=2:length(t)
+    y(i)=exp(-T)*y(i-1)+(1-exp(-T))*u(i);
+end\end{lstlisting}
+Benzer şekilde FOH yöntemi ile elde edilen ve Denklem~\ref{eqn:ornek_sistem_foh} ile verilen ifade için
+\begin{equation}
+    \begin{split}
+        G_{FOH}(z)&=\frac{1}{z}\\
+        \frac{y(z)}{u(z)}&=z^{-1}\\
+        y(z)&=u(z-1)
+    \end{split}
+\end{equation}
+elde edilir.
