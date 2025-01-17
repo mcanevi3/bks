@@ -43,10 +43,41 @@ kullanılabilir. $\zeta>1$ durumunda gerçel köklü çözüm olmasından dolay�
 \end{equation}
 olarak güncellenebilir. $p_1>>p_2$ durumunda $p_2$, $p_2>>p_1$ durumunda $p_1$ yanıtın hızını ve davranışını belirler. $\zeta=1$ olması durumunda yanıt birinci dereceden bir sisteme göre daha yavaş olmaktadır. Haricinde, $0<\zeta<1$ durumunda 
 \begin{equation} 
-    t_s=\frac{4}{\zeta w_n},\quad \text{Aşım}=100\cdot e^{-\frac\pi\zeta w_n}{\sqrt{1-\zeta^2}}
+    t_s=\frac{4}{\zeta w_n},\quad \text{Aşım}=100\cdot e^{-\frac{\pi\zeta }{\sqrt{1-\zeta^2}}}
 \end{equation} 
 ile hesaplanmaktadır. İkinci dereceden sistem yanıtı,
 \begin{equation}
     y(t)=1-e^{-\zeta w_nt}\left[\cos(\sqrt{1-\zeta^2}w_nt)+\frac{\zeta}{\sqrt{1-\zeta^2}}\sin(\sqrt{1-\zeta^2}w_nt)\right]
 \end{equation}
-ile ifade edilmektedir. Sinüzoidal terimler salınımlı olduklarından sadece $e^{-\zeta w_nt}$ terimi yerleşme zamanının hesabı için önemlidir ve birinci dereceden sistem ile aynı ifade kullanılmaktadır.
+ile ifade edilmektedir. Sinüzoidal terimler salınımlı olduklarından sadece $e^{-\zeta w_nt}$ terimi yerleşme zamanının hesabı için önemlidir ve birinci dereceden sistem ile aynı ifade kullanılmaktadır. Aşım için 
+\begin{equation}
+\begin{split}
+    \frac{dy(t)}{dt}=0\\
+    \sin(\sqrt{1-\zeta^2}w_nt^*)(\frac{\zeta}{\sqrt{1-\zeta^2}}-\sqrt{1-\zeta^2}w_n)=0\\
+    \sin(\sqrt{1-\zeta^2}w_nt^*)=0\\
+    \sqrt{1-\zeta^2}w_nt^*=\pi\\
+    t^*=\frac{\pi}{\sqrt{1-\zeta^2}w_n}
+\end{split}
+\end{equation}
+yanıtta yerine yazılırsa
+\begin{equation}
+    \begin{split}
+        M_p&=e^{-\zeta w_nt^*}\left[\cos(\sqrt{1-\zeta^2}w_nt^*)+\frac{\zeta}{\sqrt{1-\zeta^2}}\sin(\sqrt{1-\zeta^2}w_nt^*)\right]\\
+        &=e^{-\frac{\pi\zeta }{\sqrt{1-\zeta^2}}}\left[\cos(\pi)+\frac{\zeta}{\sqrt{1-\zeta^2}}\sin(\pi)\right]\\
+        &=e^{-\frac{\pi\zeta }{\sqrt{1-\zeta^2}}}
+    \end{split}
+\end{equation}
+elde edilir. Verilen yerleşme zamanı ve aşım formülleri kullanılarak sistem davranışı şekillendirilebilmektedir. Örneğin $t_s=1$ ve aşım $\%10$ olacak şekilde sistem transfer fonksiyonu seçilirse
+\begin{equation} 
+\begin{split} 
+    \zeta&=-\frac{\log(0.1)}{\sqrt{\pi^2+\log(0.1)^2}}=0.591\\
+    w_n&=\frac{4}{\zeta t_s}=\frac{4}{0.591}=6.7682
+\end{split} 
+\end{equation} 
+elde edilir. Bu durumda,
+\begin{equation} 
+    G(s)=\frac{45.81}{s^2+8s+45.81}
+\end{equation} 
+transfer fonksiyonu elde edilir. 
+
+% 1-exp(-4*t)*(cos(5.457*t)+0.733*sin(5.457*t))
