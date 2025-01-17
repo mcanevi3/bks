@@ -30,7 +30,7 @@ Benzer şekilde FOH yöntemi ile elde edilen ve Denklem~\ref{eqn:ornek_sistem_fo
 elde edilir.
 Yay-Kütle-Damper sistemi için dinamikleri ifade eden denklem
 \begin{equation}
-    m\ddot{x}(t)+b\dot{x}(t)+kx(t)=u(t)
+    m\ddot{x}(t)+b\dot{x}(t)+kx(t)=u(t)\label{eqn:mass_spring_damper}
 \end{equation}
 olarak verilmiştir. Bu diferansiyel denklem S tanım bölgesine dönüştürülürse
 \begin{equation}
@@ -38,6 +38,30 @@ olarak verilmiştir. Bu diferansiyel denklem S tanım bölgesine dönüştürül
     ms^2X(s)+b sX(s)+kX(s)&=U(s)\\
     (ms^2+b s+k)X(s)&=U(s)\\
     \frac{X(s)}{U(s)}=\frac{1}{ms^2+b s+k}
+\end{split}
+\end{equation}
+elde edilir. Denklem~\ref{eqn:mass_spring_damper} ile verilen sistem için 
+\begin{gather}
+    m\frac{\Delta^2 x}{(\Delta t)^2}+b\frac{\Delta x}{\Delta t}+kx(kT)=u(kT)\nonumber\\
+    m\frac{\Delta (x(kT)-x((k-1)T))}{kT-(k-1)T}+b\frac{x(kT)-x((k-1)T)}{kT-(k-1)T}+kx(kT)=u(kT)\nonumber\\
+    m\frac{\Delta x(kT)-\Delta x((k-1)T)}{T^2}+b\frac{x(kT)-x((k-1)T)}{T}+kx(kT)=u(kT)\nonumber\\
+    m\frac{x(kT)-2x((k-1)T)+x((k-2)T)}{T^2}+b\frac{x(kT)-x((k-1)T)}{T}+kx(kT)=u(kT)\nonumber\\
+    m\frac{x(kT)-2x((k-1)T)+x((k-2)T)}{T^2}+b\frac{x(kT)-x((k-1)T)}{T}+kx(kT)=u(kT)\nonumber\\
+    (m+bT+kT^2)x(kT)=(2m+bT)x((k-1)T)-mx((k-2)T)+T^2u(kT)\nonumber\\
+    x(kT)=\frac{2m+bT}{m+bT+kT^2}x((k-1)T)-\frac{m}{m+bT+kT^2}x((k-2)T)+\frac{T^2}{m+bT+kT^2}u(kT)
+\end{gather}
+Örnek olması için $m=1\,kg$, $b=1\,Ns/m$, $k=1\,Nm$ ve $T=0.1$ olmak üzere fark denklemi
+\begin{equation}
+    x(kT)=1.8919x((k-1)T)-0.9009x((k-2)T)+0.009009u(kT)
+\end{equation}
+olarak elde edilir. Transfer fonksiyonundan yola çıkarak $\zeta=b\sqrt{m}/(2m\sqrt{k})$, $w_n=\sqrt{k}/\sqrt{m}$ ve $\phi=\cos^{-1}(\zeta)$ olmak üzere
+\begin{equation}
+\begin{split}
+    G(z)&=\mathcal{Z}\left\{\frac{1-e^{-0.1s}}{s(s^2+s+1)}\right\}\\
+    &=\frac{z-1}{z}\mathcal{Z}\left\{\frac{1}{s(s^2+s+1)}\right\}\\
+    &=\frac{z-1}{z}\left(\frac{z}{z-1}-\frac{1}{\sqrt{1-\zeta^2}}\frac{\sqrt{1-\zeta^2}z^2+ze^{-\zeta w_nT}\sin(w_n\sqrt{1-\zeta^2}T-\phi)}{z^2-2ze^{-\zeta w_nT}\cos(w_n\sqrt{1-\zeta^2}T)+e^{-2\zeta w_nT}}\right)\\
+    &=\frac{0.004833 z^3 - 0.0001585 z^2 - 0.004675 z}{ z^4 - 2.895 z^3 + 2.8 z^2 - 0.9048 z}\\
+    &=\frac{0.004833 z + 0.004675}{z^2 - 1.895 z + 0.9048}
 \end{split}
 \end{equation}
 elde edilir.

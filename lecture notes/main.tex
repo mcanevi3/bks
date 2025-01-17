@@ -67,25 +67,27 @@ cross/.default={3pt}}
 \usepackage{pgfplotstable}
 \usepackage{booktabs}
 
+
+
+\begin{document}
+\shorthandoff{=} % babel paketi hatasını gidermek için gerekli
 \renewcommand{\chaptername}{Bölüm}
 \renewcommand{\contentsname}{İçindekiler}
 \renewcommand{\figurename}{Şekil}
-\renewcommand{\tablename}{Tablo}
+\renewcommand{\tablename}{Çizelge}
 \renewcommand{\bibname}{Kaynaklar}
 \renewcommand{\listfigurename}{Şekiller}
-\renewcommand{\listtablename}{Tablolar}
+\renewcommand{\listtablename}{Çizelgeler}
 \renewcommand{\appendixname}{Ek}
 \renewcommand{\indexname}{Dizin}
 \renewcommand{\partname}{Bölüm}
 \renewcommand{\proofname}{İspat}
-
-\begin{document}
-\shorthandoff{=} % babel paketi hatasını gidermek için gerekli
 
 \tableofcontents
 
 \input{chapter/1}
 \input{chapter/2}
 \input{chapter/3}
+\input{chapter/4}
 
 \end{document}

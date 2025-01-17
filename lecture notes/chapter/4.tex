@@ -1,0 +1,52 @@
+\chapter{Zaman Domeni Kriterleri}
+Sürekli zamanda tanımlı birinci dereceden bir transfer fonksiyonu
+\begin{equation}
+    G(s)=\frac{p}{s+p}\label{eqn:1storder_sys}
+\end{equation}
+olarak verilsin. Birim basamak giriş için yanıt
+\begin{equation}
+\begin{split}
+    y(t)&=\mathcal{L}^{-1}\left\{\frac{p}{s+p}\cdot\frac{1}{s}\right\}\\
+    &=\mathcal{L}^{-1}\left\{\frac{1}{s}\right\}-\mathcal{L}^{-1}\left\{\frac{1}{s+p}\right\}\\
+    &=1-e^{-pt}
+\end{split}
+\end{equation}
+şeklinde hesaplanır. $e^{-t}$ fonksiyonunun aldığı değerler için Çizelge~\ref{tbl:exp_func} verilmiştir.
+\input{chapter/exp_fun1.tex}
+Görüldüğü üzere \ref{eqn:1storder_sys} ile verilen sistemin yanıtı $p$ değişkeninin değerinden bağımsız olarak $1$ değerine yakınsamaktadır. $1$ değerini aşmamaktadır. Dolayısıyla aşım değeri $\%0$'dır. Sürekli halde oturduğu değerin $\%2$ altı veya üstü ile tanımlanan $\%2$'lik banda çıkmamak üzere girdiği zamana yerleşme zamanı denir. Bu tanımdan ve Çizelge~\ref{tbl:exp_func}'den yola çıkarak \ref{eqn:1storder_sys} ile verilen sistemin yerleşme zamanı $t_s=4\,s$'dir. $p=1$ olmaması durumunda zaman ekseni genişler veya daralır bu sebepten yerleşme zamanı 
+\begin{equation} 
+    t_s=\frac{4}{p}
+\end{equation} 
+ile hesaplanır. İkinci dereceden bir sistem
+\begin{equation}
+    G(s)=\frac{w_n^2}{s^2+2\zeta w_ns+w_n^2}
+\end{equation}
+ile tanımlanmaktadır. Burada $\zeta$ sönüm oranı ve $w_n$ doğal frekans olarak adlandırılmaktadır. İkinci dereceden polinomun kökleri bulunurken faydalanılan $\Delta=b^2-4ac$ hesaplanırsa,
+\begin{equation}
+\begin{split}
+    \Delta&=(2\zeta w_n)^2-4 w_n^2\\
+    &=4\zeta^2 w_n^2-4 w_n^2\\
+    &=4w_n^2(\zeta^2-1)
+\end{split}
+\end{equation}
+elde edilir ve çözümün tipini belirlemek için
+\begin{equation}
+    \begin{cases}
+        \text{gerçel kök}& \Delta>0\quad \zeta>1\\
+        \text{çakışık kök}& \Delta=0\quad \zeta=1\\
+        \text{karmaşık kök}& \Delta<0\quad 0<\zeta<1
+    \end{cases}
+\end{equation}
+kullanılabilir. $\zeta>1$ durumunda gerçel köklü çözüm olmasından dolayı sistem transfer fonksiyonu
+\begin{equation}
+    G(s)=\frac{p_1 p_2}{(s+p_1)(s+p_2)}
+\end{equation}
+olarak güncellenebilir. $p_1>>p_2$ durumunda $p_2$, $p_2>>p_1$ durumunda $p_1$ yanıtın hızını ve davranışını belirler. $\zeta=1$ olması durumunda yanıt birinci dereceden bir sisteme göre daha yavaş olmaktadır. Haricinde, $0<\zeta<1$ durumunda 
+\begin{equation} 
+    t_s=\frac{4}{\zeta w_n},\quad \text{Aşım}=100\cdot e^{-\frac\pi\zeta w_n}{\sqrt{1-\zeta^2}}
+\end{equation} 
+ile hesaplanmaktadır. İkinci dereceden sistem yanıtı,
+\begin{equation}
+    y(t)=1-e^{-\zeta w_nt}\left[\cos(\sqrt{1-\zeta^2}w_nt)+\frac{\zeta}{\sqrt{1-\zeta^2}}\sin(\sqrt{1-\zeta^2}w_nt)\right]
+\end{equation}
+ile ifade edilmektedir. Sinüzoidal terimler salınımlı olduklarından sadece $e^{-\zeta w_nt}$ terimi yerleşme zamanının hesabı için önemlidir ve birinci dereceden sistem ile aynı ifade kullanılmaktadır.
