@@ -43,3 +43,24 @@ Tz
 figure(1);clf;hold on;grid on;
 stairs(t,y,'k','LineWidth',2);
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+syms kd kp real;
+Fzz=((kd+kp)*z-kd)/z;
+Tzz=(Fzz*Gzz)/(1+Fzz*Gzz);
+Tzz=simplifyFraction(Tzz);
+[pzs,pcs]=numden(Tzz);
+coef_pcs=coeffs(pcs,z,'all');
+coef_pcs=coef_pcs/coef_pcs(1);
+prob=coef_pcs==coef;
+sol=solve(prob);
+kdval=double(sol.kd);
+kpval=double(sol.kp);
+kdval
+kpval
+Fz=tf([kpval+kdval -kdval],[1 0],T);
+Tz=feedback(Fz*Gz,1);
+
+[y,t]=step(Tz);
+stairs(t,y,'b','LineWidth',2);
+
+

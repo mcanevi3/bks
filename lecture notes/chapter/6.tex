@@ -53,4 +53,36 @@ elde edilir. Bu durumda P kontrolör
 \begin{equation}
     T(z)=\frac{0.221}{z - 0.4493}
 \end{equation}
-şeklindedir.
+şeklindedir. PD kontrolör transfer fonksiyonu
+\begin{equation}
+\begin{split}
+    F(z)&=K_p+K_d(1-z^{-1})\\
+    &=K_p+K_d(\frac{z-1}{z})\\
+    &=\frac{K_pz+K_dz-K_d}{z}\\
+    &=\frac{(K_p+K_d)z-K_d}{z}
+\end{split}
+\end{equation}
+olmak üzere kapalı çevrim transfer fonksiyonu
+\begin{equation}
+    \begin{split}
+        T(z)&=\frac{F(z)G(z)}{1+F(z)G(z)}\\
+        &=\frac{\frac{(K_p+K_d)z-K_d}{z}\frac{0.1648}{z-0.6703}}{1+\frac{(K_p+K_d)z-K_d}{z}\frac{0.1648}{z-0.6703}}\\
+        &=\frac{0.1648(K_d+K_p)z-0.1648-K_d}{z^2+(0.1648(K_p+K_d)-0.6703)z-0.1648K_d}
+    \end{split}
+\end{equation}
+şeklindedir. Bu durumda tasarım problemi
+\begin{equation}
+    \begin{split}
+        0.1648(K_p+K_d)-0.6703&=-0.4144\\
+        -0.1648K_d&=0.2019
+    \end{split}
+\end{equation}
+ve çözüm ise $K_d=-1.2251$ ve $K_p=2.7778$ olarak elde edilir. PD kontrolör
+\begin{equation}
+    F(z)=\frac{1.553 z + 1.225}{z}
+\end{equation}
+ve kapalı çevrim transfer fonksiyonu ifadesi
+\begin{equation}
+    T(z)=\frac{0.2559 z + 0.2019}{z^2 - 0.4144 z + 0.2019}
+\end{equation}
+olarak elde edilir.
