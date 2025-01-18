@@ -37,11 +37,10 @@ kval=sol;
 
 Tz=feedback(kval*Gz,1);
 [y,t]=step(Tz);
-figure(1);clf;hold on;grid on;
+figure(1);clf;hold on;grid minor;
 xlabel("Zaman(s)");ylabel("y(kT)");title("Basamak Yanıtı");
 stairs(t,y,'k','LineWidth',2);
 print("../../img/"+"lec6_step1.eps",'-deps','-r150');
-return;
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 syms kd kp real;
 Fzz=((kd+kp)*z-kd)/z;
@@ -60,8 +59,9 @@ Fz=tf([kpval+kdval -kdval],[1 0],T);
 Tz=feedback(Fz*Gz,1);
 
 [y,t]=step(Tz);
-stairs(t,y,'b','LineWidth',2);
-
+figure(1);clf;hold on;grid minor;
+stairs(t,y,'k','LineWidth',2);
+print("../../img/"+"lec6_step2.eps",'-deps','-r150');
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 syms kp ki real;
 Fzz=((kp+ki)*z-kp)/(z-1);
@@ -77,5 +77,6 @@ Fz=tf([kpval+kival -kpval],[1 -1],T);
 Tz=feedback(Fz*Gz,1);
 
 [y,t]=step(Tz);
-stairs(t,y,'m','LineWidth',2);
-
+figure(1);clf;hold on;grid minor;
+stairs(t,y,'k','LineWidth',2);
+print("../../img/"+"lec6_step3.eps",'-deps','-r150');
