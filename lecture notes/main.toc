@@ -3,3 +3,5 @@
 \contentsline {chapter}{\numberline {2}Ayrıklaştırma}{7}{chapter.2}%
 \contentsline {chapter}{\numberline {3}Fark Denklemleri}{13}{chapter.3}%
 \contentsline {chapter}{\numberline {4}Zaman Domeni Kriterleri}{17}{chapter.4}%
+\contentsline {chapter}{\numberline {5}Z Tanım Bölgesinde Kök Eğrisi}{21}{chapter.5}%
+\contentsline {chapter}{\numberline {6}Z Tanım Bölgesinde Kontrolör Tasarımı}{23}{chapter.6}%
