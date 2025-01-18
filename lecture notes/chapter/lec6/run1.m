@@ -20,9 +20,8 @@ disp(coef);
 
 Gs=tf(1,[1 2]);
 
-
 Gz=c2d(Gs,T,'zoh');
-Gz
+
 syms s z;
 Gzz=0.1648/(z-0.6703);
 syms k;
@@ -31,18 +30,18 @@ Tzz=simplifyFraction(Tzz);
 [pzs,pcs]=numden(Tzz);
 coef_pcs=coeffs(pcs,z,'all');
 coef_pcs=coef_pcs/coef_pcs(1);
-coef_pcs
 prob=coef_pcs==[1 -exp(-(4/ts)*T)];
 sol=solve(prob);
 sol=double(sol);
 kval=sol;
 
 Tz=feedback(kval*Gz,1);
-Tz
 [y,t]=step(Tz);
 figure(1);clf;hold on;grid on;
+xlabel("Zaman(s)");ylabel("y(kT)");title("Basamak Yanıtı");
 stairs(t,y,'k','LineWidth',2);
-
+print("../../img/"+"lec6_step1.eps",'-deps','-r150');
+return;
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 syms kd kp real;
 Fzz=((kd+kp)*z-kd)/z;
