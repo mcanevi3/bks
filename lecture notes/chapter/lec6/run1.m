@@ -63,4 +63,20 @@ Tz=feedback(Fz*Gz,1);
 [y,t]=step(Tz);
 stairs(t,y,'b','LineWidth',2);
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+syms kp ki real;
+Fzz=((kp+ki)*z-kp)/(z-1);
+Tzz=(Fzz*Gzz)/(Fzz*Gzz+1);
+[pzs,pcs]=numden(Tzz);
+coef_pcs=coeffs(pcs,z,'all');
+coef_pcs=coef_pcs/coef_pcs(1);
+prob=coef==coef_pcs;
+sol=solve(prob);
+kpval=double(sol.kp);
+kival=double(sol.ki);
+Fz=tf([kpval+kival -kpval],[1 -1],T);
+Tz=feedback(Fz*Gz,1);
+
+[y,t]=step(Tz);
+stairs(t,y,'m','LineWidth',2);
 
