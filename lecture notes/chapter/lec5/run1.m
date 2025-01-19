@@ -1,5 +1,7 @@
 clear;clc;
 
+color={'r','b','m'};
+
 T=0.2;
 Gz=tf(1,conv(conv([1 0.1],[1 0.8]),[1 -0.5]),T);
 n=length(Gz.Denominator{:})-1;
@@ -17,8 +19,20 @@ end
 figure(1);clf;hold on;grid on;set(gca,'MinorGridColor','k','MinorGridAlpha',1);
 xlabel("Re");ylabel("Im");
 for i=1:n
-    plot(real(poles(i,:)),imag(poles(i,:)),'x','LineWidth',2);
+    plot(real(poles(i,:)),imag(poles(i,:)),'x','Color',color{i},'LineWidth',2);
 end
 rectangle('Position',[-1,-1,2,2],'Curvature',[1 1]);
 axis equal;
 print("../../img/"+"lec5_rlocus1.eps",'-depsc','-r150');
+
+figure(2);clf;hold on;grid on;set(gca,'MinorGridColor','k','MinorGridAlpha',1);
+xlabel("Re");ylabel("Im");
+for i=1:n
+    for k=2:length(kvec)
+        plot(real(poles(i,k-1:k)),imag(poles(i,k-1:k)),color{i},'LineWidth',2);
+    end
+end
+plot(real(poles(:,1)),imag(poles(:,1)),'kx','LineWidth',2);
+rectangle('Position',[-1,-1,2,2],'Curvature',[1 1]);
+axis equal;
+print("../../img/"+"lec5_rlocus2.eps",'-depsc','-r150');

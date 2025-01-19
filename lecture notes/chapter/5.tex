@@ -33,3 +33,28 @@ olarak hesaplanır. Karakteristik polinomunda $k$ değiştikçe köklerin aldı�
     \caption{Sisteme ait kök eğrisi}
     \label{fig:lec5_rlocus1}
 \end{figure}
+
+Şekil~\ref{fig:lec5_rlocus1} ile verilen ayrık noktalar birleştirildiğinde Şekil~\ref{fig:lec5_rlocus2} oluşmaktadır.
+\begin{figure}[!htb]
+    \centering
+    \includegraphics[width=0.75\textwidth]{img/lec5_rlocus2}
+    \caption{Sisteme ait kök eğrisi}
+    \label{fig:lec5_rlocus2}
+\end{figure}
+
+S tanım bölgesinde kararlılık sınırı $s=jw$ ile elde edilmektedir ve bu durumda $\zeta=0$'dır. Dolayısıyla,
+\begin{equation}
+\begin{split}
+    y(t)&=1-e^{-\zeta w_nt}\left[\cos(\sqrt{1-\zeta^2}w_nt)+\frac{\zeta}{\sqrt{1-\zeta^2}}\sin(\sqrt{1-\zeta^2}w_nt)\right]\\
+    &=1-\cos(w_nt)
+\end{split}
+\end{equation}
+elde edilmektedir. Görüldüğü üzere sistem yanıtı salınımlıdır. Girişe uygulanan birim basamak sinyaline karşın sistem salınım yapmakta ve giriş sinyali değerine yakınsamamaktadır. Z tanım bölgesine $z=e^{sT}$ ile geçiş yapılırsa
+\begin{equation}
+    \begin{split}
+        z&=e^{iwT}\\
+        z&=e^{i\theta}\\
+        z&=1\phase{ \theta}
+    \end{split}
+\end{equation}
+elde edilir. Dikkat edilirse açı değişmekte fakat genlik sabittir ve bu ifade birim çemberi tanımlamaktadır. 
