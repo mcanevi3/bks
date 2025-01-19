@@ -37,7 +37,7 @@ kval=sol;
 
 Tz=feedback(kval*Gz,1);
 [y,t]=step(Tz);
-figure(1);clf;hold on;grid minor;
+figure(1);clf;hold on;grid minor;set(gca, 'MinorGridColor', 'k','MinorGridAlpha',1);
 xlabel("Zaman(s)");ylabel("y(kT)");title("Basamak Yanıtı");
 stairs(t,y,'k','LineWidth',2);
 print("../../img/"+"lec6_step1.eps",'-deps','-r150');
@@ -59,7 +59,7 @@ Fz=tf([kpval+kdval -kdval],[1 0],T);
 Tz=feedback(Fz*Gz,1);
 
 [y,t]=step(Tz);
-figure(1);clf;hold on;grid minor;
+figure(1);clf;hold on;grid minor;set(gca, 'MinorGridColor', 'k','MinorGridAlpha',1);
 stairs(t,y,'k','LineWidth',2);
 print("../../img/"+"lec6_step2.eps",'-deps','-r150');
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -77,6 +77,6 @@ Fz=tf([kpval+kival -kpval],[1 -1],T);
 Tz=feedback(Fz*Gz,1);
 
 [y,t]=step(Tz);
-figure(1);clf;hold on;grid minor;
+figure(1);clf;hold on;grid minor;set(gca, 'MinorGridColor', 'k','MinorGridAlpha',1);
 stairs(t,y,'k','LineWidth',2);
 print("../../img/"+"lec6_step3.eps",'-deps','-r150');
