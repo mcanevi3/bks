@@ -11,7 +11,21 @@ olarak verilmiştir. P kontrolör ile kapalı çevrim transfer fonksiyonu
     T(z)&=\frac{k}{z^3 + 0.4 z^2 - 0.37 z - 0.04+k}
 \end{split}
 \end{equation}
-olarak hesaplanır. 
+olarak hesaplanır. Karakteristik polinomunda $k$ değiştikçe köklerin aldığı değer Çizelge~\ref{tbl:lec5_rlocus1} ile verilmiştir. Her kutbun kendi hareketinin görselleştirildiği çizime \textbf{Kök Eğrisi} denir. Sisteme ait kök eğrisi Şekil~\ref{fig:lec5_rlocus1} ile verilmiştir.
+
+\setlength{\tabcolsep}{30pt}
+\renewcommand{\arraystretch}{1}
+\begin{table}[!htb]
+    \caption{$k$'nın değişimine göre polinomun köklerinin yada sistem kutuplarının değişimi}\label{tbl:lec5_rlocus1}
+    \begin{tabularx}{\textwidth}{cccc}\hline
+    $\mathbf{k}$& $\mathbf{z_1}$& $\mathbf{z_2}$& $\mathbf{z_3}$\\\hline
+    0.1& -0.8909& 0.2455 + 0.0843i&  0.2455 - 0.0843i\\
+    0.2& -0.9594& 0.2797 + 0.2975i&  0.2797 - 0.2975i\\
+    0.3& -1.0160& 0.3080 + 0.4013i&  0.3080 - 0.4013i\\
+    0.4& -1.0649& 0.3325 + 0.4770i&  0.3325 - 0.4770i\\
+    \vdots& \vdots& \vdots& \vdots\\\hline
+    \end{tabularx}
+\end{table}
 
 \begin{figure}[!htb]
     \centering
@@ -19,4 +33,3 @@ olarak hesaplanır.
     \caption{Sisteme ait kök eğrisi}
     \label{fig:lec5_rlocus1}
 \end{figure}
-
