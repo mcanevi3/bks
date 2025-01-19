@@ -6,14 +6,18 @@ T=0.2;
 Gz=tf(1,conv(conv([1 0.1],[1 0.8]),[1 -0.5]),T);
 n=length(Gz.Denominator{:})-1;
 
-kvec=0.1:0.1:10;
+kvec=0:0.01:10;
 poles=zeros(n,length(kvec));
 
 for i=1:length(kvec)
     kval=kvec(i);
     Tz=feedback(kval*Gz,1);
     den=Tz.Denominator{:};
-    poles(:,i)=roots(den);
+    if kval==0
+        poles(:,i)=roots(Gz.Denominator{:});
+    else
+        poles(:,i)=roots(den);
+    end
 end
 
 figure(1);clf;hold on;grid on;set(gca,'MinorGridColor','k','MinorGridAlpha',1);
@@ -36,3 +40,11 @@ plot(real(poles(:,1)),imag(poles(:,1)),'kx','LineWidth',2);
 rectangle('Position',[-1,-1,2,2],'Curvature',[1 1]);
 axis equal;
 print("../../img/"+"lec5_rlocus2.eps",'-depsc','-r150');
+
+syms z;
+poles=roots(Gz.Denominator{:});
+distance=real(z-poles).^2+imag(z-poles).^2;
+distance
+
+% tan(a+b+c)=(tan(a)+tan(b)+tan(c)-tan(a)*tan(b)*tan(c))/...;
+% 

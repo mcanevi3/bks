@@ -11,7 +11,7 @@ for i=1:length(pvec)
 
 end
 
-figure(1);clf;hold on;grid on;
+figure(1);clf;hold on;grid on;set(gca, 'XColor', 'k', 'YColor', 'k');
 xlabel("p");ylabel("t_s");legend("show");
 plot(pvec,tsvec,'k','LineWidth',2,'DisplayName','stepinfo');
 plot(pvec,4./pvec,'b','LineWidth',2,'DisplayName','4/p');
@@ -29,7 +29,7 @@ for i=1:length(zetavec)
     tsvec(i)=info.SettlingTime;
 end
 
-figure(2);clf;hold on;grid on;
+figure(2);clf;hold on;grid on;set(gca, 'XColor', 'k', 'YColor', 'k');
 xlabel("p");ylabel("t_s");legend("show");
 plot(zetavec*wn,tsvec,'k','LineWidth',2,'DisplayName','stepinfo');
 plot(zetavec*wn,4./(zetavec*wn),'b','LineWidth',2,'DisplayName','4/a');
@@ -47,7 +47,7 @@ for i=1:length(wnvec)
     tsvec(i)=info.SettlingTime;
 end
 
-figure(3);clf;hold on;grid on;
+figure(3);clf;hold on;grid on;set(gca, 'XColor', 'k', 'YColor', 'k');
 xlabel("p");ylabel("t_s");legend("show");
 plot(wnvec*zeta,tsvec,'k','LineWidth',2,'DisplayName','stepinfo');
 plot(wnvec*zeta,4./(zeta*wnvec),'b','LineWidth',2,'DisplayName','4/a');
@@ -65,7 +65,7 @@ for i=1:length(zetavec)
     osvec(i)=info.Overshoot;
 end
 
-figure(2);clf;hold on;grid on;
+figure(2);clf;hold on;grid on;set(gca, 'XColor', 'k', 'YColor', 'k');
 xlabel("p");ylabel("t_s");legend("show");
 plot(zetavec,osvec,'k','LineWidth',2,'DisplayName','stepinfo');
 plot(zetavec,100*exp(-pi*zetavec./sqrt(1-zetavec.^2)),'b','LineWidth',2,'DisplayName','100e^{-pi\\zeta/\\sqrt{1-\\zeta^2}}');
