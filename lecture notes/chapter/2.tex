@@ -166,3 +166,78 @@ ifadesi Z dönüşümüne tabi tutulmalıdır. Dolayısıyla,
     \end{split}\label{eqn:ornek_sistem_foh}
 \end{equation}
 elde edilir. Görüldüğü üzere, birim gecikme elde edilmiştir.
+
+\begin{enumerate}
+    \item $x(t)=sin(t)$ fonksiyonunun türevini hesaplayıp çiziniz.
+    \begin{lstlisting}[style=Matlab-editor]
+    t=0:0.1:10;
+    xt=sin(t);
+    dxt=zeros(size(t));
+    T=t(2)-t(1);
+    for i=2:length(t)
+        dxt(i)=(xt(i)-xt(i-1))/T;
+    end
+    figure(1);clf;hold on;grid on;xlabel("Zaman(s)");ylabel("x(t)");title("sin(t) ve turevi");
+    plot(t,xt,'k','LineWidth',2);
+    plot(t,dxt,'r','LineWidth',2);
+    \end{lstlisting}
+    Şekil~\ref{fig:lec2_plot1}'de $sin(t)$ ve türevi gösterilmiştir.
+    \begin{figure}[!htb]
+        \centering
+        \includegraphics[width=0.5\textwidth]{img/lec2_plot1}
+        \caption{$sin(t)$ ve türevinin karşılaştırılması($T=0.1$)}
+        \label{fig:lec2_plot1}
+    \end{figure}
+
+    Şekil~\ref{fig:lec2_plot2}'de daha düşük bir örnekleme zamanı seçilmiştir ve bu sebeple gerek sinyal gerekse türevi düşük kalitededir.
+    \begin{figure}[!htb]
+        \centering
+        \includegraphics[width=0.5\textwidth]{img/lec2_plot2}
+        \caption{$sin(t)$ ve türevinin karşılaştırılması($T=1$)}
+        \label{fig:lec2_plot2}
+    \end{figure}
+    \item $x(t)=e^{-t}$ sinyalinin integralini hesaplayınız ve çizdiriniz.
+    \begin{lstlisting}[style=Matlab-editor]
+    t=0:1:10;
+    xt=exp(-t);
+    q=zeros(size(t));
+    T=t(2)-t(1);
+    for i=2:length(t)
+        q(i)=q(i-1)+xt(i-1)*T;
+    end
+    figure(1);clf;hold on;grid on;xlabel("Zaman(s)");ylabel("x(t)");title("sin(t) ve integrali");
+    plot(t,xt,'k','LineWidth',2);
+    plot(t,q,'r','LineWidth',2);
+    \end{lstlisting}
+    Şekil~\ref{fig:lec2_plot3}'de integral çizdirilmiştir.
+    \begin{figure}[!htb]
+        \centering
+        \includegraphics[width=0.5\textwidth]{img/lec2_plot3}
+        \caption{$sin(t)$ ve integralinin karşılaştırılması($T=1$)}
+        \label{fig:lec2_plot3}
+    \end{figure}
+    \item ZOH yöntemini kullanarak $T=1$ olmak üzere $x(kT)=1$ sinyalini veri tutucunu çıkışını çizdiriniz.
+    \begin{lstlisting}[style=Matlab-editor]
+    T=1;
+    t=0:T:3;
+    xt=[1,2,-1,3];
+    
+    tnew=0:0.01:4;
+    yt=zeros(size(tnew));
+    for i=1:length(t)
+        for j=1:100
+            yt(100*(i-1)+j)=xt(i);
+        end
+    end
+    figure(1);clf;hold on;grid on;xlabel("Zaman(s)");ylabel("x(t)");title("ZOH ornegi");
+    stem(t,xt,'k','LineWidth',2);
+    plot(tnew,yt,'r','LineWidth',2);
+    \end{lstlisting}
+    Şekil~\ref{fig:lec2_plot4}'de ZOH işleminin sonucu gösterilmiştir.
+    \begin{figure}[!htb]
+        \centering
+        \includegraphics[width=0.5\textwidth]{img/lec2_plot4}
+        \caption{ZOH örneği}
+        \label{fig:lec2_plot4}
+    \end{figure}
+\end{enumerate}

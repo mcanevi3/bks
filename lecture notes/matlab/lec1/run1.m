@@ -10,7 +10,7 @@ figure(1);clf;hold on;grid on;
 xlabel("Zaman(s)");ylabel("y(t)");title("sin(t) grafiği");
 plot(0:0.01:10,f1(0:0.01:10),'k','LineWidth',2);
 stem(tvec,f1(tvec),'r','LineWidth',2);
-print("../../img/"+"lec5_plot1.eps",'-depsc','-r150');
+print("../../img/"+"lec1_plot1.eps",'-depsc','-r150');
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 syms t s z;
 yt=dirac(t);
