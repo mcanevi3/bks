@@ -54,3 +54,19 @@ stem(t,xt,'k','LineWidth',2);
 plot(tnew,yt,'r','LineWidth',2);
 print("../../img/"+"lec2_plot4.eps",'-depsc','-r150');
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+T=1;
+t=0:T:3;
+xt=[1,2,-1,3];
+
+tnew=0:0.01:4;
+yt=zeros(size(tnew));
+for i=1:length(t)-1
+    for j=1:100
+        yt(100*(i-1)+j)=xt(i)+0.01*j*(xt(i+1)-xt(i));
+    end
+end
+figure(1);clf;hold on;grid on;xlabel("Zaman(s)");ylabel("x(t)");title("ZOH örneği");
+stem(t,xt,'k','LineWidth',2);
+plot(tnew,yt,'r','LineWidth',2);
+print("../../img/"+"lec2_plot5.eps",'-depsc','-r150');
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
