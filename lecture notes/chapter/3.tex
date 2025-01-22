@@ -12,13 +12,6 @@
 \end{split}
 \end{equation}
 elde edilir. Z tanım bölgesinde tanımlı transfer fonksiyonundan fark denklemine geçişe örnektir. Fark denklemleri programlama dilleri ile kolaylıkla gerçeklenebilmektedir.
-\begin{lstlisting}
-u=ones(1,length(t));
-y=zeros(1,length(t));
-
-for i=2:length(t)
-    y(i)=exp(-T)*y(i-1)+(1-exp(-T))*u(i);
-end\end{lstlisting}
 Benzer şekilde FOH yöntemi ile elde edilen ve Denklem~\ref{eqn:ornek_sistem_foh} ile verilen ifade için
 \begin{equation}
     \begin{split}
@@ -65,3 +58,45 @@ olarak elde edilir. Transfer fonksiyonundan yola çıkarak $\zeta=b\sqrt{m}/(2m\
 \end{split}
 \end{equation}
 elde edilir.
+\begin{enumerate}
+    \item Yay-kütle-damper sisteminin çıkış işaretini fark denklemlerini kullanarak elde ediniz. 
+    \begin{lstlisting}[style=Matlab-editor]
+    m=1;
+    b=1;
+    k=1;
+    Gs=tf(1,[m b k]);
+    [y,t]=step(Gs,10);
+    T=0.1;
+    fac1=(2*m+b*T)/(m+b*T+k*T^2);
+    fac2=-m/(m+b*T+k*T^2);
+    fac3=T^2/(m+b*T+k*T^2);
+    tvec=0:T:10;
+    xt=zeros(size(tvec));
+    ut=ones(size(tvec));
+    for i=3:length(tvec)
+        xt(i)=fac1*xt(i-1)+fac2*xt(i-2)+fac3*ut(i);
+    end
+    \end{lstlisting}
+
+    \begin{figure}[!htb]
+        \centering
+        \includegraphics[width=0.5\textwidth]{img/lec3_step1}
+        \caption{Yay-kütle-damper sisteminin çıkış işareti}
+        \label{fig:lec3_step1}
+    \end{figure}
+    \item Yay-kütle-damper sisteminin çıkış işaretini ayrık transfer fonksiyonu kullanarak elde ediniz. 
+    \begin{lstlisting}[style=Matlab-editor]
+    T=0.25;
+    Gz=c2d(tf(1,[m b k]),T);
+    [yz,tz]=step(Gz,10);
+    T=1;
+    Gz2=c2d(tf(1,[m b k]),T);
+    [yz2,tz2]=step(Gz2,10);
+    \end{lstlisting}
+    \begin{figure}[!htb]
+        \centering
+        \includegraphics[width=0.5\textwidth]{img/lec3_step2}
+        \caption{Yay-kütle-damper sisteminin çıkış işareti}
+        \label{fig:lec3_step2}
+    \end{figure}
+\end{enumerate}
