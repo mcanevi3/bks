@@ -79,5 +79,87 @@ elde edilir. Bu durumda,
     G(s)=\frac{45.81}{s^2+8s+45.81}
 \end{equation} 
 transfer fonksiyonu elde edilir. 
-
+\begin{enumerate}
+    \item 
+    \begin{equation}
+        G(s)=\frac{p}{s+p}
+        \label{fig:first_order}
+    \end{equation}
+    ve $1\leq p\leq 5$ olmak üzere yerleşme zamanı ile sistem kutubu arasındaki ilişkiyi elde ediniz.
+    \begin{lstlisting}[style=Matlab-editor]
+    pvec=1:1:5;
+    tsvec=zeros(size(pvec));
+    for i=1:length(pvec)
+        pval=pvec(i);
+        Gs=tf(pval,[1 pval]);
+        info=stepinfo(Gs);
+        tsvec(i)=info.SettlingTime;
+    end
+    \end{lstlisting}
+    \begin{figure}[!htb]
+        \centering
+        \includegraphics[width=0.5\textwidth]{img/lec4_plot1}
+        \caption{Denklem~\ref{eqn:first_order} ile verilen sistem için yerleşme zamanı}
+        \label{fig:lec4_plot1}
+    \end{figure}
+    \item $0<\zeta\leq1$ ve $w_n=2$ olmak üzere 
+    \begin{equation}
+        G(s)=\frac{w_n^2}{s^2+2\zeta w_ns+w_n^2}
+        \label{eqn:second_order}
+    \end{equation}
+    sisteminin yerleşme zamanının formülünü elde ediniz.
+    \begin{lstlisting}[style=Matlab-editor]
+    wn=2;
+    zetavec=0.1:0.1:1;
+    tsvec=zeros(size(zetavec));
+    for i=1:length(zetavec)
+        zetaval=zetavec(i);
+        Gs=tf(wn^2,[1 2*zetaval*wn wn^2]);
+        info=stepinfo(Gs);
+        tsvec(i)=info.SettlingTime;
+    end
+    \end{lstlisting}
+    \begin{figure}[!htb]
+        \centering
+        \includegraphics[width=0.5\textwidth]{img/lec4_plot2}
+        \caption{Denklem~\ref{eqn:second_order} ile verilen sistem için yerleşme zamanı}
+        \label{fig:lec4_plot2}
+    \end{figure}
+    \item Denklem~\ref{eqn:second_order} sistemi için $1\leq w_n\leq 5$ ve $\zeta=0.6$ değerleri için yerleşme zamanı formülünü elde ediniz.
+    \begin{lstlisting}[style=Matlab-editor]
+    wnvec=1:5;
+    zeta=0.6;
+    tsvec=zeros(size(wnvec));
+    for i=1:length(wnvec)
+        wnval=wnvec(i);
+        Gs=tf(wn^2,[1 2*zeta*wnval wnval^2]);
+        info=stepinfo(Gs);
+        tsvec(i)=info.SettlingTime;
+    end 
+    \end{lstlisting}
+    \begin{figure}[!htb]
+        \centering
+        \includegraphics[width=0.5\textwidth]{img/lec4_plot3}
+        \caption{Denklem~\ref{eqn:second_order} ile verilen sistem için yerleşme zamanı}
+        \label{fig:lec4_plot3}
+    \end{figure}
+    \item Denklem~\ref{eqn:second_order} sistemi için $0< \zeta<1$ ve $w_n=2$ değerleri için aşımın ifadesini elde ediniz.
+    \begin{lstlisting}[style=Matlab-editor]
+    wn=2;
+    zetavec=0.1:0.1:1;
+    osvec=zeros(size(zetavec));
+    for i=1:length(zetavec)
+        zetaval=zetavec(i);
+        Gs=tf(wn^2,[1 2*zetaval*wn wn^2]);
+        info=stepinfo(Gs);
+        osvec(i)=info.Overshoot;
+    end
+    \end{lstlisting}
+    \begin{figure}[!htb]
+        \centering
+        \includegraphics[width=0.5\textwidth]{img/lec4_plot4}
+        \caption{Denklem~\ref{eqn:second_order} ile verilen sistem için aşım}
+        \label{fig:lec4_plot4}
+    \end{figure}
+\end{enumerate}
 % 1-exp(-4*t)*(cos(5.457*t)+0.733*sin(5.457*t))
