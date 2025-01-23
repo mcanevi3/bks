@@ -1,212 +1,111 @@
-\chapter{Z Tanım Bölgesinde Kontrolör Tasarımı}
-\begin{enumerate}
-    \item Geçici hal yanıtını şekillendirecek isterler dikkate alınarak s tanım bölgesinde baskın kutuplar seçilir. 
-    \item Baskın kutuplar $z=e^{sT}$ ilişkisi ile z tanım bölgesine aktarılır. 
-    \item Kontrol edilecek sistem Z tanım bölgesine geçirilir. 
-    \item Kapalı çevrim transfer fonksiyonu elde edilir ve kutup atama yapılır.
-\end{enumerate}
-Örnek sistem
+\chapter{Z Tanım Bölgesinde Zaman Tanım Bölgesi İsterler}
+Zaman tanım bölgesi isterleri s tanım bölgesinde tanımlanmıştır ve z tanım bölgesine 
 \begin{equation}
-    G(s)=\frac{1}{s+2}
+    z=e^{sT}
 \end{equation}
-z tanım bölgesinde $T=0.2$ olmak üzere
+ile geçiş yapılmaktadır. Bu durumda s tanım bölgesinde isterlerin karşılık düştüğü konumlar bir dönüşüm sonucu z tanım bölgesinde konumlanmaktadır. S tanım bölgesinde bir kutup
 \begin{equation}
-    G(z)=\frac{0.1648}{z-0.6703}
+    s=-\sigma+w_di
 \end{equation}
-olarak elde edilmektedir. Yerleşme zamanı $t_s=2$ ve aşım $\%10$ isterleri verilmiştir. Bu durumda $\zeta=0.591$ ve $w_n=6.7664$ seçilir. Seçilen sönüm oranı ve doğal frekans ile baskın kutuplar
-\begin{equation}
-    s_{1,2}=-4 \pm 5.4575i
-\end{equation}
-şeklinde hesaplanır. $z=e^{sT}$ ifadesi ile z tanım bölgesinde kutuplar
-\begin{equation}
-    z_{1,2}=0.2072 \pm 0.3987i
-\end{equation}
-ve kutuplardan oluşturulacak polinom
-\begin{equation}
-    p(z)=z^2-0.4144 z+0.2019
-\end{equation}
-olarak hesaplanır. P tipi kontrolör ile kapalı çevrim transfer fonksiyonunun ifadesi
+olmak üzere z tanım bölgesinde
 \begin{equation}
 \begin{split}
-    T(z)&=\frac{kG(z)}{1+kG(z)}\\
-    &=\frac{k\frac{0.1648}{z-0.6703}}{1+k\frac{0.1648}{z-0.6703}}\\
-    &=\frac{k(0.1648)}{z-0.6703+k(0.1648)}\\
-    &=\frac{0.1648k}{z+0.1648k-0.6703}
+    z&=e^{-\sigma T+w_dTi}\\
+    z&=e^{-\sigma T}e^{w_dTi}\\
+    z&=e^{-\sigma T}\phase{w_dT}\\
+    z&=e^{-\sigma T}\cos{w_dT}+e^{-\sigma T}\sin{w_dT}i\\
+    z&=e^{-\zeta w_n T}\cos{(\sqrt{1-\zeta^2}w_nT)}+e^{-\zeta w_n T}\sin{(\sqrt{1-\zeta^2}w_nT)}i
 \end{split}
 \end{equation}
-şeklindedir. Görüldüğü üzere karakteristik polinom birinci dereceden elde edilmiştir ve her iki isterlerin sağlanması mümkün değildir. Yerleşme zamanı sağlanmak istenirse,
+olarak elde edilir. Görüldüğü üzere s tanım bölgesinden z tanım bölgesine geçiş durumunda kutupsal koordinatlar elde edilmektedir. İncelemelerin basit olması amacıyla örnekleme zamanı $T=1$ olsun.
+$w_n=1$ olmak üzere
 \begin{equation}
-    s=-\frac{4}{t_s}=-4
+        z=e^{-\zeta}\phase{\sqrt{1-\zeta^2}}
 \end{equation}
-ve z tanım bölgesinde
-\begin{equation}
-    z=e^{sT}=e^{-0.8}=0.4493
-\end{equation}
-elde edilir. Bu durumda P kontrolör
-\begin{equation}
-\begin{split}
-    -0.1648k+0.6703&=0.4493\\
-    k&=1.341
-\end{split}
-\end{equation}
-şeklindedir. Kapalı çevrim transfer fonksiyonu
-\begin{equation}
-    T(z)=\frac{0.221}{z - 0.4493}
-\end{equation}
-şeklindedir. Kapalı çevrim transfer fonksiyonuna ait basamak yanıtı Şekil~\ref{fig:lec6_step1} ile verilmiştir.
-\begin{figure}[!htb]
+elde edilir. $\zeta$ arttıkça yarıçap küçülmektedir ve açı azalmaktadır. Çizelge~\ref{tbl:yaricap_aci1} ile verilene göre yarıçapın küçüldüğü ve açının azaldığı görülmektedir.
+\begin{table}[!htb]
     \centering
-    \includegraphics[width=0.75\textwidth]{img/lec6_step1}
-    \caption{P kontrol için kapalı çevrim basamak yanıtı}
-    \label{fig:lec6_step1}
-\end{figure}
-
-PD kontrolör transfer fonksiyonu
-\begin{equation}
-\begin{split}
-    F(z)&=K_p+K_d(1-z^{-1})\\
-    &=K_p+K_d(\frac{z-1}{z})\\
-    &=\frac{K_pz+K_dz-K_d}{z}\\
-    &=\frac{(K_p+K_d)z-K_d}{z}
-\end{split}
-\end{equation}
-olmak üzere kapalı çevrim transfer fonksiyonu
-\begin{equation}
-    \begin{split}
-        T(z)&=\frac{F(z)G(z)}{1+F(z)G(z)}\\
-        &=\frac{\frac{(K_p+K_d)z-K_d}{z}\frac{0.1648}{z-0.6703}}{1+\frac{(K_p+K_d)z-K_d}{z}\frac{0.1648}{z-0.6703}}\\
-        &=\frac{0.1648(K_d+K_p)z-0.1648-K_d}{z^2+(0.1648(K_p+K_d)-0.6703)z-0.1648K_d}
-    \end{split}
-\end{equation}
-şeklindedir. Bu durumda tasarım problemi
-\begin{equation}
-    \begin{split}
-        0.1648(K_p+K_d)-0.6703&=-0.4144\\
-        -0.1648K_d&=0.2019
-    \end{split}
-\end{equation}
-ve çözüm ise $K_d=-1.2251$ ve $K_p=2.7778$ olarak elde edilir. PD kontrolör
-\begin{equation}
-    F(z)=\frac{1.553 z + 1.225}{z}
-\end{equation}
-ve kapalı çevrim transfer fonksiyonu ifadesi
-\begin{equation}
-    T(z)=\frac{0.2559 z + 0.2019}{z^2 - 0.4144 z + 0.2019}
-\end{equation}
-olarak elde edilir.
-\begin{figure}[!htb]
-    \centering
-    \includegraphics[width=0.75\textwidth]{img/lec6_step2}
-    \caption{PD kontrol için kapalı çevrim basamak yanıtı}
-    \label{fig:lec6_step2}
-\end{figure}
-
-PI kontrolörü 
-\begin{equation}
-\begin{split}
-    F(z)&=K_p+\frac{K_iz}{z-1}\\
-    &=\frac{(K_p+K_i)z-K_p}{z-1}
-\end{split}
-\end{equation}
-olarak tanımlanmıştır. Kapalı çevrim transfer fonksiyonu 
-\begin{equation}
-    \begin{split}
-        T(z)&=\frac{F(z)G(z)}{1+F(z)G(z)}\\
-        &=\frac{\frac{(K_p+K_i)z-K_p}{z-1}\frac{0.1648}{z-0.6703}}{1+\frac{(K_p+K_i)z-K_p}{z-1}\frac{0.1648}{z-0.6703}}\\
-        &=\frac{0.1648(K_p+K_i)z-0.1648K_p}{z^2+(0.1648(K_p+K_i)-1.6703)z+0.6703-0.1648K_p}
-    \end{split}
-\end{equation}
-şeklindedir. Tasarım problemi
-\begin{equation}
-    \begin{split}
-       0.1648(K_p+K_i)-1.6703&=-0.4144\\
-       0.6703-0.1648K_p&=0.2019
-    \end{split}
-\end{equation}
-ve çözüm ise $K_p=2.8423$ ve $K_i=4.7784$ şeklindedir. Bu durumda PI kontrolör
-\begin{equation}
-        F(z)=\frac{7.621 z - 2.842}{z-1}
-\end{equation}
-ve kapalı çevrim transfer fonksiyonu
-\begin{equation}
-\begin{split}
-    T(z)&=\frac{1.256 z - 0.4685}{z^2 - 0.4141 z + 0.2018}\\
-    &=\frac{1.2562 (z-0.373)}{z^2 - 0.4141 z + 0.2018}\\
-\end{split}
-\end{equation}
-olarak elde edilir.
+    \caption{$w_n=1$ için yarıçap ve açının değişimi}\label{tbl:yaricap_aci1}
+    \begin{tabular}{cc}\hline
+        Yarıçap& Açı\\\hline
+        $0.9048$& $57.0086^o$\\
+        $0.8187$& $56.1382^o$\\
+        $0.7408$& $54.6567^o$\\
+        $0.6703$& $52.5124^o$\\
+        $0.6065$& $49.6196^o$\\
+        $0.5488$& $45.8366^o$\\
+        $0.4966$& $40.9174^o$\\
+        $0.4493$& $34.3775^o$\\
+        $0.4066$& $24.9747^o$\\
+        $0.3679$& $0^o$\\\hline
+    \end{tabular}
+\end{table}
 
 \begin{figure}[!htb]
     \centering
-    \includegraphics[width=0.75\textwidth]{img/lec6_step3}
-    \caption{PI kontrol için kapalı çevrim basamak yanıtı}
-    \label{fig:lec6_step3}
+    \includegraphics[width=0.75\textwidth]{img/lec6_plot1}
+    \caption{$\zeta$ değişiminin z tanım bölgesindeki izdüşümü}
+    \label{fig:lec6_plot1}
 \end{figure}
-
-PID kontrolör
+%%%%%%%%%%%%%%%%%%%%
+$\zeta=0.1$ olmak üzere
 \begin{equation}
-\begin{split}
-    F(z)&=K_p+\frac{K_iz}{z-1}+K_d\frac{z-1}{z}\\
-    &=\frac{K_p(z^2-z)+K_iz^2+K_d(z-1)^2}{z^2-z}\\
-    &=\frac{K_pz^2-K_pz+K_iz^2+K_dz^2-2K_dz+K_d}{z^2-z}\\
-    &=\frac{(K_p+K_i+K_d)z^2-(K_p+2K_d)z+K_d}{z^2-z}
-\end{split}
+        z=e^{-0.1w_n}\phase{0.995w_n}
 \end{equation}
-olarak tanımlanmıştır. Kapalı çevrim transfer fonksiyonu
-\begin{equation}
-    \begin{split}
-        T(z)&=\frac{F(z)G(z)}{1+F(z)G(z)}\\
-        &=\frac{\frac{(K_p+K_i+K_d)z^2-(K_p+2K_d)z+K_d}{z^2-z}\frac{0.1648}{z-0.6703}}{1+\frac{(K_p+K_i+K_d)z^2-(K_p+2K_d)z+K_d}{z^2-z}\frac{0.1648}{z-0.6703}}\\
-        &=\frac{0.1648((K_p+K_i+K_d)z^2-(K_p+2K_d)z+K_d)}{(z^2-z)(z-0.6703)+0.1648((K_p+K_i+K_d)z^2-(K_p+2K_d)z+K_d)}
-    \end{split}
-\end{equation}
-olmaktadır. Bu durumda tasarım problemi
-\begin{equation}
-    \begin{split}
-        0.1648(K_p+K_i+K_d)-1.6703&= p- 0.4144\\
-        0.6703-0.1648(K_p+2K_d)&=0.2019 - 0.4144p\\
-        0.1648K_d&=0.2019p
-    \end{split}
-\end{equation}
-olarak verilir. Burada polinom dereceleri eşitlemek amacıyla tasarlanan polinom $s+p$ terimi ile çarpılmıştır. Görüldüğü üzere bilinmeyen sayısı denklem sayısından fazla olması sebebiyle birden çok çözüm bulunmaktadır. Bu durum bir fırsata çevrilirse, isterleri sağlama konusunda bir eniyileştirme işlemi yapılabilir. Bunun için parametrik çözüm elde edilmelidir. $p$, $k_d$ ve $k_i$ kalan parametre $k_p$ cinsinden elde edilirse 
-\begin{equation}
-    \begin{split}
-        p&=15.51k_p-44.08\\
-        k_d&=19k_p-54\\
-        k_i&=74.1k_p-205.8
-    \end{split}
-\end{equation}
-olarak bulunur. Kapalı çevrim sistemin kararlılığı açısından $|p|<1$ şartı sağlanmalıdır. Bu sebeple $k_p$ için sınır değerler
-\begin{equation}
-    15.51k_p-44.08=1,\quad 15.51k_p-44.08=-1
-\end{equation}
-denklemleri çözülerek 
-\begin{equation}
-    2.7778<k_p<2.9067
-\end{equation}
-elde edilir. Bu aralıkta değerler tek tek seçilir ve kapalı çevrim transfer fonksiyonu ve elde edilen yerleşme zamanı ve aşım verileri ile 
-\begin{equation}
-    J(k_p)=\frac{|t_s-1|}{2}+\frac{|os-10|}{20}
-\end{equation}
-amaç fonksiyonunda yerine yazılır. $J(k_p)$'yi en az yapan $k_p$ değeri $k_p=2.7998$ olarak elde edilir. Bu durumda kontrolör parametreleri $k_d=-0.8067$ ve $k_i=1.6319$ ve dolayısıyla kontrolör transfer fonksiyonu
-\begin{equation}
-    F(z)=\frac{3.625 z^2 - 1.186 z - 0.8067}{ z^2 - z}
-\end{equation}
-şeklindedir. Kapalı çevrim transfer fonksiyonu 
-\begin{equation}
-\begin{split}
-    T(z)&=\frac{0.5975 z^2 - 0.1956 z - 0.133}{z^3 - 1.073 z^2 + 0.4748 z - 0.133}\\
-    &=\frac{0.59754 (z-0.663) (z+0.3357)}{(z-0.6585) (z^2 - 0.4143z + 0.2019)}\\
-    &\approx\frac{0.6014(z+0.3357)}{z^2 - 0.4143z + 0.2019}
-\end{split}
-\end{equation}
-olarak hesaplanmaktadır. Görüldüğü üzere yakın bir kutup ve sıfır mevcuttur. Bu yakınlık bir götürmeye sebep olarak istenen kutup dağılımına daha yakın bir kapalı çevrim sistem elde edilmektedir. Basamak yanıtı Şekil~\ref{fig:lec6_step4} ile verilmiştir.
+elde edilir. $w_n$ arttıkça yarıçap küçülür ve açı artar. 
+\begin{table}[!htb]
+    \centering
+    \caption{$\zeta=0.1$ için yarıçap ve açının değişimi}\label{tbl:yaricap_aci2}
+    \begin{tabular}{cc}\hline
+        Yarıçap& Açı\\\hline
+        $0.90484$&  $57.009^o$\\
+        $0.81873$&  $114.02^o$\\
+        $0.74082$&  $171.03^o$\\
+        $0.67032$&  $228.03^o$\\
+        $0.60653$&  $285.04^o$\\
+        $0.54881$&  $342.05^o$\\\hline
+    \end{tabular}
+\end{table}
 
 \begin{figure}[!htb]
     \centering
-    \includegraphics[width=0.75\textwidth]{img/lec6_step4}
-    \caption{PID kontrol için kapalı çevrim basamak yanıtı}
-    \label{fig:lec6_step4}
+    \includegraphics[width=0.75\textwidth]{img/lec6_plot2}
+    \caption{$w_n$ değişiminin z tanım bölgesindeki izdüşümü($\zeta=0.1$)}
+    \label{fig:lec6_plot2}
 \end{figure}
 
-Görüldüğü üzere isterlere oldukça yakın değerler elde edilmiştir. Bunun sebebi, PID kontrolörün fazladan parametreye sahip olması ve bu parametre kullanılarak bir eniyileştirme işleminin mümkün olmasıdır.
+\begin{figure}[!htb]
+    \centering
+    \includegraphics[width=0.75\textwidth]{img/lec6_plot3}
+    \caption{$w_n$ değişiminin z tanım bölgesindeki izdüşümü($\zeta=0.5$)}
+    \label{fig:lec6_plot3}
+\end{figure}
+%%%%%%%%%%%%%%%%%%%%
+$t_s=5$ ise $\zeta w_n=0.8$ olur ve 
+\begin{equation}
+\begin{split}
+    z&=e^{-\zeta w_n}\phase{\sqrt{1-\zeta^2}w_n}\\
+    z&=e^{-0.8}\phase{\sqrt{1-\zeta^2}\frac{0.8}{\zeta}}
+\end{split}
+\end{equation}
+elde edilir. $\zeta$ arttıkça yarıçap değişmez ve açı azalır. 
+\begin{table}[!htb]
+    \centering
+    \caption{$t_s=5$ için yarıçap ve açının değişimi}\label{tbl:yaricap_aci3}
+    \begin{tabular}{cc}\hline
+        Yarıçap& Açı\\\hline
+        $0.44933$& $224.55^o$\\
+        $0.44933$& $105.02^o$\\
+        $0.44933$& $61.115^o$\\
+        $0.44933$& $34.377^o$\\
+        $0.44933$& $     0^o$\\\hline
+    \end{tabular}
+\end{table}
+
+\begin{figure}[!htb]
+    \centering
+    \includegraphics[width=0.75\textwidth]{img/lec6_plot4}
+    \caption{$t_s$ sabit durumunun z tanım bölgesindeki izdüşümü}
+    \label{fig:lec6_plot4}
+\end{figure}
+

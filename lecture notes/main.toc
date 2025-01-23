@@ -4,4 +4,12 @@
 \contentsline {chapter}{\numberline {3}Fark Denklemleri}{19}{chapter.3}%
 \contentsline {chapter}{\numberline {4}Zaman Domeni Kriterleri}{23}{chapter.4}%
 \contentsline {chapter}{\numberline {5}Z Tanım Bölgesinde Kök Eğrisi}{29}{chapter.5}%
-\contentsline {chapter}{\numberline {6}Z Tanım Bölgesinde Kontrolör Tasarımı}{37}{chapter.6}%
+\contentsline {chapter}{\numberline {6}Z Tanım Bölgesinde Zaman Tanım Bölgesi İsterler}{37}{chapter.6}%
+\contentsline {chapter}{\numberline {7}Z Tanım Bölgesinde P Kontrolör Tasarımı}{43}{chapter.7}%
+\contentsline {chapter}{\numberline {8}Z Tanım Bölgesinde PD Kontrolör Tasarımı}{45}{chapter.8}%
+\contentsline {chapter}{\numberline {9}Z Tanım Bölgesinde PI Kontrolör Tasarımı}{49}{chapter.9}%
+\contentsline {chapter}{\numberline {10}Z Tanım Bölgesinde PID Kontrolör Tasarımı}{53}{chapter.10}%
+\contentsline {chapter}{\numberline {11}Z Tanım Bölgesinde Durum Uzayı}{57}{chapter.11}%
+\contentsline {chapter}{\numberline {12}Z Tanım Bölgesinde Durum Geribesleme Kontrolörü}{59}{chapter.12}%
+\contentsline {chapter}{\numberline {13}Z Tanım Bölgesinde Luenberger Gözleyicisi}{61}{chapter.13}%
+\contentsline {chapter}{\numberline {14}Z Tanım Bölgesinde Gözleyici ve Kontrolör Örneği}{63}{chapter.14}%
