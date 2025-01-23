@@ -70,22 +70,68 @@ elde edilir. Dikkat edilirse açı değişmekte fakat genlik sabittir ve bu ifad
 \begin{enumerate}
     \item Transfer fonksiyonu
     \begin{equation}
-        G(z)=\frac{1}{z^4+0.3z^3+4.22z^2-3.58z-0.4}
+        G(z)=\frac{1}{z^4+0.3z^3+4.22z^2-3.58z-0.4}\label{eqn:lec5_q1_system}
     \end{equation}
     ile verilen sisteme ait kök eğrisini çiziniz.
-    % \begin{lstlisting}[style=Matlab-editor]
-    
-    % \end{lstlisting}
-    % \begin{figure}[!htb]
-    %     \centering
-    %     \includegraphics[width=0.5\textwidth]{img/lec4_plot1}
-    %     \caption{Denklem~\ref{eqn:first_order} ile verilen sistem için yerleşme zamanı}
-    %     \label{fig:lec4_plot1}
-    % \end{figure}
-    \item 
+    \begin{lstlisting}[style=Matlab-editor]
+    T=0.2;
+    den=[1 0.3 4.22 -3.58 -0.4];
+    poles=roots(den);
+    Gz=tf(1,den,T);
+    figure(1);
+    rlocus(Gz);
+    \end{lstlisting}
+    \begin{figure}[!htb]
+        \centering
+        \includegraphics[width=0.75\textwidth]{img/lec5_rlocus1}
+        \caption{Denklem~\ref{eqn:lec5_q1_system} ile verilen sistem için kök eğrisi}
+        \label{fig:lec5_rlocus1}
+    \end{figure}
     \item 
     \begin{equation}
-        p_(z)=\frac{1}{z^4+0.3z^3+4.22z^2-3.58kz-0.4+2k}
+        p_(z)=z^4+0.3z^3+4.22z^2-0.4-3.58kz+2k\label{eqn:lec5_q2_polinom}
     \end{equation}
     ile verilen polinomu için $k$ parametresinin değişimine göre köklerin yer değiştirmesini çiziniz.
+    \begin{equation}
+    \begin{split}
+        z^4+0.3z^3+4.22z^2-0.4-3.58kz+2k&=0\\
+        (z^4+0.3z^3+4.22z^2-0.4)+(-3.58z+2)k&=0\\
+        1+k\frac{-3.58z+2}{z^4+0.3z^3+4.22z^2-0.4}&=0
+    \end{split}
+    \end{equation}
+    ile
+    \begin{equation}
+        G(z)=\frac{-3.58z+2}{z^4+0.3z^3+4.22z^2-0.4}\label{eqn:lec5_rlocus2_system}
+    \end{equation}
+    sistemi elde edilir. Kök eğrisi ise Şekil~\ref{fig:lec5_rlocus2} ile verilmiştir.
+    \begin{figure}[!htb]
+        \centering
+        \includegraphics[width=0.75\textwidth]{img/lec5_rlocus2}
+        \caption{Denklem~\ref{eqn:lec5_q2_polinom} ile verilen sistem için kök eğrisi}
+        \label{fig:lec5_rlocus2}
+    \end{figure}
+    \item Denklem~\ref{eqn:lec5_rlocus2_system} ile verilen sistemin gerçel eksende ayrılma noktası/noktalarını hesaplayınız. Ayrılma noktalarının hesabı
+    \begin{gather*}
+        z^4+0.3z^3+4.22z^2-0.4-3.58kz+2k=0\\
+        1+k\frac{-3.58z+2}{z^4+0.3z^3+4.22z^2-0.4}=0\\
+        k=-\frac{z^4+0.3z^3+4.22z^2-0.4}{-3.58z+2}\\
+        \frac{dk}{dz}=\frac{d}{dz}\left(-\frac{z^4+0.3z^3+4.22z^2-0.4}{-3.58z+2}\right)\\
+        \frac{dk}{dz}=\frac{\frac{d}{dz}(z^4+0.3z^3+4.22z^2-0.4)(-3.58z+2)}{(-3.58z+2)^2}\\
+        -\frac{\frac{d}{dz}(-3.58z+2)(z^4+0.3z^3+4.22z^2-0.4)}{(-3.58z+2)^2}\\
+        \frac{dk}{dz}=\frac{(4z^3+0.9z^2+8.44z)(-3.58z+2)-3.58(z^4+0.3z^3+4.22z^2-0.4)}{(-3.58z+2)^2}\\
+        \frac{dk}{dz}=\frac{-17.9z^4+3.704z^3-43.52z^2+16.88z+1.432}{(-3.58z+2)^2}\\
+        \frac{dk}{dz}=\frac{(z-0.0912)(z-0.9082)(z+0.2272+1.2485i)(z+0.2272-1.2485i)}{(-3.58z+2)^2}
+    \end{gather*}
+    ile verilmiştir ve çözüm 
+    \begin{equation}
+        z=0.0912,\,0.9082,\,-0.2272 - 1.2485i,\,-0.2272 + 1.2485i
+    \end{equation}
+    şeklindedir. Sanal kısmı olan çözümler gerçel eksende olmadığından $z=0.0912$ ve $0.9082$ olmalıdır.
+    \begin{figure}[!htb]
+        \centering
+        \includegraphics[width=0.75\textwidth]{img/lec5_rlocus3}
+        \caption{Denklem~\ref{eqn:lec5_rlocus2_system} ile verilen sistem için kök eğrisi ve ayrılma noktaları}
+        \label{fig:lec5_rlocus3}
+    \end{figure}
+    Şekil~\ref{fig:lec5_rlocus3} ile verilen kök eğrisinde ayrılma noktaları işaretlenmiştir. Görüldüğü üzere ayrılma noktaları kutupların reel eksende karşılaştığı ve karşılaştıktan sonra sanal bileşene sahip olarak hareket ettikleri, kutup çiftine dönüşüştükleri, noktalardır.
 \end{enumerate}
