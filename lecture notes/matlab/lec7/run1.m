@@ -69,5 +69,8 @@ xlabel("Zaman(s)");ylabel("y(kT)");title("Basamak Yanıtı");
 stem(t,y,'k','LineWidth',2);
 print("../../img/"+"lec7_step2.eps",'-depsc','-r150');
 
-s=log(-0.4496)/T;
-s
+z=-0.4496
+s=log(z)/T
+theta=atan2d(imag(s),real(s))
+zeta=cosd(180-theta)
+100*exp(-pi*zeta/sqrt(1-zeta^2))

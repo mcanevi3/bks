@@ -89,4 +89,26 @@ P kontrolör için bir diğer alternatif ise
     \label{fig:lec7_step2}
 \end{figure}
 
-
+$z=-0.4496$ çözümü için s tanım bölgesine dönüşüm sonucu
+\begin{equation}
+\begin{split}
+    z&=e^{0.2s}\\
+    s&=\frac{\log{z}}{0.2}\\
+    s&=5\log{(-0.4496)}\\
+    s&=-3.9970 +15.7080i
+\end{split}
+\end{equation}
+elde edilir. Sönüm oranı $\zeta$
+\begin{equation}
+    \begin{split}
+        \theta&=\tan^{-1}\left(\frac{15.708}{3.997}\right)\\
+        \theta&=75.7237^o\\
+        \zeta&=\cos(\theta)\\
+        \zeta&=0.2466
+    \end{split}
+\end{equation}
+olarak hesaplanır ve aşım
+\begin{equation}
+        100e^{\frac{-\pi \zeta}{\sqrt{1-\zeta^2}}}=\%44.96
+\end{equation}
+olarak elde edilir. Birinci dereceden bir sistem s tanım bölgesinde aşım yapamazken bu durum z tanım bölgesinde geçerli değildir. Sistem kutupları s tanım bölgesinde gerçel olmak durumundadır, fakat z tanım bölgesinde bir kutup negatif gerçel olması sonucu tanım bölgesinde karmaşık sayıya karşılık düşmektedir. Bu sebeple z tanım bölgesinde aşım yapabilir. 
