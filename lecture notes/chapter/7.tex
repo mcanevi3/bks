@@ -53,10 +53,18 @@ elde edilir. Bu durumda P kontrolör
 \begin{equation}
     T(z)=\frac{0.221}{z - 0.4493}
 \end{equation}
-şeklindedir. Kapalı çevrim transfer fonksiyonuna ait basamak yanıtı Şekil~\ref{fig:lec6_step1} ile verilmiştir.
-% \begin{figure}[!htb]
-%     \centering
-%     \includegraphics[width=0.75\textwidth]{img/lec6_step1}
-%     \caption{P kontrol için kapalı çevrim basamak yanıtı}
-%     \label{fig:lec6_step1}
-% \end{figure}
+şeklindedir.
+\begin{figure}[!htb]
+    \centering
+    \includegraphics[width=0.75\textwidth]{img/lec7_step1}
+    \caption{P kontrol için kapalı çevrim basamak yanıtı}
+    \label{fig:lec7_step1}
+\end{figure}
+
+\begin{figure}[!htb]
+    \centering
+    \includegraphics[width=0.75\textwidth]{img/lec7_rlocus1}
+    \caption{P kontrol için kök eğrisi}
+    \label{fig:lec7_rlocus1}
+\end{figure}
+Tasarıma ait kök eğrisi Şekil~\ref{fig:lec7_rlocus1} ile verilmiştir. Seçilen $w_n$ değerine karşılık değişken $\zeta$ değeri için eğri gösterilmiştir ve belirli bir aşıma karşılık düşen $\zeta$ değeri için tasarım noktası gösterilmiştir. Bu nokta yerleşme zamanı isteri ile elde edilen yarıçaplı çember üzerindedir. Dikkat edilirse tasarımda $\zeta$ parametresi kullanılamamıştır, çünkü kapalı çevrim karakteristik polinomunun derecesi yetersiz kalmıştır. Sadece yerleşme zamanını karşılayacak gerçel bir kutup seçilebilmektedir ve bu z tanım bölgesinde Şekil~\ref{fig:lec7_rlocus1}'deki kök eğrisinde gösterilen çembere karşılık düşmektedir. Tasarlanan P kontrolörün Kapalı çevrim transfer fonksiyonuna ait basamak yanıtı Şekil~\ref{fig:lec7_step1} ile verilmiştir. Görüldüğü üzere aşım yapmayan fakat yerleşme zamanı isterini karşılayan bir yanıt elde edilmiştir. Ayrıca, tasarım giriş sinyalini belirli bir hata ile izlemektedir.
