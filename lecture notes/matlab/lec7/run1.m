@@ -54,4 +54,20 @@ rectangle('Position',[-r,-r,2*r,2*r],'Curvature',[1 1],'EdgeColor','b');
 fx=exp(-zeta*wn*T).*cos(sqrt(1-zeta.^2)*wn*T);
 fy=exp(-zeta*wn*T).*sin(sqrt(1-zeta.^2)*wn*T);
 plot(fx,fy,'kx','LineWidth',2);
+plot(0.4493,0,'kx','LineWidth',2);
 print("../../img/"+"lec7_rlocus1.eps",'-depsc','-r150');
+
+syms k real;
+sol=solve(-0.1648*k+0.6703==-0.4493);
+sol=double(sol);
+Tz=feedback(sol*Gz,1);
+stepinfo(Tz)
+
+[y,t]=step(Tz);
+figure(3);clf;hold on;grid minor;set(gca, 'MinorGridColor', 'k','MinorGridAlpha',1);
+xlabel("Zaman(s)");ylabel("y(kT)");title("Basamak Yanıtı");
+stem(t,y,'k','LineWidth',2);
+print("../../img/"+"lec7_step2.eps",'-depsc','-r150');
+
+s=log(-0.4496)/T;
+s
