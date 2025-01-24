@@ -1,3 +1,17 @@
+clear;clc;
+T=0.2;
+ts=1;
+os=10/100;
+zeta=-log(os)/sqrt(pi^2+log(os)^2);
+wn=4/(ts*zeta);
+zpoles=exp(T*roots([1 2*zeta*wn wn^2]));
+coef=conv([1 -zpoles(1)],[1 -zpoles(2)]);
+Gs=tf(1,[1 2]);
+Gz=c2d(Gs,T,'zoh');
+syms s z;
+Gzz=0.1648/(z-0.6703);
+
+
 syms kp ki kd real;
 Fzz=((kp+ki+kd)*z^2-(kp+2*kd)*z+kd)/(z^2-z);
 Tzz=(Fzz*Gzz)/(Fzz*Gzz+1);
@@ -47,5 +61,5 @@ stepinfo(Tz)
 
 [y,t]=step(Tz);
 figure(1);clf;hold on;grid minor;set(gca, 'MinorGridColor', 'k','MinorGridAlpha',1);
-stairs(t,y,'k','LineWidth',2);
-print("../../img/"+"lec6_step4.eps",'-deps','-r150');
+stem(t,y,'k','LineWidth',2);
+print("../../img/"+"lec10_step1.eps",'-deps','-r150');

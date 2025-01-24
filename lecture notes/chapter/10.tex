@@ -1,10 +1,4 @@
 \chapter{Z Tanım Bölgesinde PID Kontrolör Tasarımı}
-\begin{enumerate}
-    \item Geçici hal yanıtını şekillendirecek isterler dikkate alınarak s tanım bölgesinde baskın kutuplar seçilir. 
-    \item Baskın kutuplar $z=e^{sT}$ ilişkisi ile z tanım bölgesine aktarılır. 
-    \item Kontrol edilecek sistem Z tanım bölgesine geçirilir. 
-    \item Kapalı çevrim transfer fonksiyonu elde edilir ve kutup atama yapılır.
-\end{enumerate}
 Örnek sistem
 \begin{equation}
     G(s)=\frac{1}{s+2}
@@ -82,13 +76,13 @@ amaç fonksiyonunda yerine yazılır. $J(k_p)$'yi en az yapan $k_p$ değeri $k_p
     &\approx\frac{0.6014(z+0.3357)}{z^2 - 0.4143z + 0.2019}
 \end{split}
 \end{equation}
-olarak hesaplanmaktadır. Görüldüğü üzere yakın bir kutup ve sıfır mevcuttur. Bu yakınlık bir götürmeye sebep olarak istenen kutup dağılımına daha yakın bir kapalı çevrim sistem elde edilmektedir. Basamak yanıtı Şekil~\ref{fig:lec6_step4} ile verilmiştir.
+olarak hesaplanmaktadır. Görüldüğü üzere yakın bir kutup ve sıfır mevcuttur. Bu yakınlık bir götürmeye sebep olarak istenen kutup dağılımına daha yakın bir kapalı çevrim sistem elde edilmektedir. Basamak yanıtı Şekil~\ref{fig:lec10_step1} ile verilmiştir.
 
-% \begin{figure}[!htb]
-%     \centering
-%     \includegraphics[width=0.75\textwidth]{img/lec6_step4}
-%     \caption{PID kontrol için kapalı çevrim basamak yanıtı}
-%     \label{fig:lec6_step4}
-% \end{figure}
+\begin{figure}[!htb]
+    \centering
+    \includegraphics[width=0.75\textwidth]{img/lec10_step1}
+    \caption{PID kontrol için kapalı çevrim basamak yanıtı}
+    \label{fig:lec10_step1}
+\end{figure}
 
 Görüldüğü üzere isterlere oldukça yakın değerler elde edilmiştir. Bunun sebebi, PID kontrolörün fazladan parametreye sahip olması ve bu parametre kullanılarak bir eniyileştirme işleminin mümkün olmasıdır.
