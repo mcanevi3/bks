@@ -1,1 +1,79 @@
 \chapter{Z Tanım Bölgesinde Durum Uzayı}
+
+Yay-kütle-damper sisteminin dinamikleri $x(t)$ yer değiştirme olmak üzere
+\begin{equation}
+    m\ddot{x}(t)+b\dot{x}(t)+kx(t)=u(t)
+\end{equation}
+ile verilmiştir. Verilen ikinci dereceden diferansiyel denklemi iki adet birinci dereceden diferansiyel denkleme çevirmek mümkündür. Bunun için $x_1(t)\triangleq x(t)$ tanımlanır ve
+\begin{equation}
+\begin{split}
+    \dot{x}_1(t)&=\dot{x}(t)\triangleq x_2(t)\\
+    \dot{x}_2(t)&=\ddot{x}(t)
+\end{split}
+\end{equation}
+tanımlanır. Bu durumda,
+\begin{equation}
+    \begin{split}
+        m\ddot{x}(t)+b\dot{x}(t)+kx(t)=u(t)\\
+        m\dot{x}_2(t)+bx_2(t)+kx_1(t)=u(t)\\
+        m\dot{x}_2(t)=-bx_2(t)-kx_1(t)+u(t)\\
+        \dot{x}_2(t)=-\frac{b}{m}x_2(t)-\frac{k}{m}x_1(t)+\frac{1}{m}u(t)
+    \end{split}
+\end{equation}
+elde edilir. Diferansiyel denklem takımı
+\begin{equation}
+    \begin{split}
+        \dot{x}_1(t)&=x_2(t)\\
+        \dot{x}_2(t)&=-\frac{b}{m}x_2(t)-\frac{k}{m}x_1(t)+\frac{1}{m}u(t)
+    \end{split}
+\end{equation}
+ve hatta 
+\begin{equation}
+    \begin{bmatrix}
+        \dot{x}_1(t)\\
+        \dot{x}_2(t)
+    \end{bmatrix}=
+    \begin{bmatrix}
+        0& 1\\
+        -\frac{k}{m}& -\frac{b}{m}
+    \end{bmatrix}\begin{bmatrix}
+        x_1(t)\\
+        x_2(t)
+    \end{bmatrix}+\begin{bmatrix}
+        0\\
+        \frac{1}{m}
+    \end{bmatrix}u(t)
+\end{equation}
+elde edilir. Sistem için parametreler $m=1$, $b=0.5$ ve $k=1$ olmak üzere durum uzayı modeli
+\begin{equation}
+\begin{split}
+    \begin{bmatrix}
+        \dot{x}_1(t)\\
+        \dot{x}_2(t)
+    \end{bmatrix}&=
+    \begin{bmatrix}
+        0& 1\\
+        -1& -0.5
+    \end{bmatrix}\begin{bmatrix}
+        x_1(t)\\
+        x_2(t)
+    \end{bmatrix}+\begin{bmatrix}
+        0\\
+        1
+    \end{bmatrix}u(t)\\
+    y(t)&=\begin{bmatrix}
+        0& 1
+    \end{bmatrix}\begin{bmatrix}
+        x_1(t)\\
+        x_2(t)
+    \end{bmatrix}
+\end{split}
+\end{equation}
+olarak elde edilir. \verb|Simulink| modeli Şekil~\ref{fig:model1} ile verilmiştir.
+\begin{figure}[!htb]
+    \centering
+    \includegraphics[width=\textwidth]{img/model1}
+    \caption{Yay-kütle-damper sistemine ait durum uzay modeli}
+    \label{fig:model1}
+\end{figure}
+
