@@ -77,3 +77,131 @@ olarak elde edilir. \verb|Simulink| modeli Şekil~\ref{fig:model1} ile verilmiş
     \label{fig:model1}
 \end{figure}
 
+Ayrık durum uzayı ZOH yöntemi ile türevin yorumuna dayanmaktadır ve 
+\begin{equation}
+    \frac{dx}{dt}=\frac{\Delta x}{\Delta t}=\frac{x(kT)-x((k-1)T)}{T}
+\end{equation}
+ile durum uzayı
+\begin{equation}
+    \begin{split}
+        \frac{1}{T}\begin{bmatrix}
+            x_1(kT)-x_1((k-1)T)\\
+            x_2(kT)-x_2((k-1)T)
+        \end{bmatrix}&=
+        \begin{bmatrix}
+            0& 1\\
+            -1& -0.5
+        \end{bmatrix}\begin{bmatrix}
+            x_1((k-1)T)\\
+            x_2((k-1)T)
+        \end{bmatrix}+\begin{bmatrix}
+            0\\
+            1
+        \end{bmatrix}u((k-1)T)\\
+        y((k-1)T)&=\begin{bmatrix}
+            0& 1
+        \end{bmatrix}\begin{bmatrix}
+            x_1((k-1)T)\\
+            x_2((k-1)T)
+        \end{bmatrix}
+    \end{split}
+\end{equation}
+olarak elde edilmektedir. Matematiksel işlemler sonucu
+\begin{equation}
+    \begin{split}
+        \begin{bmatrix}
+            x_1(kT)\\
+            x_2(kT)
+        \end{bmatrix}&=
+        \begin{bmatrix}
+            1&0\\
+            0&1
+        \end{bmatrix}
+        \begin{bmatrix}
+            x_1((k-1)T)\\
+            x_2((k-1)T)
+        \end{bmatrix}+
+        T\begin{bmatrix}
+            0& 1\\
+            -1& -0.5
+        \end{bmatrix}\begin{bmatrix}
+            x_1((k-1)T)\\
+            x_2((k-1)T)
+        \end{bmatrix}+\begin{bmatrix}
+            0\\
+            T
+        \end{bmatrix}u((k-1)T)\\
+        y((k-1)T)&=\begin{bmatrix}
+            0& 1
+        \end{bmatrix}\begin{bmatrix}
+            x_1((k-1)T)\\
+            x_2((k-1)T)
+        \end{bmatrix}
+    \end{split}
+    \end{equation}
+    ve sonuç olarak
+        \begin{equation}
+            \begin{split}
+        \begin{bmatrix}
+            x_1(kT)\\
+            x_2(kT)
+        \end{bmatrix}&=
+        \begin{bmatrix}
+            1& T\\
+            -T& 1-0.5T
+        \end{bmatrix}\begin{bmatrix}
+            x_1((k-1)T)\\
+            x_2((k-1)T)
+        \end{bmatrix}+\begin{bmatrix}
+            0\\
+            T
+        \end{bmatrix}u((k-1)T)\\
+        y((k-1)T)&=\begin{bmatrix}
+            0& 1
+        \end{bmatrix}\begin{bmatrix}
+            x_1((k-1)T)\\
+            x_2((k-1)T)
+        \end{bmatrix}\\
+    \end{split}
+\end{equation}
+elde edilir. Örnekleme zamanı $T=0.1$ olmak üzere durum uzayı modeli
+\begin{equation}
+    \begin{split}
+\begin{bmatrix}
+    x_1[k]\\
+    x_2[k]
+\end{bmatrix}&=
+\begin{bmatrix}
+    1& 0.1\\
+    -0.1& 0.95
+\end{bmatrix}\begin{bmatrix}
+    x_1[k-1]\\
+    x_2[k-1]
+\end{bmatrix}+\begin{bmatrix}
+    0\\
+    0.1
+\end{bmatrix}u[k-1]\\
+y[k-1]&=\begin{bmatrix}
+    0& 1
+\end{bmatrix}\begin{bmatrix}
+    x_1[k-1]\\
+    x_2[k-1]
+\end{bmatrix}\\
+\end{split}
+\end{equation}
+şeklindedir. Durum uzayı modeli denklemleri
+\begin{equation}
+    \begin{split}
+    x_1[k]&=x_1[k-1]+0.1x_2[k-1]\\
+    x_2[k]&=-0.1x_1[k-1]+0.95x_2[k-1]+0.1u[k-1]\\
+    y[k-1]&=x_2[k-1]
+\end{split}
+\end{equation}
+şeklindedir. Girişine $sin(4t)$ uygulandığında elde edilen yanıt Şekil~\ref{fig:lec11_plot1} ile verilmiştir.
+\begin{figure}[!htb]
+    \centering
+    \includegraphics[width=0.75\textwidth]{img/lec11_plot1}
+    \caption{Yay-kütle-damper sistemine ait durum uzay modeli yanıtı}
+    \label{fig:lec11_plot1}
+\end{figure}
+

@@ -10,6 +10,6 @@
 \contentsline {chapter}{\numberline {9}Z Tanım Bölgesinde PI Kontrolör Tasarımı}{53}{chapter.9}%
 \contentsline {chapter}{\numberline {10}Z Tanım Bölgesinde PID Kontrolör Tasarımı}{57}{chapter.10}%
 \contentsline {chapter}{\numberline {11}Z Tanım Bölgesinde Durum Uzayı}{61}{chapter.11}%
-\contentsline {chapter}{\numberline {12}Z Tanım Bölgesinde Durum Geribesleme Kontrolörü}{63}{chapter.12}%
-\contentsline {chapter}{\numberline {13}Z Tanım Bölgesinde Luenberger Gözleyicisi}{65}{chapter.13}%
-\contentsline {chapter}{\numberline {14}Z Tanım Bölgesinde Gözleyici ve Kontrolör Örneği}{67}{chapter.14}%
+\contentsline {chapter}{\numberline {12}Z Tanım Bölgesinde Durum Geribesleme Kontrolörü}{65}{chapter.12}%
+\contentsline {chapter}{\numberline {13}Z Tanım Bölgesinde Luenberger Gözleyicisi}{67}{chapter.13}%
+\contentsline {chapter}{\numberline {14}Z Tanım Bölgesinde Gözleyici ve Kontrolör Örneği}{69}{chapter.14}%
