@@ -17,7 +17,7 @@ y=zeros(size(t));
 for k=2:length(t)
     x1(k)=x1(k-1)+0.1*x2(k-1);
     x2(k)=-0.1*x1(k-1)+0.95*x2(k-1)+0.1*u(k-1);
-    y(k-1)=x2(k-1);
+    y(k-1)=x1(k-1);
 end
 
 figure(1);clf;hold on;grid minor;set(gca, 'MinorGridColor', 'k','MinorGridAlpha',1);
