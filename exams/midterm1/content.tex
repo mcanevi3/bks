@@ -38,30 +38,52 @@
     &&&&\\
 \end{tabular}\\\\
 \noindent\begin{center}
-\begin{tabular}{|r|c|c|c|c|c|c|}\hline
+\begin{tabular}{|r|c|c|c|c|c|}\hline
     \textbf{Soru:}&
-    \textbf{1}&
-    \textbf{2}&
-    \textbf{3}&
-    \textbf{4}&
-    \textbf{5}&
+    \textbf{1a}&
+    \textbf{1b}&
+    \textbf{2a}&
+    \textbf{2b}&
     \textbf{Toplam}\\\hline
     \textbf{Puan:}&
-    \textbf{20}&
-    \textbf{20}&
-    \textbf{20}&
-    \textbf{20}&
-    \textbf{20}&
+    \textbf{25}&
+    \textbf{25}&
+    \textbf{25}&
+    \textbf{25}&
     \textbf{100}\\\hline
-    \textbf{Not:}&&&&&&\\\hline
+    \textbf{Not:}&&&&&\\\hline
 \end{tabular}\end{center}
 \noindent\textbf{Uyarı:}
-\begin{enumerate}\bfseries
-    \item Soruları dikkatlice okuyunuz.
-\end{enumerate}
+\begin{itemize}\bfseries
+    \item Soruları dikkatlice okuyunuz. Hesap makinesi kullanılabilir.
+    \item Defter, kitap ve notlar açık bir sınavdır.
+    \item İşlemleri atlamadan ve ayrıntılı olarak veriniz. Sadece nümerik yanıtlar veya çizimler ara işlemler olmadan kabul edilmemektedir.
+    \item Yuvarlamalar 2 hane yapılacaktır. $\mathbf{1.99456\approx1.99}$ olarak alınacaktır.
+\end{itemize}
 
 \begin{enumerate}[\bfseries S1.]
-    \item Kök eğrisi çiziniz.
-    \item Kök eğrisi çiziniz.
-    \item Kök eğrisi çiziniz.
+    \item İkinci dereceden bir sistem
+    \begin{equation}
+        G(s)=\frac{3}{s^2+5s+4}
+    \end{equation}
+    olarak verilmiştir.
+    \begin{enumerate}
+        \item(25p)\,$G(s)$ transfer fonksiyonunun z tanım bölgesinde karşılığını $G(z)$'yi elde ediniz. 
+        \item(25p)\,$G(z)$ transfer fonksiyonu için fark denklemini $T=1\,s$ olmak üzere elde ediniz. 
+    \end{enumerate}
+    \item Zaman isterleri $t_s=2\,s$ ve aşım $\%20$ ve örnekleme zamanı $T=0.5\,s$ olarak verilmiştir. 
+    \begin{enumerate}
+        \item(25p)\,Kutupların konumunu z tanım bölgesinde elde ediniz ve z tanım bölgesinde çiziniz. 
+        \item(25p)\,Sisteme karşılık düşen fark denklemini elde ederek $0\leq t\leq 2$ aralığında birim basamak yanıtını hesaplayınız ve yaklaşık olarak çiziniz. 
+        
+        \centering
+        \begin{tikzpicture}
+        \begin{axis}[samples=500,domain=0:2,,minor tick num=4,restrict y to domain =0:1,xmin=0,xmax=2,ymin=0,ymax=1,xlabel={Ayrık zaman $(s)$},ylabel={$y(0.5k)$},title={Birim basamak cevabı},grid=both,minor grid style={color=black},major grid style={color=black},width=0.48\textwidth]
+            % \addplot[very thick,black] plot (\x, {1.0+exp(2.0*\x)*5.0e-7});
+        \end{axis} 
+        \end{tikzpicture}  
+
+    \end{enumerate}
+    
+
 \end{enumerate}
