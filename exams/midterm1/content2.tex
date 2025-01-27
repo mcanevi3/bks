@@ -69,7 +69,47 @@
     olarak verilmiştir.
     \begin{enumerate}
         \item(25p)\,$G(s)$ transfer fonksiyonunun z tanım bölgesinde karşılığını $G(z)$'yi elde ediniz. 
-        \item(25p)\,$G(z)$transfer fonksiyonu için fark denklemini elde ediniz.  
+        Dönüşüm,
+        \begin{equation}
+            G(z)=\mathcal{Z}\left\{(1-e^{-sT})\left(\frac{12}{s(s^2+5s+4)}\right)\right\}
+        \end{equation}
+        olmak üzere verilen transfer fonksiyonu
+        \begin{equation}
+        \begin{split}
+            \frac{12}{s^3+5s^2+4s}&=\frac{A}{s}+\frac{B}{s+1}+\frac{C}{s+4}\\
+            &=\frac{As^2+5As+4A+Bs^2+4Bs++Cs^2+Cs}{s(s+1)(s+4)}\\
+            As^2+5As+4A+Bs^2+4Bs++Cs^2+Cs&=12\\
+            A+B+C=0\,&\,5A+4B+C=0\,4A=12\\
+            A=3\,&\,B=-4\,C=1\\
+            \frac{12}{s^3+5s^2+4s}&=\frac{3}{s}-\frac{4}{s+1}+\frac{1}{s+4}
+        \end{split}
+        \end{equation}
+        olarak parçalanır. Bu durumda
+        \begin{equation}
+        \begin{split}
+            G(z)&=\mathcal{Z}\left\{(1-e^{-sT})\left(\frac{3}{s}-\frac{4}{s+1}+\frac{1}{s+4}\right)\right\}\\
+            &=\left(1-z^{-1}\right)\left(\mathcal{Z}\left\{\frac{3}{s}\right\}-\mathcal{Z}\left\{\frac{4}{s+1}\right\}+\mathcal{Z}\left\{\frac{1}{s+4}\right\}\right)\\
+            &=\left(\frac{z-1}{z}\right)\left(\frac{3z}{z-1}-\frac{4z}{z-e^{-1}}+\frac{z}{z-e^{-4}}\right)\\
+            &=\frac{(3+e^{-4}-4e^{-1})z+(e^{-1}+3e^{-5}-4e^{-4})}{z^2-(e^{-1}+e^{-4})z-e^{-5}}\\
+            &=\frac{1.55z+0.31}{z^2-0.39z+0.01}
+        \end{split}
+        \end{equation}
+        elde edilir.
+
+        \item(25p)\,$G(z)$ transfer fonksiyonu için fark denklemini elde ediniz. 
+        Elde edilen ifadeden yola çıkılarak fark denklemi
+        \begin{equation}
+            \begin{split}
+                G(z)&=\frac{1.55z+0.31}{z^2-0.39z+0.01}\\
+                \frac{y(k)}{u(k)}&=\frac{1.55z+0.31}{z^2-0.39z+0.01}\\
+                (z^2-0.39z+0.01)y(k)&=(1.55z+0.31)u(k)\\
+                (1-0.39z^{-1}+0.01z^{-2})y(k)&=(1.55z^{-1}+0.31z^{-2})u(k)\\
+                y(k)-0.39z^{-1}y(k)+0.01z^{-2}y(k)&=1.55z^{-1}u(k)+0.31z^{-2}u(k)\\
+                y(k)-0.39y(k-1)+0.01y(k-2)&=1.55u(k-1)+0.31u(k-2)\\
+                y(k)&=0.39y(k-1)-0.01y(k-2)+1.55u(k-1)+0.31u(k-2)
+            \end{split}
+        \end{equation}
+        olarak hesaplanır.      
     \end{enumerate}
     \item Zaman isterleri $t_s=2\,s$ ve aşım $\%20$ ve örnekleme zamanı $T=0.5\,s$ olarak verilmiştir. 
     \begin{enumerate}

@@ -1,25 +1,19 @@
 clear;clc;
+Gs=tf(12,[1 5 4]);
+T=1;
+Gz=tf([3+exp(-4)-4*exp(-1) exp(-1)+3*exp(-5)-4*exp(-4)],[1 -(exp(-1)+exp(-4)) exp(-5)],1);
+Gz
 
-ts=2;
-os=20/100;
+figure(1);hold on;grid minor;
+[y,t]=step(Gs,10);
+plot(t,y,'k','LineWidth',2);
+[y,t]=step(Gz,10);
+stem(t,y,'b','LineWidth',2);
 
-zeta=-log(os)/sqrt(pi^2+log(os)^2);
-wn=4/(ts*zeta);
-T=0.5;
-pds=[1 2*zeta*wn wn^2];
-s=roots(pds);
-z=exp(s*T);
-
-pdz=[1 -z(1)-z(2) z(1)*z(2)];
-
-disp("zeta:"+string(zeta));
-disp("wn:"+string(wn));
-disp("s:"+string(num2str(s')));
-disp("p(s):"+string(num2str(pds)));
-disp("z:"+string(num2str(z')));
-disp("p(z):"+string(num2str(pdz)));
-
-Gz=tf(1,pdz,T);
-[yz,tz]=step(Gz);
-stem(tz,yz)
-
+t=0:T:6;
+u=ones(size(t));
+y=zeros(size(t));
+for k=3:length(t)
+    y(k)=0.39*y(k-1)-0.01*y(k-2)+1.55*u(k-1)+0.31*u(k-2);
+end
+stem(t,y,'m','LineWidth',2);
