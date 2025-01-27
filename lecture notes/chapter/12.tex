@@ -1,1 +1,44 @@
-\chapter{Z Tanım Bölgesinde Durum Geribesleme Kontrolörü}
+\chapter{Z Tanım Bölgesinde Durum Geri Besleme Kontrolörü}
+Durum uzay modeli
+\begin{equation}
+    x(k)=A x(k-1)+Bu(k-1),\quad y(k-1)=C x(k-1)
+\end{equation}
+olmak üzere 
+\begin{equation}
+    u(k-1)=K x(k-1)
+\end{equation}
+kontrolörüne \textbf{Durum Geri Besleme} kontrolörü adı verilmektedir. Dikkat edilirse bu kontrol kuralı
+\begin{equation}
+\begin{split}
+    u(k-1)&=K x(k-1)\\
+    u(k-1)&=\begin{bmatrix}k_1& k_2& \cdots& k_n\end{bmatrix} \begin{bmatrix}x_1(k-1)\\x_2(k-1)\\\vdots\\x_n(k-1)\end{bmatrix}\\
+    u(k-1)&=k_1x_1(k-1)+k_2x_2(k-1)+\cdots+k_nx_n(k-1)
+\end{split}
+\end{equation}
+olarak yazılabilir. Bu kontrolör ile kapalı çevrim durum uzay modeli
+\begin{equation}
+    \begin{split}
+        x(k)&=A x(k-1)+Bu(k-1),\quad y(k-1)=C x(k-1)\\
+        x(k)&=A x(k-1)+BKx(k-1),\quad y(k-1)=C x(k-1)\\
+        x(k)&=(A+BK) x(k-1),\quad y(k-1)=C x(k-1)
+    \end{split}
+\end{equation}
+olarak elde edilir. Kapalı çevrim modelin z tanım bölgesi ifadesi
+\begin{equation}
+    \begin{split}
+        x(k)&=(A+BK) x(k-1)+B r(k-1),\quad y(k-1)=C x(k-1)\\
+        z^1 x(k-1)&=(A+BK) x(k-1)+B r(k-1),\quad y(k-1)=C x(k-1)\\
+        (zI-(A+BK)) x(k-1)&=B r(k-1),\quad y(k-1)=C x(k-1)\\
+        x(k-1)&=(zI-(A+BK))^{-1} B r(k-1),\quad y(k-1)=C x(k-1)\\
+        y(k-1)&=C(zI-(A+BK))^{-1}B r(k-1)\\
+        \frac{y(k-1)}{r(k-1)}&=C(zI-(A+BK))^{-1}B
+    \end{split}
+\end{equation}
+şeklindedir ve karakteristik polinom
+\begin{equation}
+    \begin{split}
+        p_c(z)=det(zI-(A+BK))
+    \end{split}
+\end{equation}
+ile hesaplanır.
+

@@ -27,3 +27,10 @@ stem(t,x1,'r','LineWidth',2,'DisplayName','x_1(k)');
 stem(t,x2,'b','LineWidth',2,'DisplayName','y(k),x_2(k)');
 print("../../img/"+"lec11_plot1.eps",'-depsc','-r150');
 
+% mdl="model2";
+% fname="../../img/"+mdl+".pdf";
+% open_system(mdl);
+% print(fname,'-dpdf','-bestfit',"-s"+mdl);
+% close_system(mdl);
+% dos("pdfcrop "+fname+" "+fname+" &");
+

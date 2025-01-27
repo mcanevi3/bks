@@ -62,7 +62,7 @@ elde edilir. Sistem için parametreler $m=1$, $b=0.5$ ve $k=1$ olmak üzere duru
         1
     \end{bmatrix}u(t)\\
     y(t)&=\begin{bmatrix}
-        0& 1
+        1&0 
     \end{bmatrix}\begin{bmatrix}
         x_1(t)\\
         x_2(t)
@@ -99,7 +99,7 @@ ile durum uzayı
             1
         \end{bmatrix}u((k-1)T)\\
         y((k-1)T)&=\begin{bmatrix}
-            0& 1
+            1&0 
         \end{bmatrix}\begin{bmatrix}
             x_1((k-1)T)\\
             x_2((k-1)T)
@@ -132,7 +132,7 @@ olarak elde edilmektedir. Matematiksel işlemler sonucu
             T
         \end{bmatrix}u((k-1)T)\\
         y((k-1)T)&=\begin{bmatrix}
-            0& 1
+            1&0 
         \end{bmatrix}\begin{bmatrix}
             x_1((k-1)T)\\
             x_2((k-1)T)
@@ -157,7 +157,7 @@ olarak elde edilmektedir. Matematiksel işlemler sonucu
             T
         \end{bmatrix}u((k-1)T)\\
         y((k-1)T)&=\begin{bmatrix}
-            0& 1
+            1&0 
         \end{bmatrix}\begin{bmatrix}
             x_1((k-1)T)\\
             x_2((k-1)T)
@@ -182,7 +182,7 @@ elde edilir. Örnekleme zamanı $T=0.1$ olmak üzere durum uzayı modeli
     0.1
 \end{bmatrix}u[k-1]\\
 y[k-1]&=\begin{bmatrix}
-    0& 1
+    1&0 
 \end{bmatrix}\begin{bmatrix}
     x_1[k-1]\\
     x_2[k-1]
@@ -194,7 +194,7 @@ y[k-1]&=\begin{bmatrix}
     \begin{split}
     x_1[k]&=x_1[k-1]+0.1x_2[k-1]\\
     x_2[k]&=-0.1x_1[k-1]+0.95x_2[k-1]+0.1u[k-1]\\
-    y[k-1]&=x_2[k-1]
+    y[k-1]&=x_1[k-1]
 \end{split}
 \end{equation}
 şeklindedir. Girişine $sin(4t)$ uygulandığında elde edilen yanıt Şekil~\ref{fig:lec11_plot1} ile verilmiştir.
@@ -205,3 +205,10 @@ y[k-1]&=\begin{bmatrix}
     \label{fig:lec11_plot1}
 \end{figure}
 
+\verb|Simulink| modeli Şekil~\ref{fig:model2} ile verilmiştir.
+\begin{figure}[!htb]
+    \centering
+    \includegraphics[width=\textwidth]{img/model2}
+    \caption{Yay-kütle-damper sistemine ait ayrık durum uzay modeli}
+    \label{fig:model2}
+\end{figure}
