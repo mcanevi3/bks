@@ -42,7 +42,7 @@ olarak elde edilir. Kapalı çevrim modelin z tanım bölgesi ifadesi
 \end{equation}
 ile hesaplanır. Bu polinom için kutuplar seçilirken $K$ kontrolör matrisi hesaplanır. Bu işlem için
 \begin{equation}
-    p_d(z)=-\begin{bmatrix}0& 0& \cdots& 0& 1\end{bmatrix}\begin{bmatrix}B& AB& \cdots& A^{n-1}B\end{bmatrix}^{-1}p_d(A)
+    K=-\begin{bmatrix}0& 0& \cdots& 0& 1\end{bmatrix}\begin{bmatrix}B& AB& \cdots& A^{n-1}B\end{bmatrix}^{-1}p_d(A)
 \end{equation}
 burada $p_d(z)$ atanmak istenen polinom olmak üzere formülü kullanılabilir. 
 \begin{equation}
@@ -97,7 +97,7 @@ ile verilen sistem için yerleşme zamanı $t_s=1,\,s$ ve aşım $\%10$ olacak �
 olarak hesaplanır ve geri besleme kontrolörü
 \begin{equation}
     \begin{split}
-        K&=-\begin{bmatrix}0&1\end{bmatrix}^{-1}\begin{bmatrix}0& 0.0100\\0.1& 0.0950\end{bmatrix} \begin{bmatrix}0.2934&0.0804\\-0.0804&0.2532\end{bmatrix} 
+        K&=-\begin{bmatrix}0&1\end{bmatrix}^{-1}\begin{bmatrix}0& 0.0100\\0.1& 0.0950\end{bmatrix} \begin{bmatrix}0.2934&0.0804\\-0.0804&0.2532\end{bmatrix} \\
         &=\begin{bmatrix}-29.3433& -8.04104\end{bmatrix} 
     \end{split}
 \end{equation}
@@ -110,5 +110,19 @@ olarak elde edilir. Durum uzayı modeli ve geri besleme kontrolörü ile birlikt
     \label{fig:lec12_model1}
 \end{figure}
 
+
+\begin{figure}[!htb]
+    \centering
+    \includegraphics[width=0.75\textwidth]{img/lec12_plot1}
+    \caption{Yay-kütle-damper sistemine ait ayrık durum uzay modeli ve geri besleme kontrolörü basamak yanıtı}
+    \label{fig:lec12_plot1}
+\end{figure}
+
+\begin{figure}[!htb]
+    \centering
+    \includegraphics[width=0.75\textwidth]{img/lec12_plot2}
+    \caption{Yay-kütle-damper sistemine ait ayrık durum uzay modeli ve geri besleme kontrolörü ön filtreli basamak yanıtı}
+    \label{fig:lec12_plot2}
+\end{figure}
 
 
