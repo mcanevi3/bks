@@ -40,5 +40,9 @@ olarak elde edilir. Kapalı çevrim modelin z tanım bölgesi ifadesi
         p_c(z)=det(zI-(A+BK))
     \end{split}
 \end{equation}
-ile hesaplanır.
+ile hesaplanır. Bu polinom için kutuplar seçilirken $K$ kontrolör matrisi hesaplanır. Bu işlem için
+\begin{equation}
+    p_d(z)=-\begin{bmatrix}0& 0& \cdots& 0& 1\end{bmatrix}\begin{bmatrix}B& AB& \cdots& A^{n-1}B\end{bmatrix}^{-1}p_d(A)
+\end{equation}
+burada $p_d(z)$ atanmak istenen polinom olmak üzere formülü kullanılabilir.   
 
