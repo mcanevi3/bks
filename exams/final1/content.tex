@@ -38,20 +38,18 @@
     &&&&\\
 \end{tabular}\\\\
 \noindent\begin{center}
-\begin{tabular}{|r|c|c|c|c|c|}\hline
+\begin{tabular}{|r|c|c|c|c|}\hline
     \textbf{Soru:}&
-    \textbf{1a}&
-    \textbf{1b}&
-    \textbf{2a}&
-    \textbf{2b}&
+    \textbf{1}&
+    \textbf{2}&
+    \textbf{3}&
     \textbf{Toplam}\\\hline
     \textbf{Puan:}&
-    \textbf{25}&
-    \textbf{25}&
-    \textbf{25}&
-    \textbf{25}&
+    \textbf{35}&
+    \textbf{35}&
+    \textbf{30}&
     \textbf{100}\\\hline
-    \textbf{Not:}&&&&&\\\hline
+    \textbf{Not:}&&&&\\\hline
 \end{tabular}\end{center}
 \noindent\textbf{Uyarı:}
 \begin{itemize}\bfseries
@@ -62,28 +60,86 @@
 \end{itemize}
 
 \begin{enumerate}[\bfseries S1.]
-    \item İkinci dereceden bir sistem
+    \item (35p)\,Birinci dereceden bir sistem 
     \begin{equation}
-        G(s)=\frac{12}{s^2+5s+4}
+        G(z)=\frac{1}{z+1.2}
     \end{equation}
-    olarak verilmiştir.
-    \begin{enumerate}
-        \item(25p)\,$G(s)$ transfer fonksiyonunun z tanım bölgesinde karşılığını $G(z)$'yi elde ediniz. 
-        \item(25p)\,$G(z)$transfer fonksiyonu için fark denklemini elde ediniz.  
-    \end{enumerate}
-    \item Zaman isterleri $t_s=2\,s$ ve aşım $\%20$ ve örnekleme zamanı $T=0.5\,s$ olarak verilmiştir. 
-    \begin{enumerate}
-        \item(25p)\,Kutupların konumunu z tanım bölgesinde elde ediniz ve z tanım bölgesinde çiziniz. 
-        \item(25p)\,Sisteme karşılık düşen fark denklemini elde ederek $0\leq t\leq 2$ aralığında birim basamak yanıtını hesaplayınız ve yaklaşık olarak çiziniz. 
-        
-        \centering
-        \begin{tikzpicture}
-        \begin{axis}[samples=500,domain=0:2,,minor tick num=4,restrict y to domain =0:1,xmin=0,xmax=2,ymin=0,ymax=1,xlabel={Ayrık zaman $(s)$},ylabel={$y(0.5k)$},title={Birim basamak cevabı},grid=both,minor grid style={color=black},major grid style={color=black},width=0.48\textwidth]
-            % \addplot[very thick,black] plot (\x, {1.0+exp(2.0*\x)*5.0e-7});
-        \end{axis} 
-        \end{tikzpicture}  
-
-    \end{enumerate}
-    
-
+    olarak verilmiştir. $t_s=4\,s$ ve aşım $\%16.3$ olacak şekilde bir ayrık PI kontrolör tasarlayınız.
+    \item (35p)\,Ayrık bir durum uzayı
+    \begin{equation}
+        A=\begin{bmatrix}1& 1\\-1&0\end{bmatrix},\,B=\begin{bmatrix}0\\1\end{bmatrix},\,C=\begin{bmatrix}1&0\end{bmatrix}
+    \end{equation}
+    olarak verilmiştir. Durum geri besleme kontrolörü için amaçlanan kapalı çevrim karakteristikleri
+    \begin{equation}
+        p(z)=z^2+0.5z+0.25
+    \end{equation}
+    ile ifade edilmektedir. Durum geri beleme kontrolörünü elde ediniz.
+    \begin{equation*}
+        \begin{bmatrix}0& 1\\1&-1\end{bmatrix}^{-1}=\begin{bmatrix}1& 1\\1&0\end{bmatrix},\,
+        \begin{bmatrix}1& 1\\-1&0\end{bmatrix}^{-1}=\begin{bmatrix}-1& -1\\1&0\end{bmatrix},\,
+        \begin{bmatrix}1& 1\\-1&0\end{bmatrix}\begin{bmatrix}1& 1\\-1&0\end{bmatrix}=\begin{bmatrix}-1& -1\\1&0\end{bmatrix}
+    \end{equation*}
+    \item (30p)\,S tanım bölgesinde verilen 
+    \begin{equation}
+        G(s)=\frac{1}{(s+1)(s+2)(s+3)}
+    \end{equation}
+    ifadeyi z tanım bölgesine dönüştürünüz. 
+    \begin{equation*}
+    \begin{split}
+        \begin{bmatrix}
+            1&     1&     1\\
+            4&     5&     3\\
+            3&     6&     2\\
+        \end{bmatrix}^{-1}=\begin{bmatrix}
+            -4 &   2   &    -1\\
+            0.5&   -0.5&    0.5\\
+            4.5&   -1.5&    0.5\\
+        \end{bmatrix},\,
+        \begin{bmatrix}
+            1&     1&     1\\
+            4&     3&     5\\
+            3&     2&     6\\
+        \end{bmatrix}^{-1}=\begin{bmatrix}
+            -4&    2&   -1\\
+            4.5&   -1.5&    0.5\\
+            0.5&  -0.5&    0.5\\
+        \end{bmatrix}\\
+        \begin{bmatrix}
+            1&     1&     1\\
+            5&     4&     3\\
+            6&     3&     2\\
+        \end{bmatrix}^{-1}=\begin{bmatrix}
+        0.5 &  -0.5 &   0.5\\
+        -4&    2&   -1.\\
+        4.5 &  -1.5 &   0.5\\
+        \end{bmatrix},\,
+        \begin{bmatrix}
+            1&     1&     1\\
+            5&     3&     4\\
+            6&     2&     3\\
+        \end{bmatrix}^{-1}=\begin{bmatrix}
+            0.5&   -0.5&    0.5\\
+            4.5&   -1.5&    0.5\\
+             -4&    2  &    -1\\
+        \end{bmatrix}\\
+        \begin{bmatrix}
+            1&     1&     1\\
+            3&     4&     5\\
+            2&     3&     6\\
+        \end{bmatrix}^{-1}=\begin{bmatrix}
+            4.5 &  -1.5&    0.5\\
+            -4  &    2 &     -1\\
+             0.5&  -0.5&    0.5\\
+        \end{bmatrix},\,
+        \begin{bmatrix}
+            1&     1&     1\\
+            3&     5&     4\\
+            2&     6&     3\\
+        \end{bmatrix}^{-1}=\begin{bmatrix}
+            4.5&   -1.5&    0.5\\
+            0.5&   -0.5&    0.5\\
+           -4&    2&   -1\\
+        \end{bmatrix}\\
+    \end{split}
+    \end{equation*}
 \end{enumerate}

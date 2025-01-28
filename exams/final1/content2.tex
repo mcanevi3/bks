@@ -38,20 +38,18 @@
     &&&&\\
 \end{tabular}\\\\
 \noindent\begin{center}
-\begin{tabular}{|r|c|c|c|c|c|}\hline
+\begin{tabular}{|r|c|c|c|c|}\hline
     \textbf{Soru:}&
-    \textbf{1a}&
-    \textbf{1b}&
-    \textbf{2a}&
-    \textbf{2b}&
+    \textbf{1}&
+    \textbf{2}&
+    \textbf{3}&
     \textbf{Toplam}\\\hline
     \textbf{Puan:}&
-    \textbf{25}&
-    \textbf{25}&
-    \textbf{25}&
-    \textbf{25}&
+    \textbf{35}&
+    \textbf{35}&
+    \textbf{30}&
     \textbf{100}\\\hline
-    \textbf{Not:}&&&&&\\\hline
+    \textbf{Not:}&35&35&30&100\\\hline
 \end{tabular}\end{center}
 \noindent\textbf{Uyarı:}
 \begin{itemize}\bfseries
@@ -62,68 +60,28 @@
 \end{itemize}
 
 \begin{enumerate}[\bfseries S1.]
-    \item İkinci dereceden bir sistem
+    \item (35p)\,Birinci dereceden bir sistem 
     \begin{equation}
-        G(s)=\frac{12}{s^2+5s+4}
+        G(z)=\frac{1}{z+1.2}
     \end{equation}
-    olarak verilmiştir.
-    \begin{enumerate}
-        \item(25p)\,$G(s)$ transfer fonksiyonunun z tanım bölgesinde karşılığını $G(z)$'yi elde ediniz. 
-        Dönüşüm,
-        \begin{equation}
-            G(z)=\mathcal{Z}\left\{(1-e^{-sT})\left(\frac{12}{s(s^2+5s+4)}\right)\right\}
-        \end{equation}
-        olmak üzere verilen transfer fonksiyonu
-        \begin{equation}
-        \begin{split}
-            \frac{12}{s^3+5s^2+4s}&=\frac{A}{s}+\frac{B}{s+1}+\frac{C}{s+4}\\
-            &=\frac{As^2+5As+4A+Bs^2+4Bs++Cs^2+Cs}{s(s+1)(s+4)}\\
-            As^2+5As+4A+Bs^2+4Bs++Cs^2+Cs&=12\\
-            A+B+C=0\,&\,5A+4B+C=0\,4A=12\\
-            A=3\,&\,B=-4\,C=1\\
-            \frac{12}{s^3+5s^2+4s}&=\frac{3}{s}-\frac{4}{s+1}+\frac{1}{s+4}
-        \end{split}
-        \end{equation}
-        olarak parçalanır. Bu durumda
-        \begin{equation}
-        \begin{split}
-            G(z)&=\mathcal{Z}\left\{(1-e^{-sT})\left(\frac{3}{s}-\frac{4}{s+1}+\frac{1}{s+4}\right)\right\}\\
-            &=\left(1-z^{-1}\right)\left(\mathcal{Z}\left\{\frac{3}{s}\right\}-\mathcal{Z}\left\{\frac{4}{s+1}\right\}+\mathcal{Z}\left\{\frac{1}{s+4}\right\}\right)\\
-            &=\left(\frac{z-1}{z}\right)\left(\frac{3z}{z-1}-\frac{4z}{z-e^{-1}}+\frac{z}{z-e^{-4}}\right)\\
-            &=\frac{(3+e^{-4}-4e^{-1})z+(e^{-1}+3e^{-5}-4e^{-4})}{z^2-(e^{-1}+e^{-4})z-e^{-5}}\\
-            &=\frac{1.55z+0.31}{z^2-0.39z+0.01}
-        \end{split}
-        \end{equation}
-        elde edilir.
-
-        \item(25p)\,$G(z)$ transfer fonksiyonu için fark denklemini elde ediniz. 
-        Elde edilen ifadeden yola çıkılarak fark denklemi
-        \begin{equation}
-            \begin{split}
-                G(z)&=\frac{1.55z+0.31}{z^2-0.39z+0.01}\\
-                \frac{y(k)}{u(k)}&=\frac{1.55z+0.31}{z^2-0.39z+0.01}\\
-                (z^2-0.39z+0.01)y(k)&=(1.55z+0.31)u(k)\\
-                (1-0.39z^{-1}+0.01z^{-2})y(k)&=(1.55z^{-1}+0.31z^{-2})u(k)\\
-                y(k)-0.39z^{-1}y(k)+0.01z^{-2}y(k)&=1.55z^{-1}u(k)+0.31z^{-2}u(k)\\
-                y(k)-0.39y(k-1)+0.01y(k-2)&=1.55u(k-1)+0.31u(k-2)\\
-                y(k)&=0.39y(k-1)-0.01y(k-2)+1.55u(k-1)+0.31u(k-2)
-            \end{split}
-        \end{equation}
-        olarak hesaplanır.      
-    \end{enumerate}
-    \item Zaman isterleri $t_s=2\,s$ ve aşım $\%20$ ve örnekleme zamanı $T=0.5\,s$ olarak verilmiştir. 
-    \begin{enumerate}
-        \item(25p)\,Kutupların konumunu z tanım bölgesinde elde ediniz ve z tanım bölgesinde çiziniz. 
-        \item(25p)\,Sisteme karşılık düşen fark denklemini elde ederek $0\leq t\leq 2$ aralığında birim basamak yanıtını hesaplayınız ve yaklaşık olarak çiziniz. 
-        
-        \centering
-        \begin{tikzpicture}
-        \begin{axis}[samples=500,domain=0:2,,minor tick num=4,restrict y to domain =0:1,xmin=0,xmax=2,ymin=0,ymax=1,xlabel={Ayrık zaman $(s)$},ylabel={$y(0.5k)$},title={Birim basamak cevabı},grid=both,minor grid style={color=black},major grid style={color=black},width=0.48\textwidth]
-            % \addplot[very thick,black] plot (\x, {1.0+exp(2.0*\x)*5.0e-7});
-        \end{axis} 
-        \end{tikzpicture}  
-
-    \end{enumerate}
-    
-
+    olarak verilmiştir. $t_s=4\,s$ ve aşım $\%16.3$ olacak şekilde bir ayrık PI kontrolör tasarlayınız.
+    \item (35p)\,Ayrık bir durum uzayı
+    \begin{equation}
+        A=\begin{bmatrix}1& 1\\-1&0\end{bmatrix},\,B=\begin{bmatrix}0\\1\end{bmatrix},\,C=\begin{bmatrix}1&0\end{bmatrix}
+    \end{equation}
+    olarak verilmiştir. Durum geri besleme kontrolörü için amaçlanan kapalı çevrim karakteristikleri
+    \begin{equation}
+        p(z)=z^2+0.5z+0.25
+    \end{equation}
+    ile ifade edilmektedir. Durum geri beleme kontrolörünü elde ediniz.
+    \begin{equation*}
+        \begin{bmatrix}0& 1\\1&-1\end{bmatrix}^{-1}=\begin{bmatrix}1& 1\\1&0\end{bmatrix},\,
+        \begin{bmatrix}1& 1\\-1&0\end{bmatrix}^{-1}=\begin{bmatrix}-1& -1\\1&0\end{bmatrix},\,
+        \begin{bmatrix}1& 1\\-1&0\end{bmatrix}\begin{bmatrix}1& 1\\-1&0\end{bmatrix}=\begin{bmatrix}-1& -1\\1&0\end{bmatrix}
+    \end{equation*}
+    \item (30p)\,S tanım bölgesinde verilen 
+    \begin{equation}
+        G(s)=\frac{1}{(s+1)(s+2)(s+3)}=\frac{A}{s+2}+\frac{B}{s+1}+\frac{C}{s+3}
+    \end{equation}
+    ifadeyi z tanım bölgesine dönüştürünüz. 
 \end{enumerate}
