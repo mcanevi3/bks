@@ -19,7 +19,18 @@ disp("p(s):"+string(num2str(pds)));
 disp("z:"+string(num2str(z')));
 disp("p(z):"+string(num2str(pdz)));
 
+
+figure(1);clf;hold on;grid minor;
+
 Gz=tf(1,pdz,T);
 [yz,tz]=step(Gz);
-stem(tz,yz)
+stem(tz,yz,'k','LineWidth',3);
 
+t=0:T:2;
+u=ones(size(t));
+y=zeros(size(t));
+for k=3:length(t)
+    y(k)=-0.28*y(k-1)-0.14*y(k-2)+u(k-2);
+end
+
+stem(t,y,'r','LineWidth',2);

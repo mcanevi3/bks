@@ -74,16 +74,24 @@
     \item Zaman isterleri $t_s=2\,s$ ve aşım $\%20$ ve örnekleme zamanı $T=0.5\,s$ olarak verilmiştir. 
     \begin{enumerate}
         \item(25p)\,Kutupların konumunu z tanım bölgesinde elde ediniz ve z tanım bölgesinde çiziniz. 
-        \item(25p)\,Sisteme karşılık düşen fark denklemini elde ederek $0\leq t\leq 2$ aralığında birim basamak yanıtını hesaplayınız ve yaklaşık olarak çiziniz. 
-        
-        \centering
-        \begin{tikzpicture}
-        \begin{axis}[samples=500,domain=0:2,,minor tick num=4,restrict y to domain =0:1,xmin=0,xmax=2,ymin=0,ymax=1,xlabel={Ayrık zaman $(s)$},ylabel={$y(0.5k)$},title={Birim basamak cevabı},grid=both,minor grid style={color=black},major grid style={color=black},width=0.48\textwidth]
-            % \addplot[very thick,black] plot (\x, {1.0+exp(2.0*\x)*5.0e-7});
-        \end{axis} 
-        \end{tikzpicture}  
-
+        \item(25p)\, Z tanım bölgesinde elde edilen kutuplara sahip polinom $p(z)$ olmak üzere
+        \begin{equation}
+            G(z)=\frac{1}{p(z)}
+        \end{equation}
+        olarak tanımlanan $G(z)$ transfer fonksiyonuna karşılık düşen fark denklemini elde ederek $0\leq t\leq 2$ aralığında birim basamak yanıtını hesaplayınız ve yaklaşık olarak çiziniz. 
     \end{enumerate}
     
+    \begin{tikzpicture}
+        \begin{axis}[samples=500,domain=-1.1:1.1,,minor tick num=4,restrict y to domain =-1.1:1.1,xmin=-1.1,xmax=1.1,ymin=-1.1,ymax=1.1,xlabel={Re},ylabel={Im},title={Z Tanım Bölgesi},grid=both,minor grid style={color=black},major grid style={color=black},width=0.35\textwidth]
+            % \addplot[very thick,black] plot (\x, {1.0+exp(2.0*\x)*5.0e-7});
+            \draw (axis cs: 0, 0) circle [radius=100];
+        \end{axis} 
+        % \draw[red] (0,0) circle (1);
+    \end{tikzpicture} 
+    \begin{tikzpicture}
+    \begin{axis}[samples=500,domain=0:2,,minor tick num=4,restrict y to domain =0:1,xmin=0,xmax=2,ymin=0,ymax=1,xlabel={Ayrık zaman $(s)$},ylabel={$y(0.5k)$},title={Birim basamak cevabı},grid=both,minor grid style={color=black},major grid style={color=black},width=0.45\textwidth]
+        % \addplot[very thick,black] plot (\x, {1.0+exp(2.0*\x)*5.0e-7});
+    \end{axis} 
+    \end{tikzpicture}  
 
 \end{enumerate}

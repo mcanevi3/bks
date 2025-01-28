@@ -51,7 +51,7 @@
     \textbf{25}&
     \textbf{25}&
     \textbf{100}\\\hline
-    \textbf{Not:}&&&&&\\\hline
+    \textbf{Not:}&25&25&25&25&100\\\hline
 \end{tabular}\end{center}
 \noindent\textbf{Uyarı:}
 \begin{itemize}\bfseries
@@ -114,15 +114,78 @@
     \item Zaman isterleri $t_s=2\,s$ ve aşım $\%20$ ve örnekleme zamanı $T=0.5\,s$ olarak verilmiştir. 
     \begin{enumerate}
         \item(25p)\,Kutupların konumunu z tanım bölgesinde elde ediniz ve z tanım bölgesinde çiziniz. 
-        \item(25p)\,Sisteme karşılık düşen fark denklemini elde ederek $0\leq t\leq 2$ aralığında birim basamak yanıtını hesaplayınız ve yaklaşık olarak çiziniz. 
-        
-        \centering
+        Aşım kriterinden
+        \begin{equation}
+        \begin{split}
+            \zeta&=\frac{log(0.2)}{\sqrt{\pi^2+log(0.2)^2}}\\
+            &=0.46
+        \end{split}
+        \end{equation}
+        ve yerleşme zamanından ise 
+        \begin{equation}
+            \begin{split}
+                w_n&=\frac{4}{t_s\zeta}\\
+                &=\frac{4}{2\cdot 0.45595}\\
+                &=4.39
+            \end{split}
+        \end{equation}
+        elde edilir. S tanım bölgesinde kutuplar
+        \begin{equation}
+            s=-2\pm3.90i
+        \end{equation}
+        olarak tanımlanır. Z tanım bölgesine geçiş $z=e^{sT}$ ile yapılır ve z tanım bölgesinde kutuplar
+        \begin{equation}
+            \begin{split}
+                z&=e^{0.5(-2\pm3.90i)}\\
+                z&=e^{-1\pm1.95i}\\
+                z&=e^{-1}\phase{\pm1.95}\\
+                z&=0.37\phase{\pm111.73^o}\\
+                z&=-0.14\pm0.34i
+            \end{split}
+        \end{equation}
+        olarak elde edilir.
+            
+        \begin{center}
+        \begin{tikzpicture}
+            \begin{axis}[samples=500,domain=-1.1:1.1,,minor tick num=4,restrict y to domain =-1.1:1.1,xmin=-1.1,xmax=1.1,ymin=-1.1,ymax=1.1,xlabel={Re},ylabel={Im},title={Z Tanım Bölgesi},grid=both,minor grid style={color=black},major grid style={color=black},width=0.4\textwidth]
+                \draw (axis cs: 0, 0) circle [radius=100];
+                \addplot[mark=x,only marks,mark color=black,mark size=4pt,very thick] coordinates {(-0.14,0.34) (-0.14,-0.34)};
+            \end{axis} 
+        \end{tikzpicture}  
+        \end{center}
+
+        \item(25p)\, Z tanım bölgesinde elde edilen kutuplara sahip polinom $p(z)$ olmak üzere
+        \begin{equation}
+            G(z)=\frac{1}{p(z)}
+        \end{equation}
+        olarak tanımlanan $G(z)$ transfer fonksiyonuna karşılık düşen fark denklemini elde ederek $0\leq t\leq 2$ aralığında birim basamak yanıtını hesaplayınız ve yaklaşık olarak çiziniz. 
+        Transfer fonksiyonu
+        \begin{equation}
+        \begin{split}
+            G(z)&=\frac{1}{(z+0.14+0.34i)(z+0.14-0.34i)}\\
+            &=\frac{1}{z^2+0.28z+0.14}
+        \end{split}
+        \end{equation}
+        olarak elde edilir. Fark denklemi ise 
+        \begin{equation}
+            \begin{split}
+                \frac{y(k)}{u(k)}&=\frac{1}{z^2+0.28z+0.14}\\
+                (z^2+0.28z+0.14)y(k)&=u(k)\\
+                (1+0.28z^{-1}+0.14z^{-2})y(k)&=z^{-2}u(k)\\
+                y(k)+0.28z^{-1}y(k)+0.14z^{-2}y(k)&=z^{-2}u(k)\\
+                y(k)+0.28y(k-1)+0.14y(k-2)&=u(k-2)\\
+                y(k)&=-0.28y(k-1)-0.14y(k-2)+u(k-2)
+            \end{split}
+        \end{equation}
+        şeklindedir.
+
+        \begin{center}
         \begin{tikzpicture}
         \begin{axis}[samples=500,domain=0:2,,minor tick num=4,restrict y to domain =0:1,xmin=0,xmax=2,ymin=0,ymax=1,xlabel={Ayrık zaman $(s)$},ylabel={$y(0.5k)$},title={Birim basamak cevabı},grid=both,minor grid style={color=black},major grid style={color=black},width=0.48\textwidth]
-            % \addplot[very thick,black] plot (\x, {1.0+exp(2.0*\x)*5.0e-7});
+            \addplot[mark=x,only marks,mark color=black,mark size=4pt,very thick] coordinates {(0,0) (0.5,0) (1,1) (1.5,0.72) (2,0.66)};
         \end{axis} 
         \end{tikzpicture}  
-
+        \end{center}
     \end{enumerate}
     
 
