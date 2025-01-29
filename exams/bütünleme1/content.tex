@@ -2,8 +2,8 @@
 \newcommand\BolumAdi{MEKATRONİK BÖLÜMÜ}
 \newcommand\DersKodu{MKT2002}
 \newcommand\DersAdi{BİLGİSAYARLI KONTROL SİSTEMLERİ}
-\newcommand\SinavAdi{Genel Sınav}
-\newcommand\SinavTarihi{10.03.2025}
+\newcommand\SinavAdi{Bütünleme Sınav}
+\newcommand\SinavTarihi{10.06.2025}
 \newcommand\SinavSaati{10:00}
 \newcommand\SinavSuresi{90dk}
 
@@ -62,12 +62,12 @@
 \begin{enumerate}[\bfseries S1.]
     \item (35p)\,Örnekleme zamanı $T=1\,s$ olan birinci dereceden bir sistem 
     \begin{equation}
-        G(z)=\frac{1}{z+1.2}
+        G(z)=\frac{1}{z+1}
     \end{equation}
-    olarak verilmiştir. $t_s=4\,s$ ve aşım $\%16.3$ olacak şekilde bir ayrık PI kontrolör tasarlayınız.
+    olarak verilmiştir. $t_s=2\,s$ ve aşım $\%16.3$ olacak şekilde bir ayrık PD kontrolör tasarlayınız.
     \item (35p)\,Ayrık bir durum uzayı
     \begin{equation}
-        A=\begin{bmatrix}1& 1\\-1&0\end{bmatrix},\,B=\begin{bmatrix}0\\1\end{bmatrix},\,C=\begin{bmatrix}1&0\end{bmatrix}
+        A=\begin{bmatrix}0.5& 0\\0&0.4\end{bmatrix},\,B=\begin{bmatrix}0\\1\end{bmatrix},\,C=\begin{bmatrix}1&0\end{bmatrix}
     \end{equation}
     olarak verilmiştir. Durum geri besleme kontrolörü için amaçlanan kapalı çevrim karakteristikleri
     \begin{equation}
@@ -75,71 +75,11 @@
     \end{equation}
     ile ifade edilmektedir. Durum geri beleme kontrolörünü elde ediniz.
     \begin{equation*}
-        \begin{bmatrix}0& 1\\1&-1\end{bmatrix}^{-1}=\begin{bmatrix}1& 1\\1&0\end{bmatrix},\,
-        \begin{bmatrix}1& 1\\-1&0\end{bmatrix}^{-1}=\begin{bmatrix}-1& -1\\1&0\end{bmatrix},\,
-        \begin{bmatrix}1& 1\\-1&0\end{bmatrix}\begin{bmatrix}1& 1\\-1&0\end{bmatrix}=\begin{bmatrix}-1& -1\\1&0\end{bmatrix}
+        \begin{bmatrix}a& b\\c&d\end{bmatrix}^{-1}=\frac{1}{ad-bc}\begin{bmatrix}d& -b\\-c&a\end{bmatrix}
     \end{equation*}
     \item (30p)\,S tanım bölgesinde verilen 
     \begin{equation}
-        \frac{1}{(s+1)(s+2)(s+3)}
+        \frac{6}{(s+2)(s+8)}
     \end{equation}
     ifadeyi z tanım bölgesine dönüştürünüz. 
-    \begin{equation*}
-    \begin{split}
-        \begin{bmatrix}
-            1&     1&     1\\
-            4&     5&     3\\
-            3&     6&     2\\
-        \end{bmatrix}^{-1}=\begin{bmatrix}
-            -4 &   2   &    -1\\
-            0.5&   -0.5&    0.5\\
-            4.5&   -1.5&    0.5\\
-        \end{bmatrix},\,
-        \begin{bmatrix}
-            1&     1&     1\\
-            4&     3&     5\\
-            3&     2&     6\\
-        \end{bmatrix}^{-1}=\begin{bmatrix}
-            -4&    2&   -1\\
-            4.5&   -1.5&    0.5\\
-            0.5&  -0.5&    0.5\\
-        \end{bmatrix}\\
-        \begin{bmatrix}
-            1&     1&     1\\
-            5&     4&     3\\
-            6&     3&     2\\
-        \end{bmatrix}^{-1}=\begin{bmatrix}
-        0.5 &  -0.5 &   0.5\\
-        -4&    2&   -1.\\
-        4.5 &  -1.5 &   0.5\\
-        \end{bmatrix},\,
-        \begin{bmatrix}
-            1&     1&     1\\
-            5&     3&     4\\
-            6&     2&     3\\
-        \end{bmatrix}^{-1}=\begin{bmatrix}
-            0.5&   -0.5&    0.5\\
-            4.5&   -1.5&    0.5\\
-             -4&    2  &    -1\\
-        \end{bmatrix}\\
-        \begin{bmatrix}
-            1&     1&     1\\
-            3&     4&     5\\
-            2&     3&     6\\
-        \end{bmatrix}^{-1}=\begin{bmatrix}
-            4.5 &  -1.5&    0.5\\
-            -4  &    2 &     -1\\
-             0.5&  -0.5&    0.5\\
-        \end{bmatrix},\,
-        \begin{bmatrix}
-            1&     1&     1\\
-            3&     5&     4\\
-            2&     6&     3\\
-        \end{bmatrix}^{-1}=\begin{bmatrix}
-            4.5&   -1.5&    0.5\\
-            0.5&   -0.5&    0.5\\
-           -4&    2&   -1\\
-        \end{bmatrix}\\
-    \end{split}
-    \end{equation*}
 \end{enumerate}

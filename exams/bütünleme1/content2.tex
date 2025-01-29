@@ -1,0 +1,199 @@
+\newcommand\UniversiteAdi{Niğde Ömer Halisdemir Üniversitesi}
+\newcommand\BolumAdi{MEKATRONİK BÖLÜMÜ}
+\newcommand\DersKodu{MKT2002}
+\newcommand\DersAdi{BİLGİSAYARLI KONTROL SİSTEMLERİ}
+\newcommand\SinavAdi{Bütünleme Sınav}
+\newcommand\SinavTarihi{10.06.2025}
+\newcommand\SinavSaati{10:00}
+\newcommand\SinavSuresi{90dk}
+
+\pagestyle{fancy}
+\fancyhf{} % clear existing header/footer entries
+\fancyhead[R]{Öğrenci No:\hspace{4.5cm}}
+\fancyhead[L]{Ad Soyad:\hspace{7cm}}
+\noindent
+\begin{tabular}{
+    p{0.15\linewidth}
+    p{0.15\linewidth}
+    p{0.3\linewidth}
+    p{0.1\linewidth}
+    p{0.15\linewidth}}
+    \multicolumn{5}{c}{\textbf{\BolumAdi}}\\
+    \multicolumn{5}{c}{\textbf{\DersAdi}}\\\hline
+    \multicolumn{1}{|r|}{Ders Kodu:}&
+    \multicolumn{1}{|c|}{\DersKodu}&
+    \multicolumn{1}{|c|}{}& 
+    \multicolumn{1}{|r|}{Tarih:}&
+    \multicolumn{1}{|c|}{\SinavTarihi} \\\hline
+    \multicolumn{1}{|r|}{Sınav Türü:}&
+    \multicolumn{1}{|c|}{\SinavAdi}&  
+    \multicolumn{1}{|c|}{}&
+    \multicolumn{1}{|r|}{Saat:}&
+    \multicolumn{1}{|c|}{\SinavSaati}\\\hline
+    \multicolumn{1}{|r|}{Dönemi:}&
+    \multicolumn{1}{|c|}{2024-2025}&
+    \multicolumn{1}{|c|}{}&
+    \multicolumn{1}{|r|}{Süre:}&
+    \multicolumn{1}{|c|}{\SinavSuresi} \\\hline
+    &&&&\\
+\end{tabular}\\\\
+\noindent\begin{center}
+\begin{tabular}{|r|c|c|c|c|}\hline
+    \textbf{Soru:}&
+    \textbf{1}&
+    \textbf{2}&
+    \textbf{3}&
+    \textbf{Toplam}\\\hline
+    \textbf{Puan:}&
+    \textbf{35}&
+    \textbf{35}&
+    \textbf{30}&
+    \textbf{100}\\\hline
+    \textbf{Not:}&35&35&30&100\\\hline
+\end{tabular}\end{center}
+\noindent\textbf{Uyarı:}
+\begin{itemize}\bfseries
+    \item Soruları dikkatlice okuyunuz. Hesap makinesi kullanılabilir.
+    \item Defter, kitap ve notlar açık bir sınavdır.
+    \item İşlemleri atlamadan ve ayrıntılı olarak veriniz. Sadece nümerik yanıtlar veya çizimler ara işlemler olmadan kabul edilmemektedir.
+    \item Yuvarlamalar 2 hane yapılacaktır. $\mathbf{1.99456\approx1.99}$ olarak alınacaktır.
+\end{itemize}
+
+\begin{enumerate}[\bfseries S1.]
+    \item (35p)\,Örnekleme zamanı $T=1\,s$ olan birinci dereceden bir sistem 
+    \begin{equation}
+        G(z)=\frac{1}{z+1}
+    \end{equation}
+    olarak verilmiştir. $t_s=2\,s$ ve aşım $\%16.3$ olacak şekilde bir ayrık PD kontrolör tasarlayınız. Aşım isterinden hareketle
+    \begin{equation}
+    \begin{split}
+        \zeta&=-\frac{log_e(0.163)}{\sqrt{\pi^2+log_e(0.163)^2}}\\
+        &=0.5
+    \end{split}
+    \end{equation}
+    ve yerleşme zamanından hareketle ise 
+    \begin{equation}
+        \begin{split}
+            w_n&=\frac{4}{t_s\zeta}\\
+            w_n&=\frac{4}{2\cdot 0.5}\\
+            w_n&=4
+        \end{split}
+    \end{equation}
+    elde edilir. S tanım bölgesinde kutuplar
+    \begin{equation}
+    \begin{split}
+        s&=-\zeta w_n+\sqrt{1-\zeta^2}w_n\\
+        s&=-2\pm \sqrt{3}i\\
+        s&=-2\pm 3.46i
+    \end{split}
+    \end{equation}
+    olarak hesaplanır. Z tanım bölgesine geçilince
+    \begin{equation}
+        \begin{split}
+            z&=e^{s}\\
+            &=e^{-2\pm 3.46i}\\
+            &=e^{-2}\phase{3.46}\\
+            &=e^{-2}\phase{198.24^o}\\
+            &=-0.13\pm0.04i
+        \end{split}
+    \end{equation}
+    elde edilir. Kapalı çevrim için aday polinom
+    \begin{equation}
+        p(z)=z^2+0.26z+0.02
+    \end{equation}
+    şeklindedir. PD kontrolör
+    \begin{equation}
+        F(z)=\frac{k_dz+k_p}{z}
+    \end{equation}
+    olmak üzere kapalı çevrim transfer fonksiyonu
+    \begin{equation}
+    \begin{split}
+        T(z)&=\frac{\frac{k_dz+k_p}{z}\frac{1}{z+1}}{1+\frac{k_dz+k_p}{z}\frac{1}{z+1}}\\
+        &=\frac{k_dz+k_p}{z^2+z+k_dz+k_p}\\
+        &=\frac{k_dz+k_p}{z^2+(1+k_d)z+k_p}
+    \end{split}
+    \end{equation}
+    şeklindedir. Bu durumda tasarım problemi
+    \begin{equation}
+        \begin{split}
+        0.26 &= 1+ k_d\\
+        0.02 &= k_p
+        \end{split}
+    \end{equation}
+    ve çözüm $k_d=-0.74$ ve $k_p=0.02$ olarak elde edilir. Sonuç olarak PD kontrolör
+    \begin{equation}
+        F(z)=\frac{-0.74z+0.02}{z}=\frac{-0.74(z-0.02)}{z}
+    \end{equation}
+    olarak hesaplanır.
+
+    \item (35p)\,Ayrık bir durum uzayı
+    \begin{equation}
+        A=\begin{bmatrix}0.5& 0\\0&0.4\end{bmatrix},\,B=\begin{bmatrix}0\\1\end{bmatrix},\,C=\begin{bmatrix}1&0\end{bmatrix}
+    \end{equation}
+    olarak verilmiştir. Durum geri besleme kontrolörü için amaçlanan kapalı çevrim karakteristikleri
+    \begin{equation}
+        p(z)=z^2+0.5z+0.25
+    \end{equation}
+    ile ifade edilmektedir. Durum geri beleme kontrolörünü elde ediniz.
+    \begin{equation*}
+        \begin{bmatrix}a& b\\c&d\end{bmatrix}^{-1}=\frac{1}{ad-bc}\begin{bmatrix}d& -b\\-c&a\end{bmatrix}
+    \end{equation*}
+    $\Phi$ parametresi 
+    \begin{equation}
+        \begin{split}
+            \Phi&=[B\, AB]\\
+            \Phi&=\begin{bmatrix}
+            0& 0\\
+            1& 0.4
+            \end{bmatrix}
+        \end{split}
+    \end{equation}
+    şeklinde hesaplanmaktadır. Tersi için ise
+    \begin{equation}
+            det(\Phi)=0
+    \end{equation}
+    elde edildiğinden matrisin tersi alınamamaktadır. Bu sebeple istenen kontrolörü tasarlamak mümkün değildir. Örnek bir kontrolör 
+    \begin{equation}
+        K=\begin{bmatrix}1& 1\end{bmatrix}
+    \end{equation}
+    seçilmesi durumunda
+    \begin{equation}
+        eig(A+BK)=\begin{bmatrix}1.4&0.5\end{bmatrix}
+    \end{equation}
+    elde edilmektedir. Görüldüğü üzere $0.5$ kutbu hareket ettirilemektedir.
+
+    \item (30p)\,S tanım bölgesinde verilen 
+    \begin{equation}
+        \frac{6}{(s+2)(s+8)}
+    \end{equation}
+    ifadeyi z tanım bölgesine dönüştürünüz. 
+    Verilen ifadeden 
+    \begin{equation}
+    \begin{split}
+        \frac{6}{(s+2)(s+8)}&=\frac{A}{s+2}+\frac{A}{s+8}\\
+        As+8A+Bs+2B&=6\\
+    \end{split}
+    \end{equation}
+    ve dolayısıyla  
+    \begin{equation}
+        \begin{split}
+            A+B&=0\\
+            8A+2B&=6
+        \end{split}
+    \end{equation}
+    elde edilir. Çözüm $A=1$ ve $B=-1$ olmak üzere
+    \begin{equation}
+        \frac{6}{(s+2)(s+8)}=\frac{1}{s+2}-\frac{1}{s+8}
+    \end{equation}
+    ifadesi yazılır. Z tanım bölgesinde ifade
+    \begin{equation}
+        \begin{split}
+            \mathcal{Z}\left\{\frac{1}{s+2}-\frac{1}{s+8}\right\}&=
+            \mathcal{Z}\left\{\frac{1}{s+2}\right\}-\mathcal{Z}\left\{\frac{1}{s+8}\right\}\\
+            &=\frac{z}{z-e^{-2}}-\frac{z}{z-e^{-8}}\\
+            &=\frac{ 0.14z}{z^2 - 0.14 z}\\
+            &=\frac{ 0.14}{z- 0.14}
+        \end{split}
+    \end{equation}
+    şeklindedir.
+\end{enumerate}
