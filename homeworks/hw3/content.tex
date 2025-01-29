@@ -2,11 +2,11 @@
 \newcommand\BolumAdi{MEKATRONİK BÖLÜMÜ}
 \newcommand\DersKodu{MKT2002}
 \newcommand\DersAdi{BİLGİSAYARLI KONTROL SİSTEMLERİ}
-\newcommand\SinavAdi{Ödev 1}
+\newcommand\SinavAdi{Ödev 3}
 \newcommand\SinavTarihi{10.03.2025}
 \newcommand\SinavSaati{10:00}
 \newcommand\SinavSuresi{90dk}
-% Bölüm 3den sonra
+% Bölüm 6den sonra
 \pagestyle{fancy}
 \fancyhf{} % clear existing header/footer entries
 \fancyhead[R]{Öğrenci No:\hspace{4.5cm}}
@@ -48,34 +48,8 @@
     \item Soruları dikkatlice okuyunuz. Hesap makinesi kullanılabilir.
     \item İşlemleri atlamadan ve ayrıntılı olarak veriniz. Sadece nümerik yanıtlar veya çizimler ara işlemler olmadan kabul edilmemektedir.
 \end{itemize}
-\noindent\textbf{Soru:} Aktif süspansiyon sistemi için diferansiyel denklem takımı 
+\noindent\textbf{Soru:} S tanım bölgesinden z tanım bölgesine geçiş 
 \begin{equation}
-\begin{split}
-    \frac{dx_1}{dt}&=x_2-x_4\\
-    \frac{dx_2}{dt}&=\frac{-k_s}{m_s}x_1-\frac{b_s}{m_s}x_2+\frac{b_s}{m_s}x_4+\frac{1}{m_s}w+\frac{1}{m_s}u\\
-    \frac{dx_3}{dt}&=x_4\\
-    \frac{dx_4}{dt}&=\frac{k_s}{m_{us}}x_1+\frac{b_s}{m_{us}}x_2-\frac{k_{us}}{m_{us}}x_3-\frac{b_s+b_{us}}{m_{us}}x_4-\frac{1}{m_{us}}w-\frac{1}{m_{us}}u\\    
-\end{split}
+    z=e^{sT}
 \end{equation}
-olarak verilmiştir ve Şekil~\ref{fig:suspension} ile gösterilmektedir. $x_1$ gövdenin yer değiştirmesi, $x_2$ gövdenin hızı, $x_3$ tekerin yer değiştirmesi ve $x_4$ ise tekerin dikey hızıdır. Fark denklemlerini elde ediniz.
-\begin{figure}[!htb]
-    \centering
-    \includegraphics[width=0.48\textwidth]{lab}
-    \includegraphics[width=0.48\textwidth]{suspension}
-    \caption{Aktif süspansiyon sistemi ve modeli}\label{fig:suspension}
-\end{figure}
-\begin{table}[!htb]
-    \centering
-    \begin{tabular}{ccc}\hline
-        \textbf{Açıklama}&\textbf{Değişken}& \textbf{Değer}\\\hline
-        Gövde kütlesi&$m_s$& 2.45  \\
-        Süspansiyon kütlesi&$m_{us}$& 1   \\
-        Süspansiyon yay sabiti&$k_s$& 900 \\  
-        Teker yay sabiti&$k_{us}$& 1250 \\
-        Süspansiyon damper katsayısı&$b_s$& 7.5 \\
-        Teker damper katsayısı&$b_{us}$& 5 \\  \hline
-    \end{tabular}
-    \caption{Süspansiyon modeli parametreleri}
-\end{table}
-
-\noindent\textbf{Extra:}Fark denklemlerini kullanarak $u$ girişine sıfır ve $w=0.04sin(2\pi10t)$ uygulayınız ve $x_1$, $x_2$, $x_3$ ve $x_4$ değişkenlerini çiziniz. Çizimi $0-1\,s$ arasında oluşturunuz. 
+ile yapılmaktadır. $s=-1\pm 1i$ olarak verilen kutup çifti için $T$'nin değişimi ile z tanım bölgesinde kutup çiftinin hareketini nümerik yöntemlerle belirleyiniz ve bir grafik olarak gösteriniz. 
