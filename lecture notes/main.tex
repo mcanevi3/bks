@@ -69,6 +69,8 @@ cross/.default={3pt}}
 
 \usepackage{steinmetz}
 \usepackage{matlab-prettifier}
+\usepackage[tc]{titlepic}
+
 \begin{document}
 \shorthandoff{=} % babel paketi hatasını gidermek için gerekli
 \renewcommand{\chaptername}{Bölüm}
@@ -82,7 +84,23 @@ cross/.default={3pt}}
 \renewcommand{\indexname}{Dizin}
 \renewcommand{\partname}{Bölüm}
 \renewcommand{\proofname}{İspat}
+\definecolor{other}{RGB}{171,0,255}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\title{\bfseries{\sc\textcolor{black}{Bilgisayarlı Kontrol Sistemleri \\ Ders Notu}}}
+\author{\textcolor{black}{Dr. Mehmet CANEVİ} \\[5pt]
+\emph{\textcolor{black}{Bilgisayar Mühendisliği}}\\[2cm]
+   \vspace{2cm}
+\titlepic{\includegraphics[width=0.2\textwidth]{logo}\\[5pt]
+\textcolor{black}{Niğde Ömer Halisdemir Üniversitesi}\\[5pt]
+ \textcolor{black}{Türkiye}\\
+ \vfill
+ \textcolor{black}{2025}}}
+\date{}
 
+\maketitle
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\let \savenumberline \numberline
+\def \numberline#1{\savenumberline{#1.}}
 \tableofcontents
 
 \input{chapter/1}
