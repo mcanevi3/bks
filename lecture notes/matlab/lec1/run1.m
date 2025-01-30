@@ -15,7 +15,7 @@ print("../../img/"+"lec1_plot1.eps",'-depsc','-r150');
 syms t s z;
 yt=dirac(t);
 ys=laplace(yt);
-yz=ztrans(ys,s,z);
+yz=ztrans(yt,t,z);
 disp("y(t):"+string(yt));
 disp("y(s):"+string(ys));
 disp("y(z):"+string(yz));
