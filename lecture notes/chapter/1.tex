@@ -92,6 +92,84 @@ olarak elde edilir.
 \end{enumerate}
 
 \begin{enumerate}
+    \item 
+    \begin{equation}
+        G(s)=\frac{1}{s^2+4s+3}
+    \end{equation}
+    ile verilen transfer fonksiyonunu kesirler toplamı olarak elde ediniz. Bu durumda
+    \begin{equation}
+    \begin{split}
+        G(s)&=\frac{1}{(s+3)(s+1)}\\
+        \frac{1}{(s+3)(s+1)}&=\frac{A}{s+1}+\frac{B}{s+1}\\
+        \frac{1}{(s+3)(s+1)}&=\frac{A(s+1)+B(s+3)}{(s+1)(s+3)}\\
+        A(s+1)+B(s+3)&=1\\
+        As+A+Bs+3B&=1\\
+        A+B=0\,&=A+3B=1\\
+        A=-B\,&=A+3B=1\\
+        -B+3B&=1\\
+        2B&=1\\
+        B&=\frac{1}{2},\,A=-\frac{1}{2}\\
+        G(s)&=-\frac{1}{2}\frac{1}{s+1}+\frac{1}{2}\frac{1}{s+3}
+    \end{split}
+    \end{equation}
+    elde edilir.
+    \item \begin{equation}
+        G(s)=\frac{1}{s^2+4s+3}
+    \end{equation} ile verilen sistemin basamak yanıtını($u(t)=1$) hesaplayınız. Bunun için 
+    \begin{equation}
+        \begin{split}
+            G(s)&=\frac{1}{s^2+4s+3}\\
+            \frac{y(s)}{u(s)}&=\frac{1}{s^2+4s+3}\\
+            y(s)&=\frac{u(s)}{s^2+4s+3}
+        \end{split}
+    \end{equation}
+    yazılır ve $u(t)=1$ ise Laplace çizelgesinden $u(s)=\frac{1}{s}$ olduğundan
+    \begin{equation}
+        \begin{split}
+            G(s)&=\frac{1}{s^2+4s+3}\\
+            \frac{y(s)}{u(s)}&=\frac{1}{s^2+4s+3}\\
+            y(s)&=\frac{1}{s(s^2+4s+3)}\\
+            y(s)&=\frac{1}{s(s+1)(s+3)}
+        \end{split}
+    \end{equation}
+    dolayısıyla,
+    \begin{equation}
+        \begin{split}
+            y(s)&=\frac{1}{s(s+1)(s+3)}\\
+            \frac{1}{s(s+1)(s+3)}&=\frac{A}{s}+\frac{B}{s+1}+\frac{C}{s+3}\\
+            \frac{1}{s(s+1)(s+3)}&=\frac{A(s+1)(s+3)+B(s)(s+3)+Cs(s+1)}{s(s+1)(s+3)}\\
+            A(s+1)(s+3)+B(s)(s+3)+Cs(s+1)&=1\\
+            A(s^2+4s+4)+B(s^2+3s)+C(s^2+s)&=1\\
+            As^2+4As+4A+Bs^2+3Bs+Cs^2+Cs&=1\\
+            (A+B+C)s^2+(4A+3B+C)s+(4A)&=1
+        \end{split}
+        \end{equation}
+        elde edilir. Bu durumda 
+    \begin{equation}
+    \begin{split}
+        A+B+C&=0\\
+        4A+3B+C&=0\\
+        4A&=1
+    \end{split}
+    \end{equation}
+    çözülürse 
+    \begin{equation}
+        \begin{split}
+            A&=\frac{1}{4}\\
+            B+C&=-\frac{1}{4}\\
+            3B+C&=-1\\
+        \end{split}
+    \end{equation}
+    ve
+    \begin{equation}
+        \begin{split}
+            B+C&=-\frac{1}{4}\\
+            3B+C&=-1\\
+            B&=-\frac{5}{8}\\
+        \end{split}
+    \end{equation}
+    
+    
     \item $sin(t)$ fonksiyonunu sürekli zaman ve ayrık zamanda çizdiriniz.
     \verb|Matlab| kodu
     \begin{lstlisting}[style=Matlab-editor]
