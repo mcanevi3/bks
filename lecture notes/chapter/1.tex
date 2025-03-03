@@ -205,13 +205,7 @@ olarak elde edilir.
         \caption{$sin(t)$ sürekli zaman ve ayrık zaman karşılaştırması}
         \label{fig:lec1_plot1}
     \end{figure}
-    \item $y=\delta(t)$ fonksiyonunun s tanım bölgesi ve z tanım bölgesi karşılığını elde ediniz.
-    \begin{lstlisting}[style=Matlab-editor]
-    syms t s z;
-    yt=dirac(t);
-    ys=laplace(yt);
-    yz=ztrans(ys,s,z);
-    \end{lstlisting}
+    
     \item 
     \begin{equation}
         G(s)=\frac{2}{s^3+4s^2+5s+6}

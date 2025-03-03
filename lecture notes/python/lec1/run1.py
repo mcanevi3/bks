@@ -29,9 +29,8 @@ def q2():
     plt.title("Sistem yanıtı")
     plt.savefig('q2_1.pdf',bbox_inches='tight')
     plt.show()
-def fun_q1():
+def q3():
     plt.grid('minor')
-    plt.grid('major')
     plt.xlabel("Zaman(s)")
     plt.ylabel("sin(t)")
     plt.title("Sürekli zaman ayrık zaman karşılaştırması")
@@ -44,27 +43,17 @@ def fun_q1():
     t=np.arange(0,10,T)
     yt=np.sin(t)
     plt.stem(t,yt, 'r')
+    plt.savefig('q3_1.pdf',bbox_inches='tight')
     plt.show()
-def fun_q2():
-    s=sym.Symbol('s')
-    t=sym.Symbol('t')
-    z=sym.Symbol('z')
-    yt=sym.DiracDelta(t)
-    ys=sym.laplace_transform(yt,t,s)
-    print(ys)
-
-    k=sym.Symbol('k')
-    yz=sym.Sum(sym.Piecewise((1, sym.And(k>-0.01,k<0.01)),(0, True)), (k, 0, 10)).doit()
-    print(yz)
     
-def fun_q3():
+def q4():
     s=sym.Symbol('s')
     Gs=1/(s**3+4*s**2+5*s+6)
     print(sym.apart(Gs))
     
-def fun_q4():
-    t, s = sym.symbols('t s', real=True, positive=True)
-    integral = sym.integrate(t * sym.exp(-s * t), (t, 0, sym.oo))
-    print(integral)
+# def fun_q4():
+#     t, s = sym.symbols('t s', real=True, positive=True)
+#     integral = sym.integrate(t * sym.exp(-s * t), (t, 0, sym.oo))
+#     print(integral)
 
-q2()
+q3()
