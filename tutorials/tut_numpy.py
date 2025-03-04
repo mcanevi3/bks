@@ -46,3 +46,8 @@ print(np.round(y,3))
 
 print(np.exp(-2))
 print(np.sqrt(9))
+
+vec = np.array([1, 2, 3, 4])
+print(np.min(vec))
+i=np.argmin(vec)
+print(f"{i}->{vec[i]}")
