@@ -372,8 +372,34 @@ elde edilir. Görüldüğü üzere, birim gecikme elde edilmiştir.
     haliyle
     \begin{equation}
         \begin{split}
-            &=(1-e^{-sT})^2\left(\frac{(0.5T-0.25)}{T}\frac{z}{z-1}+\frac{0.5}{T}\frac{Tz}{(z-1)^2}-\frac{(0.5T-0.25)}{T}\frac{z}{z-e^{-2T}}\right)\\
+            &=(1-z^{-1})^2\left(\frac{(0.5T-0.25)}{T}\frac{z}{z-1}+\frac{0.5}{T}\frac{Tz}{(z-1)^2}-\frac{(0.5T-0.25)}{T}\frac{z}{z-e^{-2T}}\right)\\
+        \end{split}
+    \end{equation}
+    elde edilir. $T=0.1$ yerine yazılırsa,
+    \begin{equation}
+        \begin{split}
+            &=(1-z^{-1})^2\left(-2\frac{z}{z-1}+5\frac{0.1z}{(z-1)^2}+2\frac{z}{z-0.82}\right)\\
+            &=(1-z^{-1})^2\left(\frac{-2z(z-1)(z-0.82)+0.5z(z-0.82)+2z(z-1)^2}{(z-0.82)(z-1)^2}\right)\\
+            &=z(1-z^{-1})^2\left(\frac{-2(z-1)(z-0.82)+0.5(z-0.82)+2(z-1)^2}{(z-0.82)(z-1)^2}\right)\\
+            &=z(1-z^{-1})^2\left(\frac{-2z^2+3.64z-1.64+0.5z-0.41+2z^2-4z+2}{(z-0.82)(z-1)^2}\right)\\
+            &=z(1-z^{-1})^2\left(\frac{3.64z-1.64+0.5z-0.41-4z+2}{(z-0.82)(z-1)^2}\right)\\
+            &=z(1-z^{-1})^2\left(\frac{0.14z-0.05}{(z-0.82)(z-1)^2}\right)\\
+            &=\frac{0.14z-0.05}{(z-0.82)z}\\
+            &=\frac{0.14z-0.05}{z^2-0.82z}
         \end{split}
     \end{equation}
     
+    Kod ise
+    \begin{lstlisting}
+    T=0.1
+    Gs=control.tf(1,[1,2])
+    t, y = control.step_response(Gs)
+    plt.plot(t,y,'k')
+    Gz=control.tf([0.14,-0.05],[1,-0.82,0],dt=T)
+    print(Gz)
+    t, y = control.step_response(Gz)
+    plt.stem(t,y,'r')
+    plt.show()
+    \end{lstlisting}
+    şeklindedir.
 \end{enumerate}

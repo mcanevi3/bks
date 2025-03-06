@@ -101,4 +101,14 @@ def fun_q6_helper():
     T=0.1
     Ls=(T*s+1)/(T*s**2*(s+2))
     print(sym.apart(Ls))
-fun_q6_helper()
+def q7():
+    T=0.1
+    Gs=control.tf(1,[1,2])
+    t, y = control.step_response(Gs)
+    plt.plot(t,y,'k')
+    Gz=control.tf([0.14,-0.05],[1,-0.82,0],dt=T)
+    print(Gz)
+    t, y = control.step_response(Gz)
+    plt.stem(t,y,'r')
+    plt.show()
+q7()
