@@ -1,14 +1,14 @@
 \babel@toc {turkish}{}\relax 
 \contentsline {chapter}{\numberline {1}Z ve S tanım bölgesi}{5}{chapter.1}%
 \contentsline {chapter}{\numberline {2}Ayrıklaştırma}{13}{chapter.2}%
-\contentsline {chapter}{\numberline {3}Fark Denklemleri}{23}{chapter.3}%
-\contentsline {chapter}{\numberline {4}Zaman Domeni Kriterleri}{29}{chapter.4}%
-\contentsline {chapter}{\numberline {5}Z Tanım Bölgesinde Kök Eğrisi}{37}{chapter.5}%
-\contentsline {chapter}{\numberline {6}Z Tanım Bölgesinde Zaman Tanım Bölgesi İsterler}{45}{chapter.6}%
-\contentsline {chapter}{\numberline {7}Z Tanım Bölgesinde P Kontrolör Tasarımı}{51}{chapter.7}%
-\contentsline {chapter}{\numberline {8}Z Tanım Bölgesinde PD Kontrolör Tasarımı}{57}{chapter.8}%
-\contentsline {chapter}{\numberline {9}Z Tanım Bölgesinde PI Kontrolör Tasarımı}{61}{chapter.9}%
-\contentsline {chapter}{\numberline {10}Z Tanım Bölgesinde PID Kontrolör Tasarımı}{65}{chapter.10}%
-\contentsline {chapter}{\numberline {11}Z Tanım Bölgesinde Durum Uzayı}{69}{chapter.11}%
-\contentsline {chapter}{\numberline {12}Z Tanım Bölgesinde Durum Geri Besleme Kontrolörü}{75}{chapter.12}%
-\contentsline {chapter}{\numberline {13}Z Tanım Bölgesinde Luenberger Gözleyicisi}{81}{chapter.13}%
+\contentsline {chapter}{\numberline {3}Fark Denklemleri}{25}{chapter.3}%
+\contentsline {chapter}{\numberline {4}Zaman Domeni Kriterleri}{31}{chapter.4}%
+\contentsline {chapter}{\numberline {5}Z Tanım Bölgesinde Kök Eğrisi}{39}{chapter.5}%
+\contentsline {chapter}{\numberline {6}Z Tanım Bölgesinde Zaman Tanım Bölgesi İsterler}{47}{chapter.6}%
+\contentsline {chapter}{\numberline {7}Z Tanım Bölgesinde P Kontrolör Tasarımı}{53}{chapter.7}%
+\contentsline {chapter}{\numberline {8}Z Tanım Bölgesinde PD Kontrolör Tasarımı}{59}{chapter.8}%
+\contentsline {chapter}{\numberline {9}Z Tanım Bölgesinde PI Kontrolör Tasarımı}{63}{chapter.9}%
+\contentsline {chapter}{\numberline {10}Z Tanım Bölgesinde PID Kontrolör Tasarımı}{67}{chapter.10}%
+\contentsline {chapter}{\numberline {11}Z Tanım Bölgesinde Durum Uzayı}{71}{chapter.11}%
+\contentsline {chapter}{\numberline {12}Z Tanım Bölgesinde Durum Geri Besleme Kontrolörü}{77}{chapter.12}%
+\contentsline {chapter}{\numberline {13}Z Tanım Bölgesinde Luenberger Gözleyicisi}{83}{chapter.13}%

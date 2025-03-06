@@ -87,5 +87,18 @@ def fun_q4():
     plt.stem(t,xt,'k')
     plt.plot(tnew,yt,'r')
     plt.show()
-
-fun_q1()
+def fun_q5():
+    T=0.1
+    Gs=control.tf(1,[1,2])
+    t, y = control.step_response(Gs)
+    plt.plot(t,y,'k')
+    Gz=control.tf(0.09,[1,-0.82],dt=T)
+    t, y = control.step_response(Gz)
+    plt.stem(t,y,'r')
+    plt.show()
+def fun_q6_helper():
+    s=sym.Symbol('s')
+    T=0.1
+    Ls=(T*s+1)/(T*s**2*(s+2))
+    print(sym.apart(Ls))
+fun_q6_helper()

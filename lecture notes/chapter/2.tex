@@ -284,4 +284,96 @@ elde edilir. Görüldüğü üzere, birim gecikme elde edilmiştir.
         \caption{FOH örneği}
         \label{fig:lec2_plot5}
     \end{figure}
+    \item Transfer fonksiyonu 
+    \begin{equation}
+        G(s)=\frac{1}{s+2}
+    \end{equation}
+    ile verilen sistemini ZOH yöntemini kullanarak Z tanım bölgesindeki ifadesini elde ediniz. $T=0.1$ için basamak yanıtını karşılaştırınız.
+    \begin{equation}
+    \begin{split}
+        L(s)&=G_{ZOH}(s)G(s)\\
+        &=\frac{1-e^{-sT}}{s}\frac{1}{s+2}\\
+        &=(1-e^{-sT})\left(\frac{1}{2s}-\frac{1}{2(s+2)}\right)\\
+        L(z)&=\frac{1}{2}\mathcal{Z}\left\{1-e^{-sT}\right\}\mathcal{Z}\left\{\left(\frac{1}{s}-\frac{1}{(s+2)}\right)\right\}\\
+        &=\frac{1}{2}(1-z^{-1})\left(\mathcal{Z}\left\{\frac{1}{s}\right\}-\mathcal{Z}\left\{\frac{1}{(s+2)}\right\}\right)\\
+        &=\frac{1}{2}(1-z^{-1})\left(\frac{z}{z-1}-\frac{z}{z-e^{-2T}}\right)\\
+        &=\left(\frac{z-1}{2z}\right)\left(\frac{z}{z-1}-\frac{z}{z-e^{-2T}}\right)\\
+        &=1-\frac{(z-1)}{2z-2e^{-2T}}\\
+        &=\frac{z-e^{-2T}-(z-1)}{2z-2e^{-2T}}\\
+        &=\frac{1-e^{-2T}}{2z-2e^{-2T}}
+    \end{split}
+    \end{equation}
+    $T=0.1$ yerine yazılırsa
+    \begin{equation}
+    \begin{split}
+        L(z)&=0.5\frac{1-e^{-0.2}}{z-e^{-0.2}}\\
+        &=0.5\frac{1-e^{-0.2}}{z-e^{-0.2}}\\
+        &=\frac{0.09}{z-0.82}\\
+    \end{split}
+    \end{equation}
+    elde edilir.
+    \begin{lstlisting}
+    T=0.1
+    Gs=control.tf(1,[1,2])
+    t, y = control.step_response(Gs)
+    plt.plot(t,y,'k')
+    Gz=control.tf(0.09,[1,-0.82],dt=T)
+    t, y = control.step_response(Gz)
+    plt.stem(t,y,'r')
+    plt.show()
+    \end{lstlisting}
+    \item Transfer fonksiyonu 
+    \begin{equation}
+        G(s)=\frac{1}{s+2}
+    \end{equation}
+    ile verilen sistemini FOH yöntemini kullanarak Z tanım bölgesindeki ifadesini elde ediniz. $T=0.1$ için basamak yanıtını karşılaştırınız.
+    \begin{equation}
+    \begin{split}
+        L(s)&=G_{FOH}(s)G(s)\\
+        L(s)&=G_{ZOH}^2(s)\frac{Ts+1}{T}G(s)\\
+        &=\frac{(1-e^{-sT})^2}{s^2}\frac{Ts+1}{Ts+2T}\\
+        &=(1-e^{-sT})^2\frac{Ts+1}{Ts^2(s+2)}\\
+    \end{split}
+    \end{equation}
+    elde edilir. Kesir ayırma işlemi için
+    \begin{equation}
+    \begin{split}
+        \frac{Ts+1}{s^2(s+2)}&=\frac{As+B}{s^2}+\frac{C}{s+2}\\
+        \frac{Ts+1}{s^2(s+2)}&=\frac{(As+B)(s+2)+Cs^2}{s^2(s+2)}\\
+        Ts+1&=(As+B)(s+2)+Cs^2\\
+        Ts+1&=As(s+2)+B(s+2)+Cs^2\\
+        Ts+1&=As^2+Cs^2+2As+Bs+2B\\
+        Ts+1&=(A+C)s^2+(2A+B)s+2B
+    \end{split}
+    \end{equation}
+    ve dolayısıyla
+    \begin{equation}
+        \begin{split}
+            A+C&=0\\
+            2A+B&=T\\
+            2B&=1
+        \end{split}
+    \end{equation}
+    çözülürse $B=0.5$, $A=0.5T-0.25$ ve $B=-0.5T+0.25$ hesaplanır. Yerine yazılırsa 
+    \begin{equation}
+        \begin{split}
+            \frac{Ts+1}{s^2(s+2)}&=\frac{(0.5T-0.25)s+0.5}{s^2}+\frac{-0.5T+0.25}{s+2}\\
+            &=\frac{(0.5T-0.25)}{s}+\frac{0.5}{s^2}+\frac{-0.5T+0.25}{s+2}\\
+        \end{split}
+    \end{equation}
+    ve 
+    \begin{equation}
+        \begin{split}
+            &=\mathcal{Z}\left\{\frac{(0.5T-0.25)}{s}+\frac{0.5}{s^2}+\frac{-0.5T+0.25}{s+2}\right\}\\
+            &=(0.5T-0.25)\mathcal{Z}\left\{\frac{1}{s}\right\}+0.5\mathcal{Z}\left\{\frac{1}{s^2}\right\}-(0.5T-0.25)\mathcal{Z}\left\{\frac{1}{s+2}\right\}\\
+            &=(0.5T-0.25)\frac{z}{z-1}+0.5\frac{Tz}{(z-1)^2}-(0.5T-0.25)\frac{z}{z-e^{-2T}}\\
+        \end{split}
+    \end{equation}
+    haliyle
+    \begin{equation}
+        \begin{split}
+            &=(1-e^{-sT})^2\left(\frac{(0.5T-0.25)}{T}\frac{z}{z-1}+\frac{0.5}{T}\frac{Tz}{(z-1)^2}-\frac{(0.5T-0.25)}{T}\frac{z}{z-e^{-2T}}\right)\\
+        \end{split}
+    \end{equation}
+    
 \end{enumerate}
