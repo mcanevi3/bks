@@ -169,17 +169,22 @@ elde edilir. Görüldüğü üzere, birim gecikme elde edilmiştir.
 
 \begin{enumerate}
     \item $x(t)=sin(t)$ fonksiyonunun türevini hesaplayıp çiziniz.
-    \begin{lstlisting}[style=Matlab-editor]
-    t=0:0.1:10;
-    xt=sin(t);
-    dxt=zeros(size(t));
-    T=t(2)-t(1);
-    for i=2:length(t)
-        dxt(i)=(xt(i)-xt(i-1))/T;
-    end
-    figure(1);clf;hold on;grid on;xlabel("Zaman(s)");ylabel("x(t)");title("sin(t) ve turevi");
-    plot(t,xt,'k','LineWidth',2);
-    plot(t,dxt,'r','LineWidth',2);
+    \begin{lstlisting}
+    T=0.1
+    t=np.arange(0,10+1,T)
+    xt=np.sin(t)
+    dxt=np.zeros(t.shape)
+    for i in range(1,len(t)):
+        dxt[i]=(xt[i]-xt[i-1])/T
+    
+    plt.grid('minor')
+    plt.xlabel("Zaman(s)")
+    plt.ylabel("sin(t)")
+    plt.title("Sinus ve turevi")
+
+    plt.plot(t,xt,'k')
+    plt.plot(t,dxt,'r')
+    plt.show()
     \end{lstlisting}
     Şekil~\ref{fig:lec2_plot1}'de $sin(t)$ ve türevi gösterilmiştir.
     \begin{figure}[!htb]
@@ -197,17 +202,22 @@ elde edilir. Görüldüğü üzere, birim gecikme elde edilmiştir.
         \label{fig:lec2_plot2}
     \end{figure}
     \item $x(t)=e^{-t}$ sinyalinin integralini hesaplayınız ve çizdiriniz.
-    \begin{lstlisting}[style=Matlab-editor]
-    t=0:1:10;
-    xt=exp(-t);
-    q=zeros(size(t));
-    T=t(2)-t(1);
-    for i=2:length(t)
-        q(i)=q(i-1)+xt(i-1)*T;
-    end
-    figure(1);clf;hold on;grid on;xlabel("Zaman(s)");ylabel("x(t)");title("sin(t) ve integrali");
-    plot(t,xt,'k','LineWidth',2);
-    plot(t,q,'r','LineWidth',2);
+    \begin{lstlisting}
+    T=0.1
+    t=np.arange(0,10+1,T)
+    xt=np.exp(-t)
+    q=np.zeros(np.size(t))
+    for i in range(1,len(t)):
+        q[i]=q[i-1]+T*xt[i-1]
+    
+    plt.grid('minor')
+    plt.xlabel("Zaman(s)")
+    plt.ylabel("e^(-t)")
+    plt.title("e^(-t) ve integrali")
+
+    plt.plot(t,xt,'k')
+    plt.plot(t,q,'r')
+    plt.show()
     \end{lstlisting}
     Şekil~\ref{fig:lec2_plot3}'de integral çizdirilmiştir.
     \begin{figure}[!htb]
@@ -217,21 +227,26 @@ elde edilir. Görüldüğü üzere, birim gecikme elde edilmiştir.
         \label{fig:lec2_plot3}
     \end{figure}
     \item ZOH yöntemini kullanarak $T=1$ olmak üzere $x(kT)=1$ sinyalini veri tutucunu çıkışını çizdiriniz.
-    \begin{lstlisting}[style=Matlab-editor]
-    T=1;
-    t=0:T:3;
-    xt=[1,2,-1,3];
+    \begin{lstlisting}
+    T=1
+    t=np.arange(0,3+1,T)
+    xt=np.array([1,2,-1,3])
+
+    T=0.01
+    tnew=np.arange(0,3+1,T)
+    yt=np.zeros(tnew.shape)
+    for i in range(0,len(t)):
+        for j in range(0,100):
+            yt[100*i+j]=xt[i]
     
-    tnew=0:0.01:4;
-    yt=zeros(size(tnew));
-    for i=1:length(t)
-        for j=1:100
-            yt(100*(i-1)+j)=xt(i);
-        end
-    end
-    figure(1);clf;hold on;grid on;xlabel("Zaman(s)");ylabel("x(t)");title("ZOH ornegi");
-    stem(t,xt,'k','LineWidth',2);
-    plot(tnew,yt,'r','LineWidth',2);
+    plt.grid('minor')
+    plt.xlabel("Zaman(s)")
+    plt.ylabel("Veri tutucu")
+    plt.title("ZOH ornegi")
+
+    plt.stem(t,xt,'k')
+    plt.plot(tnew,yt,'r')
+    plt.show()
     \end{lstlisting}
     Şekil~\ref{fig:lec2_plot4}'de ZOH işleminin sonucu gösterilmiştir.
     \begin{figure}[!htb]
@@ -241,21 +256,26 @@ elde edilir. Görüldüğü üzere, birim gecikme elde edilmiştir.
         \label{fig:lec2_plot4}
     \end{figure}
     \item FOH yöntemini kullanarak $T=1$ olmak üzere $x(kT)=1$ sinyalini veri tutucunu çıkışını çizdiriniz.
-    \begin{lstlisting}[style=Matlab-editor]
-    T=1;
-    t=0:T:3;
-    xt=[1,2,-1,3];
+    \begin{lstlisting}
+    T=1
+    t=np.arange(0,3+1,T)
+    xt=np.array([1,2,-1,3])
+
+    T=0.01
+    tnew=np.arange(0,3+1,T)
+    yt=np.zeros(tnew.shape)
+    for i in range(0,len(t)-1):
+        for j in range(0,100):
+            yt[100*i+j]=xt[i]+0.01*j*(xt[i+1]-xt[i])
     
-    tnew=0:0.01:4;
-    yt=zeros(size(tnew));
-    for i=1:length(t)-1
-        for j=1:100
-            yt(100*(i-1)+j)=xt(i)+0.01*j*(xt(i+1)-xt(i));
-        end
-    end
-    figure(1);clf;hold on;grid on;xlabel("Zaman(s)");ylabel("x(t)");title("ZOH ornegi");
-    stem(t,xt,'k','LineWidth',2);
-    plot(tnew,yt,'r','LineWidth',2);
+    plt.grid('minor')
+    plt.xlabel("Zaman(s)")
+    plt.ylabel("Veri tutucu")
+    plt.title("FOH ornegi")
+
+    plt.stem(t,xt,'k')
+    plt.plot(tnew,yt,'r')
+    plt.show()
     \end{lstlisting}
     Şekil~\ref{fig:lec2_plot5}'de FOH işleminin sonucu gösterilmiştir.
     \begin{figure}[!htb]

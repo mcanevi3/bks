@@ -71,6 +71,7 @@ cross/.default={3pt}}
 \usepackage{matlab-prettifier}
 \usepackage[tc]{titlepic}
 
+
 \begin{document}
 \shorthandoff{=} % babel paketi hatasını gidermek için gerekli
 \renewcommand{\chaptername}{Bölüm}
@@ -85,6 +86,7 @@ cross/.default={3pt}}
 \renewcommand{\partname}{Bölüm}
 \renewcommand{\proofname}{İspat}
 \definecolor{other}{RGB}{171,0,255}
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \title{\bfseries{\sc\textcolor{black}{Bilgisayarlı Kontrol Sistemleri \\ Ders Notu}}}
 \author{\textcolor{black}{Dr. Mehmet CANEVİ} \\[5pt]
@@ -96,6 +98,18 @@ cross/.default={3pt}}
  \vfill
  \textcolor{black}{2025}}}
 \date{}
+
+\lstset{language=Python, literate={-}{-}1,morekeywords={as}}
+\lstset{frame=lines}
+\lstset{label={lst:code_direct}}
+\lstset{basicstyle=\footnotesize}
+\lstset{keepspaces=true}
+\lstset{columns=fullflexible}
+\lstset{keywordstyle=\color{blue}}
+\lstset{commentstyle=\color{green}}
+\lstset{stringstyle=\color{red}}
+\lstset{showspaces=false}           
+\lstset{showstringspaces=false}   
 
 \maketitle
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

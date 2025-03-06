@@ -51,9 +51,9 @@ def q4():
     Gs=1/(s**3+4*s**2+5*s+6)
     print(sym.apart(Gs))
     
-# def fun_q4():
-#     t, s = sym.symbols('t s', real=True, positive=True)
-#     integral = sym.integrate(t * sym.exp(-s * t), (t, 0, sym.oo))
-#     print(integral)
+def q5():
+    t, s = sym.symbols('t s', real=True, positive=True)
+    integral = sym.integrate(t * sym.exp(-s * t), (t, 0, sym.oo))
+    print(integral)
 
-q3()
+q5()

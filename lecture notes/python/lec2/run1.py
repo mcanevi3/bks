@@ -87,3 +87,5 @@ def fun_q4():
     plt.stem(t,xt,'k')
     plt.plot(tnew,yt,'r')
     plt.show()
+
+fun_q1()
