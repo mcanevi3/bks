@@ -85,15 +85,22 @@ transfer fonksiyonu elde edilir.
         G(s)=\frac{p}{s+p}\label{eqn:first_order}
     \end{equation}
     ve $1\leq p\leq 5$ olmak üzere yerleşme zamanı ile sistem kutubu arasındaki ilişkiyi elde ediniz.
-    \begin{lstlisting}[style=Matlab-editor]
-    pvec=1:1:5;
-    tsvec=zeros(size(pvec));
-    for i=1:length(pvec)
-        pval=pvec(i);
-        Gs=tf(pval,[1 pval]);
-        info=stepinfo(Gs);
-        tsvec(i)=info.SettlingTime;
-    end
+    \begin{lstlisting}
+    pvec=np.arange(1,5+1,1)
+    tsvec=np.zeros(pvec.shape)
+    for i in range(0,len(pvec)):
+        pval=pvec[i]
+        Gs=control.tf(pval,np.array([1,pval]))
+        info=control.step_info(Gs)
+        tsvec[i]=info['SettlingTime']
+
+    plt.grid('minor')
+    plt.xlabel("p")
+    plt.ylabel("ts")
+    plt.title("p ile ts arasindaki iliski")
+
+    plt.plot(pvec,tsvec,'b')
+    plt.show()
     \end{lstlisting}
     \begin{figure}[!htb]
         \centering
@@ -107,16 +114,27 @@ transfer fonksiyonu elde edilir.
         \label{eqn:second_order}
     \end{equation}
     sisteminin yerleşme zamanının formülünü elde ediniz.
-    \begin{lstlisting}[style=Matlab-editor]
-    wn=2;
-    zetavec=0.1:0.1:1;
-    tsvec=zeros(size(zetavec));
-    for i=1:length(zetavec)
-        zetaval=zetavec(i);
-        Gs=tf(wn^2,[1 2*zetaval*wn wn^2]);
-        info=stepinfo(Gs);
-        tsvec(i)=info.SettlingTime;
-    end
+    \begin{lstlisting}
+    wn=2
+    zetavec=np.arange(0.1,1,0.1)
+    tsvec=np.zeros(zetavec.shape)
+    tsformula=np.zeros(zetavec.shape)
+    for i in range(0,len(zetavec)):
+        zetaval=zetavec[i]
+        Gs=control.tf(wn**2,np.array([1,2*zetaval*wn,wn**2]))
+        info=control.step_info(Gs)
+        tsvec[i]=info['SettlingTime']
+        tsformula[i]=4/(zetaval*wn)
+
+    plt.grid('minor')
+    plt.xlabel("zeta wn")
+    plt.ylabel("ts")
+    plt.title("zeta wn ile ts arasindaki iliski")
+
+
+    plt.plot(zetavec*wn,tsformula,'k')
+    plt.plot(zetavec*wn,tsvec,'b')
+    plt.show()
     \end{lstlisting}
     \begin{figure}[!htb]
         \centering
@@ -125,16 +143,27 @@ transfer fonksiyonu elde edilir.
         \label{fig:lec4_plot2}
     \end{figure}
     \item Denklem~\ref{eqn:second_order} sistemi için $1\leq w_n\leq 5$ ve $\zeta=0.6$ değerleri için yerleşme zamanı formülünü elde ediniz.
-    \begin{lstlisting}[style=Matlab-editor]
-    wnvec=1:5;
-    zeta=0.6;
-    tsvec=zeros(size(wnvec));
-    for i=1:length(wnvec)
-        wnval=wnvec(i);
-        Gs=tf(wn^2,[1 2*zeta*wnval wnval^2]);
-        info=stepinfo(Gs);
-        tsvec(i)=info.SettlingTime;
-    end 
+    \begin{lstlisting}
+    zeta=0.6
+    wnvec=np.arange(1,5+1,1)
+    tsvec=np.zeros(wnvec.shape)
+    tsformula=np.zeros(wnvec.shape)
+    for i in range(0,len(wnvec)):
+        wnval=wnvec[i]
+        Gs=control.tf(wnval**2,np.array([1,2*zeta*wnval,wnval**2]))
+        info=control.step_info(Gs)
+        tsvec[i]=info['SettlingTime']
+        tsformula[i]=4/(zeta*wnval)
+
+    plt.grid('minor')
+    plt.xlabel("zeta wn")
+    plt.ylabel("ts")
+    plt.title("zeta wn ile ts arasindaki iliski")
+
+
+    plt.plot(zeta*wnvec,tsformula,'k')
+    plt.plot(zeta*wnvec,tsvec,'b')
+    plt.show()
     \end{lstlisting}
     \begin{figure}[!htb]
         \centering
@@ -143,16 +172,27 @@ transfer fonksiyonu elde edilir.
         \label{fig:lec4_plot3}
     \end{figure}
     \item Denklem~\ref{eqn:second_order} sistemi için $0< \zeta<1$ ve $w_n=2$ değerleri için aşımın ifadesini elde ediniz.
-    \begin{lstlisting}[style=Matlab-editor]
-    wn=2;
-    zetavec=0.1:0.1:1;
-    osvec=zeros(size(zetavec));
-    for i=1:length(zetavec)
-        zetaval=zetavec(i);
-        Gs=tf(wn^2,[1 2*zetaval*wn wn^2]);
-        info=stepinfo(Gs);
-        osvec(i)=info.Overshoot;
-    end
+    \begin{lstlisting}
+    wn=2
+    zetavec=np.arange(0.1,1,0.1)
+    osvec=np.zeros(zetavec.shape)
+    osformula=np.zeros(zetavec.shape)
+    for i in range(0,len(zetavec)):
+        zetaval=zetavec[i]
+        Gs=control.tf(wn**2,np.array([1,2*zetaval*wn,wn**2]))
+        info=control.step_info(Gs)
+        osvec[i]=info['Overshoot']
+        osformula[i]=100*np.exp(-np.pi*zetaval/np.sqrt(1-zetaval**2))
+
+    plt.grid('minor')
+    plt.xlabel("zeta")
+    plt.ylabel("ts")
+    plt.title("zeta ile asim arasindaki iliski")
+
+
+    plt.plot(zetavec*wn,osformula,'k',linewidth=3)
+    plt.plot(zetavec*wn,osvec,'b')
+    plt.show()
     \end{lstlisting}
     \begin{figure}[!htb]
         \centering

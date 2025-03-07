@@ -73,13 +73,11 @@ elde edilir. Dikkat edilirse açı değişmekte fakat genlik sabittir ve bu ifad
         G(z)=\frac{1}{z^4+0.3z^3+4.22z^2-3.58z-0.4}\label{eqn:lec5_q1_system}
     \end{equation}
     ile verilen sisteme ait kök eğrisini çiziniz.
-    \begin{lstlisting}[style=Matlab-editor]
-    T=0.2;
-    den=[1 0.3 4.22 -3.58 -0.4];
-    poles=roots(den);
-    Gz=tf(1,den,T);
-    figure(1);
-    rlocus(Gz);
+    \begin{lstlisting}
+    T=0.2
+    Gz=control.tf(1,np.array([1,0.3,4.22,-3.58,-0.4]),T)
+    control.rlocus(Gz)
+    plt.show()
     \end{lstlisting}
     \begin{figure}[!htb]
         \centering
