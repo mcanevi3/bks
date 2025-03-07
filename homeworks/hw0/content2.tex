@@ -1,0 +1,118 @@
+\newcommand\UniversiteAdi{Niğde Ömer Halisdemir Üniversitesi}
+\newcommand\BolumAdi{MEKATRONİK BÖLÜMÜ}
+\newcommand\DersKodu{MKT2002}
+\newcommand\DersAdi{BİLGİSAYARLI KONTROL SİSTEMLERİ}
+\newcommand\SinavAdi{Ödev 0}
+\newcommand\SinavTarihi{10.03.2025}
+\newcommand\SinavSaati{10:00}
+\newcommand\SinavSuresi{90dk}
+
+\pagestyle{fancy}
+\fancyhf{} % clear existing header/footer entries
+\fancyhead[R]{Öğrenci No:\hspace{4.5cm}}
+\fancyhead[L]{Ad Soyad:\hspace{7cm}}
+\noindent \includegraphics[width=0.1\textwidth]{logo}
+\begin{tabular}{
+    p{0.15\linewidth}
+    p{0.15\linewidth}
+    p{0.2\linewidth}
+    p{0.1\linewidth}
+    p{0.15\linewidth}}
+    \multicolumn{5}{c}{\textbf{\BolumAdi}}\\
+    \multicolumn{5}{c}{\textbf{\DersAdi}}\\\hline
+    \multicolumn{1}{|r|}{Ders Kodu:}&
+    \multicolumn{1}{|c|}{\DersKodu}&
+    \multicolumn{1}{|c|}{}& 
+    \multicolumn{1}{|r|}{Tarih:}&
+    \multicolumn{1}{|c|}{\SinavTarihi} \\\hline
+    \multicolumn{1}{|r|}{Sınav Türü:}&
+    \multicolumn{1}{|c|}{\SinavAdi}&  
+    \multicolumn{1}{|c|}{}&
+    \multicolumn{1}{|r|}{Saat:}&
+    \multicolumn{1}{|c|}{\SinavSaati}\\\hline
+    \multicolumn{1}{|r|}{Dönemi:}&
+    \multicolumn{1}{|c|}{2024-2025}&
+    \multicolumn{1}{|c|}{}&
+    \multicolumn{1}{|r|}{Süre:}&
+    \multicolumn{1}{|c|}{\SinavSuresi} \\\hline
+    &&&&\\
+\end{tabular}\\\\
+\noindent\begin{center}
+\begin{tabular}{|r|c|}\hline
+    &\textbf{Toplam}\\\hline
+    \textbf{Puan:} &\textbf{100}\\\hline
+    \textbf{Not:}  &110\\\hline
+\end{tabular}\end{center}
+\noindent\textbf{Uyarı:}
+\begin{itemize}\bfseries
+    \item Soruları dikkatlice okuyunuz. Hesap makinesi kullanılabilir.
+    \item İşlemleri atlamadan ve ayrıntılı olarak veriniz. Sadece nümerik yanıtlar veya çizimler ara işlemler olmadan kabul edilmemektedir.
+\end{itemize}
+\noindent\textbf{Soru:}  Bir su kaynatıcısına ait transfer fonksiyonu
+\begin{equation}
+    G(s)=\frac{5}{s+0.05}\,\left(\frac{^oC}{A}\right)
+\end{equation}
+olarak verilmiştir. Bu sistemin girişi Amper($A$) birimi ile akım ve çıkışı santigrad derece($^oC$) birimi ile sıcaklıktır. Örnekleme süresi $T=0.1$ olmak üzere sistem modelini ZOH yöntemini kullanarak z tanım bölgesinde elde ediniz($G(z)=$?).
+\begin{equation}
+\begin{split}
+    G(z)&=\mathcal{Z}\left\{
+        \frac{5}{s+0.05}\frac{1-e^{-0.1s}}{s}
+    \right\}\\
+    =\left(\frac{z-1}{z}\right)\mathcal{Z}\left\{
+        \frac{5}{s^2+0.05s}
+    \right\}
+\end{split}
+\end{equation}
+elde edilir. Gerekli parçalama 
+\begin{equation}
+    \begin{split}
+        \frac{5}{s^2+0.05s}=\frac{A}{s}+\frac{B}{s+0.05}\\
+        As+0.05A+Bs=5\\
+        (A+B)s+0.05A=5\\
+    \end{split}
+\end{equation}
+ve dolayısıyla,
+\begin{equation}
+    \begin{split}
+        A+B=0\\
+        0.05A=5
+    \end{split}
+\end{equation}
+ile $A=100$ ve $B=-100$ olarak hesaplanır. Bu durumda,
+\begin{equation}
+    \begin{split}
+        \frac{5}{s^2+0.05s}=\frac{100}{s}-\frac{100}{s+0.05}\\
+    \end{split}
+\end{equation}
+ile 
+\begin{equation}
+    \begin{split}
+        \mathcal{Z}\left\{\frac{100}{s}-\frac{100}{s+0.05}\right\}=100\frac{z}{z-1}-100\frac{z}{z-e^{-0.05}}
+    \end{split}
+\end{equation}
+Bu durumda,
+\begin{equation}
+    \begin{split}
+        G(z)&=\left(\frac{z-1}{z}\right)\mathcal{Z}\left\{
+            \frac{5}{s^2+0.05s}\\
+            &=\frac{z-1}{z}\left(100\frac{z}{z-1}-100\frac{z}{z-e^{-0.05}}\right)\\
+            &=100\frac{z-1}{z}\left(\frac{z}{z-1}-\frac{z}{z-e^{-0.05}}\right)\\
+            &=100\left(1-\frac{z-1}{z-e^{-0.05}}\right)\\
+            &=100\frac{1-e^{-0.05}}{z-e^{-0.05}}\\
+            &=\frac{5}{z-0.95}
+        \right\}
+    \end{split}
+\end{equation}
+Son olarak,
+\begin{equation}
+    \begin{split}
+        G(z)&=\frac{5}{z-0.95}\\
+        G(z^{-1})&=\frac{5z^{-1}}{1-0.95z^{-1}}\\
+        \frac{x}{u}&=\frac{5z^{-1}}{1-0.95z^{-1}}\\
+        (1-0.95z^{-1})x&=5z^{-1}u\\
+        x[i]-0.95x[i-1]&=5u[i-1]\\
+        x[i]&=0.95x[i-1]+5u[i-1]
+    \end{split}
+\end{equation}
+
+\noindent\textbf{Extra:}$G(s)$ ve $G(z)$ modellerinin basamak yanıtı($u(t)=1$) karşılaştırınız. ($G(s)$ için plot, $G(z)$ için stem kullanınız)
