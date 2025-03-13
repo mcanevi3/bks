@@ -114,4 +114,70 @@ Son olarak,
     \end{split}
 \end{equation}
 
+\begin{figure}[!htb]
+    \centering
+    \includegraphics[width=0.6\textwidth]{q1.pdf}
+    \caption{ZOH ile ayrıklaştırma sonucu elde edilen yanıt}\label{fig:q1}
+\end{figure}
+
 \noindent\textbf{Extra:}$G(s)$ ve $G(z)$ modellerinin basamak yanıtı($u(t)=1$) karşılaştırınız. ($G(s)$ için plot, $G(z)$ için stem kullanınız)
+
+FOH yöntemini kullanırsak
+\begin{equation}
+    \begin{split}
+        G(z)&=\mathcal{Z}\left\{
+            \frac{5}{s+0.05}\frac{(1-e^{-0.1s})^2(Ts+1)}{Ts^2}
+        \right\}\\
+        &=\left(\frac{(z-1)^2}{z^2}\right)\mathcal{Z}\left\{
+            \frac{5(s+10)}{s^3+0.05s^2}
+        \right\}
+    \end{split}
+\end{equation}
+elde edilir. Kesirler çarpımı kesirler toplamına dönüştürülürse
+\begin{equation}
+    \begin{split}
+        \frac{5(s+10)}{s^3+0.05s^2}=\frac{A}{s}+\frac{B}{s^2}+\frac{C}{s+0.05}\\
+        5s+50=As(s+0.05)+B(s+0.05)+Cs^2\\
+        5s+50=A(s^2+0.05s)+B(s+0.05)+Cs^2\\
+        5s+50=As^2+0.05As+Bs+0.05B+Cs^2\\
+        5s+50=As^2+Cs^2+0.05As+Bs+0.05B\\
+        5s+50=(A+C)s^2+(0.05A+B)s+0.05B
+    \end{split}
+\end{equation}
+sonucu
+\begin{equation}
+    \begin{split}
+        A+C=0\\
+        0.05A+B=5\\
+        0.05B=50
+    \end{split}
+\end{equation}
+çözümü olarak $A=-19900$, $B=1000$ ve $C=19900$ elde edilir ve dolayısıyla,
+\begin{equation}
+    \begin{split}
+        \frac{5(s+10)}{s^3+0.05s^2}=-\frac{19900}{s}+\frac{1000}{s^2}+\frac{19900}{s+0.05}
+    \end{split}
+\end{equation}
+elde edilir.
+Bu durumda,
+\begin{equation}
+    \begin{split}
+        G(z)&=\left(\frac{(z-1)^2}{z^2}\right)\mathcal{Z}\left\{
+            -\frac{19900}{s}+\frac{1000}{s^2}+\frac{19900}{s+0.05}
+        \right\}\\
+        &=\left(\frac{(z-1)^2}{z^2}\right)\left(\mathcal{Z}\left\{
+            -\frac{19900}{s}\right\}+\mathcal{Z}\left\{\frac{1000}{s^2}\right\}+\mathcal{Z}\left\{\frac{19900}{s+0.05}
+        \right\}\right)\\
+        &=\left(\frac{(z-1)^2}{z^2}\right)\left(-\frac{19900z}{z-1}+\frac{100z}{(z-1)^2}+\frac{19900z}{z-e^{-0.005}}\right)\\
+        &=\frac{0.7483z-0.2496}{z^2-0.9950z}\\
+    \end{split}
+\end{equation}
+elde edilir.
+
+\begin{figure}[!htb]
+    \centering
+    \includegraphics[width=0.6\textwidth]{q2.pdf}
+    \caption{FOH ile ayrıklaştırma sonucu elde edilen yanıt}\label{fig:q2}
+\end{figure}
+
+Görüldüğü üzere ZOH ile elde edilen ayrık sistem sürekli zaman sistem yanıtını tam anlamıyla temsil edememektedir. Bu durum FOH için geçerli değildir, ayrık sistem yanıtı sürekli zaman yanıtını gayet iyi temsil etmektedir. 
