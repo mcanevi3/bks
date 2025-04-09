@@ -72,7 +72,46 @@ olarak verilmiştir. $G(s)$ sistemine ait basamak yanıtı siyah renkte çizilec
     \end{equation}
     sistemi elde edilmektedir. $G_1(s)$ sistemine ait yanıtlar kırmızı renkte çizilecektir. \begin{enumerate}
         \item (25p)\, $G_1(s)$ basamak yanıtını $0.1\leq p\leq 0.5$ için $G(s)$ sistemine ait basamak yanıtı ile bir grafik üzerinde karşılaştırınız. $G_1(s)$ sistemine ait basamak yanıtı için ne söylenebilir? Bir cümle ile ifade ediniz.
+
+        \begin{lstlisting}
+            Gs=control.tf(1,[1,2,4])
+            t,y =control.step_response(Gs,50)
+            plt.plot(t,y,'k',linewidth=2)
+            plt.title("G(s)'ye ait yanit")
+            plt.xlabel("Zaman(s)")
+            plt.ylabel("y(t)")
+            plt.grid("on")
+            pvec=np.arange(0.1,0.5,0.1)
+            for p in pvec:
+                Gs1=Gs*control.tf(p,[1,p])
+                t,y =control.step_response(Gs1,50)
+                plt.plot(t,y,'r',linewidth=2)
+            plt.show()
+        \end{lstlisting}
+
+        \centering\includegraphics[width=0.5\textwidth]{plot1}
+
         \item (25p)\, $G_1(s)$ basamak yanıtını $5\leq p\leq 10$ için $G(s)$ sistemine ait basamak yanıtı ile bir grafik üzerinde karşılaştırınız. $G_1(s)$ sistemine ait basamak yanıtı için ne söylenebilir? Bir cümle ile ifade ediniz.
+
+        \begin{lstlisting}
+        Gs=control.tf(1,[1,2,4])
+        t,y =control.step_response(Gs,10)
+        plt.plot(t,y,'k',linewidth=2)
+        plt.title("G(s)'ye ait yanit")
+        plt.xlabel("Zaman(s)")
+        plt.ylabel("y(t)")
+        plt.grid("on")
+        pvec=np.arange(5,10,1)
+        for p in pvec:
+            Gs1=Gs*control.tf(p,[1,p])
+            t,y =control.step_response(Gs1,10)
+            plt.plot(t,y,'r',linewidth=2)
+        plt.show()
+        \end{lstlisting}
+
+        \centering\includegraphics[width=0.5\textwidth]{plot2}
+
+        Grafikleriden görüldüğü üzere, baskın bölgenin dışına eklenen bir kutup basamak yanıtını isterler açısından çok etkilememektedir. Baskın bölgede eklenmesi ise isterleri bozmaktadır.
         \end{enumerate}
     \item Bir sıfır eklenmesi durumunda; 
     \begin{equation}
@@ -80,36 +119,47 @@ olarak verilmiştir. $G(s)$ sistemine ait basamak yanıtı siyah renkte çizilec
     \end{equation}
     sistemi elde edilmektedir. $G_2(s)$ sistemine ait yanıtlar mavi renkte çizilecektir. \begin{enumerate}
             \item (25p)\, $G_2(s)$ basamak yanıtını $0.1\leq z\leq 0.5$ için $G(s)$ sistemine ait basamak yanıtı ile bir grafik üzerinde karşılaştırınız. $G_2(s)$ sistemine ait basamak yanıtı için ne söylenebilir? Bir cümle ile ifade ediniz.
+
+            \begin{lstlisting}
+            Gs=control.tf(1,[1,2,4])
+            t,y =control.step_response(Gs,50)
+            plt.plot(t,y,'k',linewidth=2)
+            plt.title("G(s)'ye ait yanit")
+            plt.xlabel("Zaman(s)")
+            plt.ylabel("y(t)")
+            plt.grid("on")
+            zvec=np.arange(0.1,0.5,0.1)
+            for z in zvec:
+                Gs2=Gs*control.tf([1,z],z)
+                t,y =control.step_response(Gs2,50)
+                plt.plot(t,y,'b',linewidth=2)
+            plt.show()
+            \end{lstlisting}
+    
+            \centering\includegraphics[width=0.5\textwidth]{plot3}
+    
             \item (25p)\, $G_2(s)$ basamak yanıtını $5\leq z\leq 10$ için $G(s)$ sistemine ait basamak yanıtı ile bir grafik üzerinde karşılaştırınız. $G_2(s)$ sistemine ait basamak yanıtı için ne söylenebilir? Bir cümle ile ifade ediniz.
+
+            \begin{lstlisting}
+            Gs=control.tf(1,[1,2,4])
+            t,y =control.step_response(Gs,10)
+            plt.plot(t,y,'k',linewidth=2)
+            plt.title("G(s)'ye ait yanit")
+            plt.xlabel("Zaman(s)")
+            plt.ylabel("y(t)")
+            plt.grid("on")
+            zvec=np.arange(5,10,1)
+            for z in zvec:
+                Gs2=Gs*control.tf([1,z],z)
+                t,y =control.step_response(Gs2,10)
+                plt.plot(t,y,'b',linewidth=2)
+            plt.show()
+            \end{lstlisting}
+    
+            \centering\includegraphics[width=0.5\textwidth]{plot4}
+
+            Grafikleriden görüldüğü üzere, baskın bölgenin dışına eklenen bir sıfır basamak yanıtını isterler açısından çok etkilememektedir. Baskın bölgede eklenmesi ise isterleri bozmaktadır ve kutup eklemekten daha çok bozulma meydana gelmektedir.
             \end{enumerate}
 \end{enumerate}
 
-\begin{figure}[!htb]
-    \centering
-    \includegraphics[width=0.5\textwidth]{plot1}
-    \caption{$0.1\leq p\leq 0.5$ için basamak yanıtlarının değişimi}\label{fig:plot1}
-\end{figure}
 
-\begin{figure}[!htb]
-    \centering
-    \includegraphics[width=0.5\textwidth]{plot2}
-    \caption{$1\leq p\leq 5$ için basamak yanıtlarının değişimi}\label{fig:plot2}
-\end{figure}
-
-Grafikleriden görüldüğü üzere, baskın bölgenin dışına eklenen bir kutup basamak yanıtını isterler açısından çok etkilememektedir. Baskın bölgede eklenmesi ise isterleri bozmaktadır.
-
-Sıfırların incelemesi için Şekil~\ref{fig:plot3} ve Şekil~\ref{fig:plot4} ile verilmiştir. 
-
-\begin{figure}[!htb]
-    \centering
-    \includegraphics[width=0.5\textwidth]{plot3}
-    \caption{$0.1\leq z\leq 0.5$ için basamak yanıtlarının değişimi}\label{fig:plot3}
-\end{figure}
-
-\begin{figure}[!htb]
-    \centering
-    \includegraphics[width=0.5\textwidth]{plot4}
-    \caption{$1\leq z\leq 5$ için basamak yanıtlarının değişimi}\label{fig:plot4}
-\end{figure}
-
-Grafikleriden görüldüğü üzere, baskın bölgenin dışına eklenen bir sıfır basamak yanıtını isterler açısından çok etkilememektedir. Baskın bölgede eklenmesi ise isterleri bozmaktadır ve kutup eklemekten daha çok bozulma meydana gelmektedir.
