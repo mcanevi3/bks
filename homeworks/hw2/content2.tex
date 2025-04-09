@@ -3,10 +3,10 @@
 \newcommand\DersKodu{MKT2002}
 \newcommand\DersAdi{BİLGİSAYARLI KONTROL SİSTEMLERİ}
 \newcommand\SinavAdi{Ödev 2}
-\newcommand\SinavTarihi{10.03.2025}
-\newcommand\SinavSaati{10:00}
-\newcommand\SinavSuresi{90dk}
-
+\newcommand\SinavTarihi{11.04.2025}
+\newcommand\SinavSaati{25.04.2025}
+\newcommand\SinavSuresi{2 Hafta}
+% Bölüm 3den sonra
 \pagestyle{fancy}
 \fancyhf{} % clear existing header/footer entries
 \fancyhead[R]{Öğrenci No:\hspace{4.5cm}}
@@ -28,7 +28,7 @@
     \multicolumn{1}{|r|}{Sınav Türü:}&
     \multicolumn{1}{|c|}{\SinavAdi}&  
     \multicolumn{1}{|c|}{}&
-    \multicolumn{1}{|r|}{Saat:}&
+    \multicolumn{1}{|r|}{Bitiş:}&
     \multicolumn{1}{|c|}{\SinavSaati}\\\hline
     \multicolumn{1}{|r|}{Dönemi:}&
     \multicolumn{1}{|c|}{2024-2025}&
@@ -38,29 +38,51 @@
     &&&&\\
 \end{tabular}\\\\
 \noindent\begin{center}
-\begin{tabular}{|r|c|}\hline
-    &\textbf{Toplam}\\\hline
-    \textbf{Puan:} &\textbf{100}\\\hline
-    \textbf{Not:}  &110\\\hline
-\end{tabular}\end{center}
+    \begin{tabular}{|r|c|c|c|c|c|}\hline
+        \textbf{Soru:}&
+        \textbf{1a}&
+        \textbf{1b}&
+        \textbf{2a}&
+        \textbf{2b}&
+        \textbf{Toplam}\\\hline
+        \textbf{Puan:}&
+        \textbf{25}&
+        \textbf{25}&
+        \textbf{25}&
+        \textbf{25}&
+        \textbf{100}\\\hline
+        \textbf{Not:}&&&&&\\\hline
+    \end{tabular}\end{center}
 \noindent\textbf{Uyarı:}
 \begin{itemize}\bfseries
-    \item Soruları dikkatlice okuyunuz. Hesap makinesi kullanılabilir.
-    \item İşlemleri atlamadan ve ayrıntılı olarak veriniz. Sadece nümerik yanıtlar veya çizimler ara işlemler olmadan kabul edilmemektedir.
+    \item Soruları dikkatlice okuyunuz. 
+    \item Raporu bilgisayarda hazırlayınız. El yazısı kabul edilmeyecektir.
+    \item Python kodu ve oluşan grafikler rapora eklenecektir.
 \end{itemize}
 \noindent\textbf{Soru:} Bir sistem transfer fonksiyonu 
 \begin{equation}
     G(s)=\frac{1}{s^2+2s+4}
 \end{equation}
-olarak verilmiştir. Bir kutup eklenmesi durumunda 
-\begin{equation}
-    G_1(s)=G(s)\frac{p}{s+p}
-\end{equation}
-veya bir sıfır eklenmesi durumunda 
-\begin{equation}
-    G_2(s)=G(s)\frac{s+z}{z}
-\end{equation}
-oluşan sistemin basamak yanıtını inceleyiniz. Bunun için eklenen kutup veya sıfırı iki farklı aralıkta $0.1\leq z,p\leq 0.5$ ve $5\leq z,p\leq10$ inceleyiniz. Kutupların incelemesi için Şekil~\ref{fig:plot1} ve Şekil~\ref{fig:plot2} ile verilmiştir. 
+olarak verilmiştir. $G(s)$ sistemine ait basamak yanıtı siyah renkte çizilecektir.
+
+\begin{enumerate}[\bfseries 1.]
+    \item Bir kutup eklenmesi durumunda; 
+    \begin{equation}
+        G_1(s)=G(s)\frac{p}{s+p}
+    \end{equation}
+    sistemi elde edilmektedir. $G_1(s)$ sistemine ait yanıtlar kırmızı renkte çizilecektir. \begin{enumerate}
+        \item (25p)\, $G_1(s)$ basamak yanıtını $0.1\leq p\leq 0.5$ için $G(s)$ sistemine ait basamak yanıtı ile bir grafik üzerinde karşılaştırınız. $G_1(s)$ sistemine ait basamak yanıtı için ne söylenebilir? Bir cümle ile ifade ediniz.
+        \item (25p)\, $G_1(s)$ basamak yanıtını $5\leq p\leq 10$ için $G(s)$ sistemine ait basamak yanıtı ile bir grafik üzerinde karşılaştırınız. $G_1(s)$ sistemine ait basamak yanıtı için ne söylenebilir? Bir cümle ile ifade ediniz.
+        \end{enumerate}
+    \item Bir sıfır eklenmesi durumunda; 
+    \begin{equation}
+        G_2(s)=G(s)\frac{s+z}{z}
+    \end{equation}
+    sistemi elde edilmektedir. $G_2(s)$ sistemine ait yanıtlar mavi renkte çizilecektir. \begin{enumerate}
+            \item (25p)\, $G_2(s)$ basamak yanıtını $0.1\leq z\leq 0.5$ için $G(s)$ sistemine ait basamak yanıtı ile bir grafik üzerinde karşılaştırınız. $G_2(s)$ sistemine ait basamak yanıtı için ne söylenebilir? Bir cümle ile ifade ediniz.
+            \item (25p)\, $G_2(s)$ basamak yanıtını $5\leq z\leq 10$ için $G(s)$ sistemine ait basamak yanıtı ile bir grafik üzerinde karşılaştırınız. $G_2(s)$ sistemine ait basamak yanıtı için ne söylenebilir? Bir cümle ile ifade ediniz.
+            \end{enumerate}
+\end{enumerate}
 
 \begin{figure}[!htb]
     \centering
