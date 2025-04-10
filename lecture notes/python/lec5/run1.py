@@ -1,7 +1,6 @@
 import matplotlib.pyplot as plt
 import numpy as np
 import sympy as sym
-import tbcontrol
 import control
 ############################
 # q1
@@ -40,4 +39,19 @@ def fun_q3():
     sol=sym.solve(sym.diff(expr,z),z)
     print(sol)
 
-fun_q3()
+def run_sym():
+    z=sym.Symbol('z')
+    k=sym.Symbol('k')
+    Gz=(z+0.1)/(z**2+0.2*z+0.1)
+    Tz=(k*Gz)/(1+k*Gz)
+    Tz=sym.simplify(Tz)
+    nz,dz=sym.fraction(Tz)
+    num=sym.Poly(nz,z)
+    den=sym.Poly(dz,z)
+    print(num.all_coeffs())
+    print(den.all_coeffs())
+    
+    temp=num.subs(k,1)
+    print(temp)
+    print(sym.solve(temp,z))
+run_sym()
