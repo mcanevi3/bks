@@ -3,10 +3,10 @@
 \newcommand\DersKodu{MKT2002}
 \newcommand\DersAdi{BİLGİSAYARLI KONTROL SİSTEMLERİ}
 \newcommand\SinavAdi{Ödev 4}
-\newcommand\SinavTarihi{10.03.2025}
-\newcommand\SinavSaati{10:00}
-\newcommand\SinavSuresi{90dk}
-% Bölüm 12den sonra
+\newcommand\SinavTarihi{09.05.2025}
+\newcommand\SinavSaati{23.05.2025}
+\newcommand\SinavSuresi{2 Hafta}
+
 \pagestyle{fancy}
 \fancyhf{} % clear existing header/footer entries
 \fancyhead[R]{Öğrenci No:\hspace{4.5cm}}
@@ -40,18 +40,86 @@
 \noindent\begin{center}
 \begin{tabular}{|r|c|}\hline
     &\textbf{Toplam}\\\hline
-    \textbf{Puan:} &\textbf{100}\\\hline
+    \textbf{Puan:} &\textbf{120}\\\hline
     \textbf{Not:}  &\\\hline
 \end{tabular}\end{center}
 \noindent\textbf{Uyarı:}
 \begin{itemize}\bfseries
-    \item Soruları dikkatlice okuyunuz. Hesap makinesi kullanılabilir.
+    \item Soruları dikkatlice okuyunuz. Hesap makinesi kullanılabilir. Kod vermeyiniz.
     \item İşlemleri atlamadan ve ayrıntılı olarak veriniz. Sadece nümerik yanıtlar veya çizimler ara işlemler olmadan kabul edilmemektedir.
 \end{itemize}
-\noindent\textbf{Soru:} Ödev 1'de verilen aktif süspansiyon sistemine durum geri besleme kontrolörü tasarlayınız. Kapalı çevrim için polinom
-\begin{equation}
-    p_d(z)=z^4- 3.79z^3  + 5.386z^2 - 3.401z+0.8051
-\end{equation}
-olarak verilmiştir.
+\noindent\textbf{Soru:} Kapalı çevrim geri besleme yapısı ve DC motor modeli aşağıda verilmiştir.
+\begin{figure}[H]
+  \centering
 
-\noindent\textbf{Extra:}Fark denklemlerini kullanarak $u$ girişine sıfır ve $w=0.04sin(2\pi10t)$ uygulayınız ve $x_1$, $x_2$, $x_3$ ve $x_4$ değişkenlerini çiziniz. Çizimi $0-1\,s$ arasında oluşturunuz. Durum geri besleme kontrolörü olan ve olmayan yanıtları karşılaştırınız.
+  \begin{subfigure}[b]{0.42\textwidth}
+    \centering
+    \begin{tikzpicture}
+      \node at (0, 0.5) (r) {$r$};
+      \node at (0.8, 0.4) (plus) {$+$};
+      \node at (1.1, -0.7) (minus) {$-$};
+      \node at (3.8, 0) (fs) {$F(s)$};
+      \node at (7.3, 0) (gs) {$G(s)$};
+      \node at (9.3, 0.4) (y) {$y$};
+      \node at (5.5, 0.4) (u) {$u$};
+      \node at (2, 0.4) (e) {$e$};
+
+      \draw [->](0,0) -- (1,0);
+      \draw (1.4,0) circle (0.4);
+      \draw [->](1.8,0) -- (2.8,0);
+      \draw (2.8,-1) rectangle (4.8,1);
+      \draw [->](4.8,0) -- (6.3,0);
+      \draw (6.3,-1) rectangle (8.3,1);
+      \draw [->](8.3,0) -- (9.3,0);
+
+      \draw (8.75,0) -- (8.75,-2);
+      \draw (8.75,-2) -- (1.4,-2);
+      \draw [->](1.4,-2) -- (1.4,-0.4);
+    \end{tikzpicture}
+    \caption{Birim Geribeslemeli Kontrol Yapısı}
+    \label{fig:kontrol_diyagrami}
+  \end{subfigure}
+  \hfill
+  % İkinci alt figür: Motor resmi
+  \begin{subfigure}[b]{0.42\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{motor}
+    \caption{DC Motorun Fiziksel Görseli}
+    \label{fig:motor_gorseli}
+  \end{subfigure}
+  \caption{Kontrol yapısı ve DC motor}
+  \label{fig:birlikte_gosterim}
+\end{figure}
+
+Model parametreleri Çizelge~\ref{tbl:motor} ile verilmiştir.
+\begin{table}[h!]
+    \centering
+    \caption{DC Motor Parametreleri}
+    \label{tbl:motor}
+    \begin{tabular}{|c|c|l|}
+    \hline
+    \textbf{Sembol} & \textbf{Değer} & \textbf{Açıklama} \\
+    \hline
+    $J$ & $0.01$ & Rotorun atalet momenti (kg$\cdot$m$^2$) \\
+    $b$ & $0.1$ & Viskoz sürtünme katsayısı (N$\cdot$m$\cdot$s) \\
+    $L$ & $0.5$ & Armatür endüktansı (H) \\
+    $R$ & $1$ & Armatür direnci (Ohm) \\
+    $K$ & $0.01$ & Elektromotor kuvvet sabiti (V$\cdot$s/rad) \\
+    \hline
+    \end{tabular}
+\end{table}
+Motora ait transfer fonksiyonu
+\begin{equation}
+    G(s)=\frac{K}{(Js+b)(Ls+R)+K^2}
+\end{equation}
+ve kontrolör
+\begin{equation}
+    F(s)=k_d s+k_p+\frac{k_i}{s}
+\end{equation}
+olarak tanımlanmıştır. Kapalı çevrim transfer fonksiyonunu 
+\begin{equation}
+    k_d=1.3526,\quad k_p=15.6,\quad k_i=44.9567
+\end{equation}
+parametreleri için matematiksel olarak elde ediniz.
+
+\noindent\textbf{Extra:} Motora 100\,rad/sn giriş uygulayıp çıkışı çizdiriniz. (İpucu:\verb|control.forced_response|)

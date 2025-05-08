@@ -3,9 +3,9 @@
 \newcommand\DersKodu{MKT2002}
 \newcommand\DersAdi{BİLGİSAYARLI KONTROL SİSTEMLERİ}
 \newcommand\SinavAdi{Ödev 4}
-\newcommand\SinavTarihi{10.03.2025}
-\newcommand\SinavSaati{10:00}
-\newcommand\SinavSuresi{90dk}
+\newcommand\SinavTarihi{09.05.2025}
+\newcommand\SinavSaati{23.05.2025}
+\newcommand\SinavSuresi{2 Hafta}
 
 \pagestyle{fancy}
 \fancyhf{} % clear existing header/footer entries
@@ -40,90 +40,107 @@
 \noindent\begin{center}
 \begin{tabular}{|r|c|}\hline
     &\textbf{Toplam}\\\hline
-    \textbf{Puan:} &\textbf{100}\\\hline
-    \textbf{Not:}  &110\\\hline
+    \textbf{Puan:} &\textbf{120}\\\hline
+    \textbf{Not:}  &120\\\hline
 \end{tabular}\end{center}
 \noindent\textbf{Uyarı:}
 \begin{itemize}\bfseries
-    \item Soruları dikkatlice okuyunuz. Hesap makinesi kullanılabilir.
+    \item Soruları dikkatlice okuyunuz. Hesap makinesi kullanılabilir. Kod vermeyiniz.
     \item İşlemleri atlamadan ve ayrıntılı olarak veriniz. Sadece nümerik yanıtlar veya çizimler ara işlemler olmadan kabul edilmemektedir.
 \end{itemize}
-\noindent\textbf{Soru:} Ödev 1'de verilen aktif süspansiyon sistemine durum geri besleme kontrolörü tasarlayınız. Kapalı çevrim için polinom
+\noindent\textbf{Soru:} Kapalı çevrim geri besleme yapısı ve DC motor modeli aşağıda verilmiştir.
+\begin{figure}[H]
+  \centering
+
+  \begin{subfigure}[b]{0.42\textwidth}
+    \centering
+    \begin{tikzpicture}
+      \node at (0, 0.5) (r) {$r$};
+      \node at (0.8, 0.4) (plus) {$+$};
+      \node at (1.1, -0.7) (minus) {$-$};
+      \node at (3.8, 0) (fs) {$F(s)$};
+      \node at (7.3, 0) (gs) {$G(s)$};
+      \node at (9.3, 0.4) (y) {$y$};
+      \node at (5.5, 0.4) (u) {$u$};
+      \node at (2, 0.4) (e) {$e$};
+
+      \draw [->](0,0) -- (1,0);
+      \draw (1.4,0) circle (0.4);
+      \draw [->](1.8,0) -- (2.8,0);
+      \draw (2.8,-1) rectangle (4.8,1);
+      \draw [->](4.8,0) -- (6.3,0);
+      \draw (6.3,-1) rectangle (8.3,1);
+      \draw [->](8.3,0) -- (9.3,0);
+
+      \draw (8.75,0) -- (8.75,-2);
+      \draw (8.75,-2) -- (1.4,-2);
+      \draw [->](1.4,-2) -- (1.4,-0.4);
+    \end{tikzpicture}
+    \caption{Birim Geribeslemeli Kontrol Yapısı}
+    \label{fig:kontrol_diyagrami}
+  \end{subfigure}
+  \hfill
+  % İkinci alt figür: Motor resmi
+  \begin{subfigure}[b]{0.42\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{motor}
+    \caption{DC Motorun Fiziksel Görseli}
+    \label{fig:motor_gorseli}
+  \end{subfigure}
+  \caption{Kontrol yapısı ve DC motor}
+  \label{fig:birlikte_gosterim}
+\end{figure}
+
+Model parametreleri Çizelge~\ref{tbl:motor} ile verilmiştir.
+\begin{table}[h!]
+    \centering
+    \caption{DC Motor Parametreleri}
+    \label{tbl:motor}
+    \begin{tabular}{|c|c|l|}
+    \hline
+    \textbf{Sembol} & \textbf{Değer} & \textbf{Açıklama} \\
+    \hline
+    $J$ & $0.01$ & Rotorun atalet momenti (kg$\cdot$m$^2$) \\
+    $b$ & $0.1$ & Viskoz sürtünme katsayısı (N$\cdot$m$\cdot$s) \\
+    $L$ & $0.5$ & Armatür endüktansı (H) \\
+    $R$ & $1$ & Armatür direnci (Ohm) \\
+    $K$ & $0.01$ & Elektromotor kuvvet sabiti (V$\cdot$s/rad) \\
+    \hline
+    \end{tabular}
+\end{table}
+Motora ait transfer fonksiyonu
 \begin{equation}
-    p_d(z)=z^4- 3.79z^3  + 5.386z^2 - 3.401z+0.8051
+    G(s)=\frac{K}{(Js+b)(Ls+R)+K^2}
 \end{equation}
-olarak verilmiştir. $p_d(A)$ terimi
+ve kontrolör
+\begin{equation}
+    F(s)=k_d s+k_p+\frac{k_i}{s}
+\end{equation}
+olarak tanımlanmıştır. Kapalı çevrim transfer fonksiyonunu 
+\begin{equation}
+    k_d=1.3526,\quad k_p=15.6,\quad k_i=44.9567
+\end{equation}
+parametreleri için matematiksel olarak elde ediniz. Kapalı çevrim transfer fonksiyonu
+\begin{equation}
+    T(s)=\frac{F(s)G(s)}{1+F(s)G(s)}
+\end{equation}
+ile
 \begin{equation}
 \begin{split}
-    p_d(A)&=A^4- 3.79A^3  + 5.386A^2 - 3.401A+0.8051I\\
-    p_d(A)&=\begin{bmatrix}
-      0& 0&       0& 0\\
-      0& 0& -0.0001& 0\\
-      0& 0&       0& 0\\
--0.0002& 0&  0.0001& 0\\
-    \end{bmatrix}
+    T(s)&=\frac{F(s)G(s)}{1+F(s)G(s)}\\
+    &=\frac{\frac{k_ds^2+k_ps+k_i}{s}\frac{0.01}{0.005 s^2 + 0.06 s + 0.1001}}{1+\frac{k_ds^2+k_ps+k_i}{s}\frac{0.01}{0.005 s^2 + 0.06 s + 0.1001}}\\
+    &=\frac{0.01k_ds^2+0.01k_ps+0.01k_i}{0.005 s^2 + 0.06 s + 0.1001+0.01k_ds^2+0.01k_ps+0.01k_i}\\
+    &=\frac{0.01k_ds^2+0.01k_ps+0.01k_i}{(0.005+0.01k_d) s^2 + (0.06+0.01k_p) s + (0.1001+0.01k_i)}\\
+    &=\frac{0.01353 s^2 + 0.156 s + 0.4496}{0.005 s^3 + 0.07353 s^2 + 0.2561 s + 0.4496}\\
+    &=\frac{2.7053 (s+5.896) (s+5.638)}{(s+10.71) (s^2 + 4s + 8.399)}
 \end{split}
 \end{equation}
-ve $\Phi$ terimi ise 
-\begin{equation}
-\begin{split}
-    \Phi&=[B|AB|A^2B|A^3B]\\
-    \Phi&=\begin{bmatrix}
-        0&      0&      0&       0\\
-    0.0004& 0.0004& 0.0004&  0.0004\\
-        0&      0&      0&       0\\
-    -0.001& -0.001& -0.001& -0.0009\\
-    \end{bmatrix}
-\end{split}
-\end{equation}
-olarak hesaplanır. Bunlar ile durum geri besleme kontrolörü,
-\begin{equation}
-\begin{split}
-    K&=-\begin{bmatrix}0&0&0&1\end{bmatrix}\begin{bmatrix}
-        0&      0&      0&       0\\
-    0.0004& 0.0004& 0.0004&  0.0004\\
-        0&      0&      0&       0\\
-    -0.001& -0.001& -0.001& -0.0009\\
-    \end{bmatrix}^{-1}\begin{bmatrix}
-        0& 0&       0& 0\\
-        0& 0& -0.0001& 0\\
-        0& 0&       0& 0\\
-  -0.0002& 0&  0.0001& 0\\
-      \end{bmatrix}\\
-    K&=\begin{bmatrix}-8700.0& -906.1& -917.2& -167.94\end{bmatrix}
-\end{split}
-\end{equation}
-olarak hesaplanır.
+elde edilir.
 
-\noindent\textbf{Extra:}Fark denklemlerini kullanarak girişlere $u=Kx$ ve $w=0.04sin(2\pi10t)$ uygulayınız ve $x_1$, $x_2$, $x_3$ ve $x_4$ değişkenlerini çiziniz. Çizimi $0-1\,s$ arasında oluşturunuz. Durum geri besleme kontrolörü olan ve olmayan yanıtları karşılaştırınız.
+\noindent\textbf{Extra:} Motora 100\,rad/sn giriş uygulayıp çıkışı çizdiriniz. (İpucu:\verb|control.forced_response|)
 
-\begin{figure}[!htb]
+\begin{figure}[h]
     \centering
-    \includegraphics[width=0.75\textwidth]{plot1}
-    \caption{Extra soru için elde edilen çizim}
-    \label{fig:plot1}
-\end{figure}
-
-\begin{figure}[!htb]
-    \centering
-    \includegraphics[width=0.75\textwidth]{plot2}
-    \caption{Açık ve kapalı çevrim $x_1$ karşılaştırması}
-\end{figure}
-
-\begin{figure}[!htb]
-    \centering
-    \includegraphics[width=0.75\textwidth]{plot3}
-    \caption{Açık ve kapalı çevrim $x_2$ karşılaştırması}
-\end{figure}
-
-\begin{figure}[!htb]
-    \centering
-    \includegraphics[width=0.75\textwidth]{plot4}
-    \caption{Açık ve kapalı çevrim $x_3$ karşılaştırması}
-\end{figure}
-
-\begin{figure}[!htb]
-    \centering
-    \includegraphics[width=0.75\textwidth]{plot5}
-    \caption{Açık ve kapalı çevrim $x_4$ karşılaştırması}
-\end{figure}
+    \includegraphics[width=0.6\textwidth]{motor_step}
+    \caption{Basamak yanıtı}
+  \end{figure}
