@@ -1,0 +1,33 @@
+PI kontrolör
+\begin{equation}
+    F(s)=k_p+\frac{k_i}{s}
+\end{equation}
+olmak üzere kapalı çevrim transfer fonksiyonu 
+\begin{equation}
+\begin{split}
+    T(s)&=\frac{F(s)G(s)}{1+F(s)G(s)}\\
+    &=\frac{\frac{k_ps+k_i}{s}\frac{1}{s^2+s+1}}{1+\frac{k_ps+k_i}{s}\frac{1}{s^2+s+1}}\\
+    &=\frac{k_ps+k_i}{s^3+s^2+(k_p+1)s+k_i}
+\end{split}
+\end{equation}
+olarak elde edilmektedir. 3. dereceden bir kapalı çevrim karakteristik polinom elde edilmesi sebebiyle 
+isterleri sağlayacak polinom
+\begin{equation}
+\begin{split}
+    p(s)&=(s^2+2\zeta\omega_n s+\omega_n^2)(s+p)\\
+    &=(s^2+8s+45.7844)(s+p)\\
+    &=s(s^2+8s+45.7844)+p(s^2+8s+45.7844)\\
+    &=s^3+8s^2+45.7844s+ps^2+8ps+45.7844p\\
+    &=s^3+(p+8)s^2+(8p+45.7844)s+45.7844p
+\end{split}
+\end{equation}
+kullanılmalıdır.
+Tasarım için problem
+\begin{equation}
+\begin{split}
+    1&=p+8\\
+    k_p+1&=8p+45.7844\\
+    k_i&=45.7844p
+\end{split}
+\end{equation}
+ve çözümü $k_i=-320.49$, $k_p=-11.21$, $p=-7$ şeklinde elde edilmektedir. $p$'nin negatif çıkması çözümün çalışmadığını göstermektedir. 
