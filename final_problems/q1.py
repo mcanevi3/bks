@@ -1,7 +1,7 @@
-from numpy import *
 from sympy import *
-from matplotlib.pyplot import *
+import matplotlib.pyplot as plt
 import control
+import numpy as np
 
 num_gs=1
 den_gs=[1,1,1]
@@ -9,7 +9,7 @@ den_gs=[1,1,1]
 ts=0.5
 os=10/100
 
-zeta=-log(os)/sqrt(np.pi**2+log(os)**2)
+zeta=-np.log(os)/np.sqrt(np.pi**2+np.log(os)**2)
 wn=4/(ts*zeta)
 
 s=Symbol('s')
@@ -51,31 +51,36 @@ fpzs=lambdify(p,Poly(pzs2,s).all_coeffs())
 for i,pval in enumerate(pvec):
     zeross=np.roots(fpzs(pval))
     mz=[np.abs(np.real(z))/(zeta*wn) for z in zeross]
-    mzvec[i]=min(mz)
+    mzvec[i]=np.min(mz)
     mp=pval/(zeta*wn)
     mpvec[i]=mp
-    mvec[i]=min([mzvec[i],mpvec[i]])
+    mvec[i]=np.min([mzvec[i],mpvec[i]])
 
-index=argmax(mvec)
+index=np.argmax(mvec)
 mval=mvec[index]
 pval=pvec[index]
 
-figure(1)
-clf()
-subplot(1,3,1)
-control.rlocus(Gzs)
+plt.figure(1)
+plt.subplot(1,3,1)
+plt.title(f"Zeros zeta*wn:{np.round(zeta*wn,2)}")
+plt.xlabel("Re")
+plt.ylabel("Im")
+rldata=control.root_locus_map(Gzs)
+plt.plot([-zeta*wn,-zeta*wn],[-4,4],'k')
+plt.plot(np.real(rldata.loci[:,0]),np.imag(rldata.loci[:,0]),'r')
+plt.plot(np.real(rldata.loci[:,1]),np.imag(rldata.loci[:,1]),'b')
 
 zeross=np.roots(fpzs(pval))
 for ztemp in zeross:
-    plot(real(ztemp),imag(ztemp),'kx')
-title(" ")
+    plt.plot(np.real(ztemp),np.imag(ztemp),'kx')
 
 
-subplot(1,3,2)
-plot(pvec,mpvec,'r',linewidth=2)
-plot(pvec,mzvec,'b',linewidth=2)
-plot(pvec,mvec,'m',linewidth=1)
-plot(pval,mval,'kx',linewidth=2)
+plt.subplot(1,3,2)
+plt.grid()
+plt.plot(pvec,mpvec,'r',linewidth=2)
+plt.plot(pvec,mzvec,'b',linewidth=2)
+plt.plot(pvec,mvec,'m',linewidth=1)
+plt.plot(pval,mval,'kx',linewidth=2)
 
 kdval=float(sol[kd].subs(p,pval))
 kpval=float(sol[kp].subs(p,pval))
@@ -91,11 +96,11 @@ czeros=[complex(x )for x in control.zeros(Ts)]
 print(cpoles)
 print(czeros)
 
-subplot(1,3,3)
+plt.subplot(1,3,3)
 t,y=control.step_response(Ts)
-plot(t,y,'k',linewidth=2)
+plt.plot(t,y,'k',linewidth=2)
 info=control.step_info(Ts)
 tsval=np.round(info['SettlingTime'],2)
 osval=np.round(info['Overshoot'],2)
-title(f"ts:{tsval} s os:%{osval}")
-show()
+plt.title(f"ts:{tsval} s os:%{osval}")
+plt.show()
