@@ -19,13 +19,4 @@ end
 sol=solve(prob);
 kval=double(sol.k);
 wnval=double(sol.wn);
-disp("k:"+string(kval));
-disp("wn:"+string(wnval));
-
-Fs=kval;
-[num,den]=numden(Gs);
-Gs=tf(double(coeffs(num,s,'all')),double(coeffs(den,s,'all')));
-Ts=feedback(Fs*Gs,1);
-Ts
-stepinfo(Ts)
-
+disp("wn"+s)
