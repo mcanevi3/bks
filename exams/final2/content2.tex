@@ -13,146 +13,116 @@
 \fancyhead[L]{Ad Soyad:\hspace{7cm}}
 \noindent \includegraphics[width=0.1\textwidth]{logo}
 \begin{tabular}{
-    p{0.15\linewidth}
-    p{0.15\linewidth}
-    p{0.2\linewidth}
-    p{0.1\linewidth}
-    p{0.15\linewidth}}
-    \multicolumn{5}{c}{\textbf{\BolumAdi}}\\
-    \multicolumn{5}{c}{\textbf{\DersAdi}}\\\hline
-    \multicolumn{1}{|r|}{Ders Kodu:}&
-    \multicolumn{1}{|c|}{\DersKodu}&
-    \multicolumn{1}{|c|}{}& 
-    \multicolumn{1}{|r|}{Tarih:}&
-    \multicolumn{1}{|c|}{\SinavTarihi} \\\hline
-    \multicolumn{1}{|r|}{Sınav Türü:}&
-    \multicolumn{1}{|c|}{\SinavAdi}&  
-    \multicolumn{1}{|c|}{}&
-    \multicolumn{1}{|r|}{Saat:}&
-    \multicolumn{1}{|c|}{\SinavSaati}\\\hline
-    \multicolumn{1}{|r|}{Dönemi:}&
-    \multicolumn{1}{|c|}{2024-2025}&
-    \multicolumn{1}{|c|}{}&
-    \multicolumn{1}{|r|}{Süre:}&
-    \multicolumn{1}{|c|}{\SinavSuresi} \\\hline
-    &&&&\\
+		p{0.15\linewidth}
+		p{0.15\linewidth}
+		p{0.2\linewidth}
+		p{0.1\linewidth}
+		p{0.15\linewidth}}
+	\multicolumn{5}{c}{\textbf{\BolumAdi}}        \\
+	\multicolumn{5}{c}{\textbf{\DersAdi}}         \\\hline
+	\multicolumn{1}{|r|}{Ders Kodu:}  &
+	\multicolumn{1}{|c|}{\DersKodu}   &
+	\multicolumn{1}{|c|}{}            &
+	\multicolumn{1}{|r|}{Tarih:}      &
+	\multicolumn{1}{|c|}{\SinavTarihi}            \\\hline
+	\multicolumn{1}{|r|}{Sınav Türü:} &
+	\multicolumn{1}{|c|}{\SinavAdi}   &
+	\multicolumn{1}{|c|}{}            &
+	\multicolumn{1}{|r|}{Saat:}       &
+	\multicolumn{1}{|c|}{\SinavSaati}             \\\hline
+	\multicolumn{1}{|r|}{Dönemi:}     &
+	\multicolumn{1}{|c|}{2024-2025}   &
+	\multicolumn{1}{|c|}{}            &
+	\multicolumn{1}{|r|}{Süre:}       &
+	\multicolumn{1}{|c|}{\SinavSuresi}            \\\hline
+	                                  &   &  &  & \\
 \end{tabular}\\\\
 \noindent\begin{center}
-\begin{tabular}{|r|c|c|c|}\hline
-    \textbf{Soru:}&
-    \textbf{1}&
-    \textbf{2}&
-    \textbf{Toplam}\\\hline
-    \textbf{Puan:}&
-    \textbf{50}&
-    \textbf{50}&
-    \textbf{100}\\\hline
-    \textbf{Not:}&50&50&100\\\hline
-\end{tabular}\end{center}
+	\begin{tabular}{|r|c|c|c|c|c|c|}\hline
+		\textbf{Soru:} &
+		\textbf{1}     &
+		\textbf{2}     &
+		\textbf{3}     &
+		\textbf{4}     &
+		\textbf{5}     &
+		\textbf{Toplam}                  \\\hline
+		\textbf{Puan:} &
+		\textbf{20}    &
+		\textbf{20}    &
+		\textbf{20}    &
+		\textbf{20}    &
+		\textbf{20}    &
+		\textbf{100}                     \\\hline
+		\textbf{Not:}  & 20&20&20&20&  20& 100\\\hline
+	\end{tabular}\end{center}
 \noindent\textbf{Uyarı:}
 \begin{itemize}\bfseries
-    \item Soruları dikkatlice okuyunuz. Hesap makinesi kullanılabilir.
-    \item Defter, kitap ve notlar açık bir sınavdır.
-    \item İşlemleri atlamadan ve ayrıntılı olarak veriniz. Sadece nümerik yanıtlar veya çizimler ara işlemler olmadan kabul edilmemektedir.
-    \item Yuvarlamalar 2 hane yapılacaktır. $\mathbf{1.99456\approx1.99}$ olarak alınacaktır.
+	\item Soruları dikkatlice okuyunuz. Hesap makinesi kullanılabilir.
+	\item Defter, kitap ve notlar açık bir sınavdır.
+	\item İşlemleri atlamadan ve ayrıntılı olarak veriniz. Sadece nümerik yanıtlar veya çizimler ara işlemler olmadan kabul edilmemektedir.
+	\item Yuvarlamalar 2 hane yapılacaktır. $\mathbf{1.99456\approx1.99}$ olarak alınacaktır.
 \end{itemize}
-    
-\begin{enumerate}[\bfseries S1.]
-    \item (50p)\,Bir transfer fonksiyonu
-    \begin{equation}
-        G(s)=\frac{1}{s^2+4s+3}
-    \end{equation}
-    olarak verilmiştir. Aşımı $\%16.3$ yapacak P kontrolörü tasarlayınız. Aşım kriteri ile
-    \begin{equation}
-    \begin{split}
-        \zeta&=-\frac{\log(os)}{\sqrt{\pi^2+\log(os)^2}}\\
-        &=-\frac{\log(0.163)}{\sqrt{\pi^2+\log(0.163)^2}}\\
-        &=\frac{1.814}{\sqrt{3.14^2+1.814^2}}\\
-        &=\frac{1.814}{\sqrt{9.8696+3.2906}}\\
-        &=\frac{1.814}{3.6277}\\
-        &=0.5
-    \end{split}
-    \end{equation}
-    ve isterleri sağlayacak polinom
-    \begin{equation}
-    \begin{split}
-        p(s)&=s^2+2\zeta \omega_n s+\omega_n^2\\
-        &=s^2+\omega_n s+\omega_n^2
-    \end{split}
-    \end{equation}
-    olarak elde edilmektedir. Kontrolör ile kapalı çevrim
-    \begin{equation}
-    \begin{split}
-        T(s)&=\frac{kG(s)}{1+kG(s)}\\
-        &=\frac{k\frac{1}{s^2+4s+3}}{1+k\frac{1}{s^2+4s+3}}\\
-        &=\frac{k}{s^2+4s+3+k}
-    \end{split}
-    \end{equation}
-    şeklindedir. Tasarım problemi 
-    \begin{equation}
-    \begin{split}
-        4&=\omega_n\\
-        3+k&=\omega_n^2
-    \end{split}
-    \end{equation}
-    olmak üzere çözüm 
-    \begin{equation}
-    \begin{split}
-        \omega_n&=4\\
-        k&=13
-    \end{split}
-    \end{equation}
-    şeklinde hesaplanmaktadır. Kapalı çevrim transfer fonksiyonu 
-    \begin{equation}
-    T(s)=\frac{13}{s^2 + 4 s + 16}
-    \end{equation}
-    şeklindedir.
 
-    \item (50p)\,Bir transfer fonksiyonu
-    \begin{equation}
-        G(s)=\frac{1}{s+0.2}
-    \end{equation}
-    olarak verilmiştir. Aşımı $\%16.3$ ve yerleşme zamanını $t_s=2\,s$ yapan PI kontrolör tasarlayınız. Kapalı çevrim transfer fonksiyonu
-    \begin{equation}
-    \begin{split}
-        T(s)&=\frac{F(s)G(s)}{1+F(s)G(s)}\\
-        &=\frac{\frac{k_ps+k_i}{s}\frac{1}{s+0.2}}{1+\frac{k_ps+k_i}{s}\frac{1}{s+0.2}}\\
-        &=\frac{k_ps+k_i}{s^2+0.2s+k_ps+k_i}\\
-        &=\frac{k_ps+k_i}{s^2+(0.2+k_p)s+k_i}
-    \end{split}
-    \end{equation}
-    olarak hesaplanır. $t_s=2$ isterinden ise 
-    \begin{equation}
-    \begin{split}
-        \omega_n&=\frac{4}{t_s\zeta}\\
-        &=\frac{4}{2\cdot 0.5}\\
-        &=4
-    \end{split}
-    \end{equation}
-    ve dolayısıyla
-\begin{equation}
-\begin{split}
-    p(s)&=s^2+2\zeta \omega_n s+\omega_n^2\\
-    &=s^2+4s+16
-\end{split}
-\end{equation}
-elde edilir. Tasarım problemi
-\begin{equation}
-\begin{split}
-    0.2+k_p&=4\\
-    k_i&=16
-\end{split}
-\end{equation}
-ve çözümü
-\begin{equation}
-\begin{split}
-    k_p&=3.8\\
-    k_i&=16
-\end{split}
-\end{equation}
-şeklindedir. Kapalı çevrim transfer fonksiyonu
-\begin{equation}
-    T(s)=\frac{4s+16}{s^2+4s+16}
-\end{equation}
-olarak elde edilir.
+\begin{enumerate}[\bfseries S1.]
+	\item (20p)\,Aşım kriteri ile
+	      \begin{equation}
+		      \begin{split}
+			      \zeta & =-\frac{\log(os)}{\sqrt{\pi^2+\log(os)^2}}       \\
+			            & =-\frac{\log(0.163)}{\sqrt{\pi^2+\log(0.163)^2}} \\
+			            & =\frac{1.814}{\sqrt{3.14^2+1.814^2}}             \\
+			            & =\frac{1.814}{\sqrt{9.8696+3.2906}}              \\
+			            & =\frac{1.814}{3.6277}                            \\
+			            & =0.5
+		      \end{split}
+	      \end{equation}
+	\item (20p)\,
+	      $t_s=2$ isterinden ise
+	      \begin{equation}
+		      \begin{split}
+			      \omega_n & =\frac{4}{t_s\zeta}   \\
+			               & =\frac{4}{2\cdot 0.5} \\
+			               & =4
+		      \end{split}
+	      \end{equation}
+	\item (20p)\,İdeal polinom
+	      \begin{equation}
+		      \begin{split}
+			      p(s) & =s^2+2\zeta \omega_n s+\omega_n^2 \\
+			           & =s^2+4s+16
+		      \end{split}
+	      \end{equation}
+	      olarak elde edilir.
+	\item (20p)\,Bir transfer fonksiyonu
+	      \begin{equation}
+		      G(s)=\frac{1}{s+0.2}
+	      \end{equation}
+	      olarak verilmiştir. Aşımı $\%16.3$ ve yerleşme zamanını $t_s=2\,s$ yapan PI kontrolör tasarlayınız. Kapalı çevrim transfer fonksiyonu
+	      \begin{equation}
+		      \begin{split}
+			      T(s) & =\frac{F(s)G(s)}{1+F(s)G(s)}                                                   \\
+			           & =\frac{\frac{k_ps+k_i}{s}\frac{1}{s+0.2}}{1+\frac{k_ps+k_i}{s}\frac{1}{s+0.2}} \\
+			           & =\frac{k_ps+k_i}{s^2+0.2s+k_ps+k_i}                                            \\
+			           & =\frac{k_ps+k_i}{s^2+(0.2+k_p)s+k_i}
+		      \end{split}
+	      \end{equation}
+	      olarak hesaplanır.
+	\item (20p)\,Tasarım problemi
+	      \begin{equation}
+		      \begin{split}
+			      0.2+k_p & =4  \\
+			      k_i     & =16
+		      \end{split}
+	      \end{equation}
+	      ve çözümü
+	      \begin{equation}
+		      \begin{split}
+			      k_p & =3.8 \\
+			      k_i & =16
+		      \end{split}
+	      \end{equation}
+	      şeklindedir. Kapalı çevrim transfer fonksiyonu
+	      \begin{equation}
+		      T(s)=\frac{4s+16}{s^2+4s+16}
+	      \end{equation}
+	      olarak elde edilir.
 \end{enumerate}
