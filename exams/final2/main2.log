@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.24 (TeX Live 2022) (preloaded format=pdflatex 2022.12.13)  22 MAY 2025 10:29
+This is pdfTeX, Version 3.141592653-2.6-1.40.24 (TeX Live 2022) (preloaded format=pdflatex 2022.12.13)  22 MAY 2025 10:38
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1490,13 +1490,13 @@ Package rerunfilecheck Info: File `main2.out' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
  ) 
 Here is how much of TeX's memory you used:
- 63316 strings out of 478268
- 1620233 string characters out of 5846346
- 2347900 words of memory out of 5000000
+ 63315 strings out of 478268
+ 1620221 string characters out of 5846346
+ 2350900 words of memory out of 5000000
  80701 multiletter control sequences out of 15000+600000
  474437 words of font info for 44 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 99i,17n,104p,5135b,878s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 99i,17n,104p,5135b,872s stack positions out of 10000i,1000n,20000p,200000b,200000s
 {/usr/local/texlive/2022/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc
 }{/usr/local/texlive/2022/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc}<
 /usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></
@@ -1509,10 +1509,10 @@ l/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/local/t
 exlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/te
 xlive/2022/texmf-dist/fonts/type1/public/cm-super/sfbx1000.pfb></usr/local/texl
 ive/2022/texmf-dist/fonts/type1/public/cm-super/sfrm1000.pfb>
-Output written on main2.pdf (2 pages, 838757 bytes).
+Output written on main2.pdf (2 pages, 838441 bytes).
 PDF statistics:
- 168 PDF objects out of 1000 (max. 8388607)
- 101 compressed objects within 2 object streams
- 17 named destinations out of 1000 (max. 500000)
+ 166 PDF objects out of 1000 (max. 8388607)
+ 100 compressed objects within 1 object stream
+ 16 named destinations out of 1000 (max. 500000)
  162 words of extra memory for PDF output out of 10000 (max. 10000000)
 
